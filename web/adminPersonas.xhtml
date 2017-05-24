@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+<f:view>
+    <h:outputLabel value="Hello, world"/>
+</f:view>
+<h:head>
+</h:head>
+<h:body>
+    <ui:composition template="./WEB-INF/templates/plantilla.xhtml">
+        <ui:define name="content">
+            <h:form id="form">
+                <f:event type="preRenderView" listener="#{personaBean.listarPersonas()}"/>
+                <p:dataTable id="dataPersonas" var="persona" value="#{personaBean.lstPersonas}" selectionMode="single" selection="#{personaBean.persona}" rowKey="#{persona.prsCodigo}" style="font-size: smaller; width: auto;" emptyMessage="No hay datos." scrollable="true" scrollHeight="500px">
+                    <f:facet style="background-image:url(resources/images/fondo.jpg)" name="header"  >
+                        Personas
+                    </f:facet>
+
+                    <p:column headerText="Id" filterBy="#{persona.prsNombres}" filterMatchMode="contains" style="width: 150px">
+                        <p:outputLabel value="#{persona.prsNombres}"/>
+                    </p:column>
+                    <p:column headerText="Nombre" filterBy="#{persona.prsApellidos}" filterMatchMode="contains" style="width: 150px">
+                        <p:outputLabel value="#{persona.prsApellidos}"/>
+                    </p:column>
+                    <p:column headerText="Teléfono" style="width: 150px">
+                        <p:outputLabel value="#{persona.prsTelefono}"/>
+                    </p:column>
+                    <p:column headerText="Celular" style="width: 150px">
+                        <p:outputLabel value="#{persona.prsCelular}"/>
+                    </p:column>
+                    <p:column headerText="Congregación" filterBy="#{persona.congregacion.cngNombre}" filterMatchMode="contains" style="width: 150px">
+                        <p:outputLabel value="#{persona.congregacion.cngNombre}"/>
+                    </p:column>
+                    <p:column headerText="Grupo" filterBy="#{persona.grupo.grpNombre}" filterMatchMode="contains" style="width: 150px">
+                        <p:outputLabel value="#{persona.grupo.grpNombre}"/>
+                    </p:column>
+                    <p:column headerText="Privilegio" filterBy="#{persona.privilegio.prvNombre}" filterMatchMode="contains" style="width: 150px">
+                        <p:outputLabel value="#{persona.privilegio.prvNombre}"/>
+                    </p:column>
+                    <f:facet name="footer">
+                        <p:commandButton value="Ingresar" id="ingresar" actionListener="#{personaBean.setBtnAccion('Ingresar')}" icon="ui-icon-disk" oncomplete="PF('wdgPersona').show();" update=":dlgPersona"/>
+                        <p:commandButton value="Modificar" id="modificar" actionListener="#{personaBean.setBtnAccion('Actualizar')}" icon="ui-icon-disk" oncomplete="PF('wdgPersona').show();" update=":dlgPersona" />
+                    </f:facet>
+                </p:dataTable>
+
+            </h:form>
+
+            <!--Dialog de personas-->
+            <p:dialog id="dlgPersona" header="Persona" widgetVar="wdgPersona" modal="true" width="310" style="font-size: smaller">
+                <h:form>
+                    <p:panelGrid >
+                        <p:row>
+                            <p:column>
+                                <p:outputLabel value="Codigo" style="font-weight: bold" />
+                            </p:column>
+                            <p:column>
+                                <p:inputText value="#{personaBean.persona.prsCodigo}" disabled="true"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <p:outputLabel value="Nombres" style="font-weight: bold"/>
+                            </p:column>
+                            <p:column>
+                                <p:inputText value="#{personaBean.persona.prsNombres}"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <p:outputLabel value="Apellidos" style="font-weight: bold"/>
+                            </p:column>
+                            <p:column>
+                                <p:inputText value="#{personaBean.persona.prsApellidos}"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <p:outputLabel value="Estado" style="font-weight: bold"/>
+                            </p:column>
+                            <p:column>
+                                <p:selectOneMenu value="#{personaBean.persona.prsEstado}" disabled="true">
+                                    <f:selectItem itemLabel="Activo" itemValue="A"/>
+                                    <f:selectItem itemLabel="Inactivo" itemValue="I"/>
+                                </p:selectOneMenu>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <p:outputLabel value="Teléfono" style="font-weight: bold"/>
+                            </p:column>
+                            <p:column>
+                                <p:inputText value="#{personaBean.persona.prsTelefono}"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <p:outputLabel value="Celular" style="font-weight: bold"/>
+                            </p:column>
+                            <p:column>
+                                <p:inputText value="#{personaBean.persona.prsCelular}"/>
+                            </p:column>
+                        </p:row>
+                    </p:panelGrid>
+                    <!--Botones-->
+                    <p:commandButton value="#{personaBean.btnAccion}" action="#{personaBean.operar()}" oncomplete="PF('wdgPersona').hide()" update=":form"/>
+                    <p:commandButton value="Cancel" oncomplete="PF('wdgPersona').hide()" immediate="true"/>
+                </h:form>
+            </p:dialog>
+        </ui:define>
+    </ui:composition>
+</h:body>
+</html>
