@@ -32,4 +32,20 @@ public class congregacionDAO implements Serializable {
         em.getTransaction().commit();
         em.close();
     }
+
+    public void actualizarCongregacion(congregacion congregacion) throws Exception{
+        EntityManager em = emf.createEntityManager();
+        try{
+            em.getTransaction().begin();
+            congregacion cng = em.find(congregacion.class, congregacion.getCngCodigo());
+            cng.setCngNombre(congregacion.getCngNombre());
+            cng.setCngEstado(congregacion.getCngEstado());
+            em.getTransaction().commit();
+        }catch (Exception e){
+            em.getTransaction().rollback();
+            throw e;
+        }finally {
+            em.close();
+        }
+    }
 }

@@ -58,4 +58,37 @@ public class privilegio implements Serializable {
     public void setPrvEstado(String prvEstado) {
         this.prvEstado = prvEstado;
     }
+
+    @Override
+    public String toString() {
+        return "privilegio{" +
+                "prvCodigo='" + prvCodigo + '\'' +
+                ", prvNombre='" + prvNombre + '\'' +
+                ", prvEstado='" + prvEstado + '\'' +
+                ", personas=" + personas +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        privilegio that = (privilegio) o;
+
+        if (!prvCodigo.equals(that.prvCodigo)) return false;
+        if (!prvNombre.equals(that.prvNombre)) return false;
+        if (!prvEstado.equals(that.prvEstado)) return false;
+        return personas.equals(that.personas);
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = prvCodigo.hashCode();
+        result = 31 * result + prvNombre.hashCode();
+        result = 31 * result + prvEstado.hashCode();
+        result = 31 * result + personas.hashCode();
+        return result;
+    }
 }

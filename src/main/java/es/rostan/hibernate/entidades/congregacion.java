@@ -70,4 +70,27 @@ public class congregacion implements Serializable {
                 ", personas=" + personas +
                 '}';
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        congregacion that = (congregacion) o;
+
+        if (!cngCodigo.equals(that.cngCodigo)) return false;
+        if (!cngNombre.equals(that.cngNombre)) return false;
+        if (!cngEstado.equals(that.cngEstado)) return false;
+        return personas.equals(that.personas);
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = cngCodigo.hashCode();
+        result = 31 * result + cngNombre.hashCode();
+        result = 31 * result + cngEstado.hashCode();
+        result = 31 * result + personas.hashCode();
+        return result;
+    }
 }

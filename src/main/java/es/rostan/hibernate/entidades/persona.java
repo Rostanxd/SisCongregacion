@@ -140,4 +140,61 @@ public class persona implements Serializable {
     public void setPrsEstado(String prsEstado) {
         this.prsEstado = prsEstado;
     }
+
+    @Override
+    public String toString() {
+        return "persona{" +
+                "prsCodigo='" + prsCodigo + '\'' +
+                ", prsNombres='" + prsNombres + '\'' +
+                ", prsApellidos='" + prsApellidos + '\'' +
+                ", prsGenero='" + prsGenero + '\'' +
+                ", prsTelefono='" + prsTelefono + '\'' +
+                ", prsCelular='" + prsCelular + '\'' +
+                ", prsFecNacimiento=" + prsFecNacimiento +
+                ", prsFecBautismo=" + prsFecBautismo +
+                ", prsEstado='" + prsEstado + '\'' +
+                ", congregacion=" + congregacion +
+                ", grupo=" + grupo +
+                ", privilegio=" + privilegio +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        persona persona = (persona) o;
+
+        if (!prsCodigo.equals(persona.prsCodigo)) return false;
+        if (!prsNombres.equals(persona.prsNombres)) return false;
+        if (!prsApellidos.equals(persona.prsApellidos)) return false;
+        if (!prsGenero.equals(persona.prsGenero)) return false;
+        if (!prsTelefono.equals(persona.prsTelefono)) return false;
+        if (!prsCelular.equals(persona.prsCelular)) return false;
+        if (!prsFecNacimiento.equals(persona.prsFecNacimiento)) return false;
+        if (!prsFecBautismo.equals(persona.prsFecBautismo)) return false;
+        if (!prsEstado.equals(persona.prsEstado)) return false;
+        if (!congregacion.equals(persona.congregacion)) return false;
+        if (!grupo.equals(persona.grupo)) return false;
+        return privilegio.equals(persona.privilegio);
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = prsCodigo.hashCode();
+        result = 31 * result + prsNombres.hashCode();
+        result = 31 * result + prsApellidos.hashCode();
+        result = 31 * result + prsGenero.hashCode();
+        result = 31 * result + prsTelefono.hashCode();
+        result = 31 * result + prsCelular.hashCode();
+        result = 31 * result + prsFecNacimiento.hashCode();
+        result = 31 * result + prsFecBautismo.hashCode();
+        result = 31 * result + prsEstado.hashCode();
+        result = 31 * result + congregacion.hashCode();
+        result = 31 * result + grupo.hashCode();
+        result = 31 * result + privilegio.hashCode();
+        return result;
+    }
 }

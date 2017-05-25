@@ -1,7 +1,10 @@
 package es.rostan.hibernate.bean;
 
+import javax.annotation.PostConstruct;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import javax.faces.context.FacesContext;
 
 import es.rostan.hibernate.dao.congregacionDAO;
 import es.rostan.hibernate.entidades.congregacion;
@@ -17,7 +20,9 @@ import java.util.List;
 @ViewScoped
 public class congregacionBean implements Serializable{
 
-    private congregacion congregacion;
+    private congregacion congregacion = new congregacion();
+
+    private congregacion congregacionSelected = new congregacion();
 
     private List<congregacion> lstCongregaciones = new ArrayList<>();
 
@@ -28,6 +33,11 @@ public class congregacionBean implements Serializable{
 
     }
 
+    @PostConstruct
+    public void init(){
+        this.limpiar();
+    }
+
 //    GETTER Y SETTERS
     public es.rostan.hibernate.entidades.congregacion getCongregacion() {
         return congregacion;
@@ -35,6 +45,14 @@ public class congregacionBean implements Serializable{
 
     public void setCongregacion(es.rostan.hibernate.entidades.congregacion congregacion) {
         this.congregacion = congregacion;
+    }
+
+    public es.rostan.hibernate.entidades.congregacion getCongregacionSelected() {
+        return congregacionSelected;
+    }
+
+    public void setCongregacionSelected(es.rostan.hibernate.entidades.congregacion congregacionSelected) {
+        this.congregacionSelected = congregacionSelected;
     }
 
     public List<es.rostan.hibernate.entidades.congregacion> getLstCongregaciones() {
@@ -51,6 +69,7 @@ public class congregacionBean implements Serializable{
 
     public void setBtnAccion(String btnAccion) {
         this.btnAccion = btnAccion;
+        this.congregacionSelected = this.congregacion;
     }
 
     //    METODOS
@@ -61,11 +80,33 @@ public class congregacionBean implements Serializable{
 
     public void ingresarCongregacion(){
         congregacionDAO cd = new congregacionDAO();
-        cd.ingresarCongregacion(this.congregacion);
+        cd.ingresarCongregacion(this.congregacionSelected);
+        FacesContext.getCurrentInstance().addMessage(null,new FacesMessage(FacesMessage.SEVERITY_INFO,"Congregación ingresada correctamente.","Exito"));
+    }
+
+    public void actualizarCongregacion(){
+        congregacionDAO cd = new congregacionDAO();
+        try {
+            cd.actualizarCongregacion(this.congregacionSelected);
+        }catch(Exception e){
+            System.out.println(e.toString());
+        }
     }
 
     public void operar(){
-        System.out.println(congregacion.toString());
-        this.ingresarCongregacion();
+        switch (btnAccion){
+            case "Ingresar":
+                this.ingresarCongregacion();
+                this.limpiar();
+            case "Actualizar":
+                this.actualizarCongregacion();
+                this.limpiar();
+        }
+    }
+
+    private void limpiar(){
+        this.congregacionSelected.setCngCodigo("");
+        this.congregacionSelected.setCngNombre("");
+        this.congregacionSelected.setCngEstado("A");
     }
 }

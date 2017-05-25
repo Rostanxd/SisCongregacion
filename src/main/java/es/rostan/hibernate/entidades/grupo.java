@@ -59,4 +59,37 @@ public class grupo implements Serializable {
     public void setGrpEstado(String grpEstado) {
         this.grpEstado = grpEstado;
     }
+
+    @Override
+    public String toString() {
+        return "grupo{" +
+                "grpCodigo='" + grpCodigo + '\'' +
+                ", grpNombre='" + grpNombre + '\'' +
+                ", grpEstado='" + grpEstado + '\'' +
+                ", personas=" + personas +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        grupo grupo = (grupo) o;
+
+        if (!grpCodigo.equals(grupo.grpCodigo)) return false;
+        if (!grpNombre.equals(grupo.grpNombre)) return false;
+        if (!grpEstado.equals(grupo.grpEstado)) return false;
+        return personas.equals(grupo.personas);
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = grpCodigo.hashCode();
+        result = 31 * result + grpNombre.hashCode();
+        result = 31 * result + grpEstado.hashCode();
+        result = 31 * result + personas.hashCode();
+        return result;
+    }
 }
