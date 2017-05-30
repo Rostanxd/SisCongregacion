@@ -24,6 +24,9 @@ public class congregacion implements Serializable {
     @OneToMany(mappedBy = "congregacion", cascade = CascadeType.ALL)
     private Set<persona> personas;
 
+    @OneToMany(mappedBy = "congregacion", cascade = CascadeType.ALL)
+    private Set<asistenciaReuniones> asistencias;
+
 //    CONSTRUCTORES
     public congregacion(){
 
@@ -67,30 +70,27 @@ public class congregacion implements Serializable {
                 "cngCodigo='" + cngCodigo + '\'' +
                 ", cngNombre='" + cngNombre + '\'' +
                 ", cngEstado='" + cngEstado + '\'' +
-                ", personas=" + personas +
+                ", personas={" + personas.toString() +
                 '}';
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (!(o instanceof congregacion)) return false;
 
         congregacion that = (congregacion) o;
 
-        if (!cngCodigo.equals(that.cngCodigo)) return false;
-        if (!cngNombre.equals(that.cngNombre)) return false;
-        if (!cngEstado.equals(that.cngEstado)) return false;
-        return personas.equals(that.personas);
-
+        if (!getCngCodigo().equals(that.getCngCodigo())) return false;
+        if (!getCngNombre().equals(that.getCngNombre())) return false;
+        return getCngEstado().equals(that.getCngEstado());
     }
 
     @Override
     public int hashCode() {
-        int result = cngCodigo.hashCode();
-        result = 31 * result + cngNombre.hashCode();
-        result = 31 * result + cngEstado.hashCode();
-        result = 31 * result + personas.hashCode();
+        int result = getCngCodigo().hashCode();
+        result = 31 * result + getCngNombre().hashCode();
+        result = 31 * result + getCngEstado().hashCode();
         return result;
     }
 }

@@ -16,7 +16,7 @@ import java.util.Set;
  */
 public class personaDAO {
 
-    EntityManagerFactory emf = Persistence.createEntityManagerFactory("Persistencia");
+    private EntityManagerFactory emf = Persistence.createEntityManagerFactory("Persistencia");
 
     public List<persona> listarPersonas(){
         List<persona> lstPersona = new ArrayList<>();
@@ -25,5 +25,38 @@ public class personaDAO {
         Query qry = em.createQuery("SELECT p FROM persona as p");
         lstPersona = (List<persona>) qry.getResultList();
         return lstPersona;
+    }
+
+    public void ingresarPersona(persona persona){
+        EntityManager em = emf.createEntityManager();
+        em.getTransaction().begin();
+        em.persist(persona);
+        em.getTransaction().commit();
+        em.close();
+    }
+
+    public void actualizarPersona(persona personaUpd) throws Exception{
+        EntityManager em = emf.createEntityManager();
+        try{
+            em.getTransaction().begin();
+            persona persona = em.find(persona.class, personaUpd.getPrsCodigo());
+            persona.setPrsNombres(personaUpd.getPrsNombres());
+            persona.setPrsApellidos(personaUpd.getPrsApellidos());
+            persona.setPrsGenero(personaUpd.getPrsGenero());
+            persona.setPrsTelefono(personaUpd.getPrsTelefono());
+            persona.setPrsCelular(personaUpd.getPrsCelular());
+            persona.setPrsFecNacimiento(personaUpd.getPrsFecNacimiento());
+            persona.setPrsFecBautismo(personaUpd.getPrsFecBautismo());
+            persona.setPrsEstado(personaUpd.getPrsEstado());
+            persona.setCongregacion(personaUpd.getCongregacion());
+            persona.setPrivilegio(personaUpd.getPrivilegio());
+            persona.setGrupo(personaUpd.getGrupo());
+            em.getTransaction().commit();
+        }catch (Exception e){
+            em.getTransaction().rollback();
+            throw e;
+        }finally {
+            em.close();
+        }
     }
 }

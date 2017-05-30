@@ -43,7 +43,7 @@
                                 <p:outputLabel value="Codigo" style="font-weight: bold" />
                             </p:column>
                             <p:column>
-                                <p:inputText value="#{privilegioBean.privilegio.prvCodigo}" disabled="true"/>
+                                <p:inputText value="#{privilegioBean.privilegioSelected.prvCodigo}" disabled="#{privilegioBean.btnAccion eq 'Actualizar'}"/>
                             </p:column>
                         </p:row>
                         <p:row>
@@ -51,7 +51,7 @@
                                 <p:outputLabel value="Nombres" style="font-weight: bold"/>
                             </p:column>
                             <p:column>
-                                <p:inputText value="#{privilegioBean.privilegio.prvNombre}"/>
+                                <p:inputText value="#{privilegioBean.privilegioSelected.prvNombre}"/>
                             </p:column>
                         </p:row>
                         <p:row>
@@ -59,7 +59,7 @@
                                 <p:outputLabel value="Estado" style="font-weight: bold"/>
                             </p:column>
                             <p:column>
-                                <p:selectOneMenu value="#{privilegioBean.privilegio.prvEstado}" disabled="true">
+                                <p:selectOneMenu value="#{privilegioBean.privilegioSelected.prvEstado}" disabled="#{privilegioBean.btnAccion eq 'Ingresar'}">
                                     <f:selectItem itemLabel="Activo" itemValue="A"/>
                                     <f:selectItem itemLabel="Inactivo" itemValue="I"/>
                                 </p:selectOneMenu>

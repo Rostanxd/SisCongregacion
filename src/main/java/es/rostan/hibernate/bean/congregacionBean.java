@@ -69,7 +69,14 @@ public class congregacionBean implements Serializable{
 
     public void setBtnAccion(String btnAccion) {
         this.btnAccion = btnAccion;
-        this.congregacionSelected = this.congregacion;
+        switch (this.btnAccion){
+            case "Ingresar":
+                this.limpiar();
+                break;
+            case "Actualizar":
+                this.congregacionSelected = this.congregacion;
+                break;
+        }
     }
 
     //    METODOS
@@ -98,9 +105,11 @@ public class congregacionBean implements Serializable{
             case "Ingresar":
                 this.ingresarCongregacion();
                 this.limpiar();
+                break;
             case "Actualizar":
                 this.actualizarCongregacion();
                 this.limpiar();
+                break;
         }
     }
 

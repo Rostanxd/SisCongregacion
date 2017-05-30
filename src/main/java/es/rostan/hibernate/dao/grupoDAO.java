@@ -13,11 +13,35 @@ import java.util.List;
  */
 public class grupoDAO {
 
-    EntityManagerFactory emf = Persistence.createEntityManagerFactory("Persistencia");
+    private EntityManagerFactory emf = Persistence.createEntityManagerFactory("Persistencia");
 
     public List<grupo> listarGrupos(){
         EntityManager em = emf.createEntityManager();
         Query qry = em.createQuery("SELECT g FROM grupo g");
         return (List<grupo>) qry.getResultList();
+    }
+
+    public void ingresarGrupo(grupo grupo){
+        EntityManager em = emf.createEntityManager();
+        em.getTransaction().begin();
+        em.persist(grupo);
+        em.getTransaction().commit();
+        em.close();
+    }
+
+    public void actualizarGrupo(grupo grupoUpd) throws Exception{
+        EntityManager em = emf.createEntityManager();
+        try{
+            em.getTransaction().begin();
+            grupo grupo = em.find(grupo.class, grupoUpd.getGrpCodigo());
+            grupo.setGrpNombre(grupoUpd.getGrpNombre());
+            grupo.setGrpEstado(grupoUpd.getGrpEstado());
+            em.getTransaction().commit();
+        }catch(Exception e){
+            System.out.println(e.toString());
+            throw e;
+        }finally{
+            em.close();
+        }
     }
 }

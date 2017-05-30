@@ -15,8 +15,9 @@
     <ui:composition template="./WEB-INF/templates/plantilla.xhtml">
         <ui:define name="content">
             <h:form id="form">
-                <f:event type="preRenderView" listener="#{privilegioBean.listarPrivilegios()}"/>
-                <p:dataTable id="dataGrupos" var="grupo" value="#{grupoBean.lstGrupo}" selectionMode="single" selection="#{grupoBean.grupo}" rowKey="#{grupo.grpCodigo}" style="font-size: smaller; width: auto;" emptyMessage="No hay datos." scrollable="true" scrollHeight="500px">
+                <f:event type="preRenderView" listener="#{grupoBean.listarGrupos()}"/>
+                <p:dataTable id="dataGrupos" var="grupo" value="#{grupoBean.lstGrupos}"
+                             selectionMode="single" selection="#{grupoBean.grupo}" rowKey="#{grupo.grpCodigo}" style="font-size: smaller; width: auto;" emptyMessage="No hay datos." scrollable="true" scrollHeight="500px">
                     <f:facet style="background-image:url(resources/images/fondo.jpg)" name="header"  >
                         Grupos
                     </f:facet>
@@ -43,7 +44,7 @@
                                 <p:outputLabel value="Codigo" style="font-weight: bold" />
                             </p:column>
                             <p:column>
-                                <p:inputText value="#{grupoBean.grupo.grpCodigo}" disabled="true"/>
+                                <p:inputText value="#{grupoBean.grupoSelected.grpCodigo}" disabled="#{grupoBean.btnAccion eq 'Actualizar'}"/>
                             </p:column>
                         </p:row>
                         <p:row>
@@ -51,7 +52,7 @@
                                 <p:outputLabel value="Nombres" style="font-weight: bold"/>
                             </p:column>
                             <p:column>
-                                <p:inputText value="#{grupoBean.grupo.grpNombre}"/>
+                                <p:inputText value="#{grupoBean.grupoSelected.grpNombre}"/>
                             </p:column>
                         </p:row>
                         <p:row>
@@ -59,7 +60,7 @@
                                 <p:outputLabel value="Estado" style="font-weight: bold"/>
                             </p:column>
                             <p:column>
-                                <p:selectOneMenu value="#{grupoBean.grupo.grpEstado}" disabled="true">
+                                <p:selectOneMenu value="#{grupoBean.grupoSelected.grpEstado}" disabled="#{grupoBean.btnAccion eq 'Ingresar'}">
                                     <f:selectItem itemLabel="Activo" itemValue="A"/>
                                     <f:selectItem itemLabel="Inactivo" itemValue="I"/>
                                 </p:selectOneMenu>

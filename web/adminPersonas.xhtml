@@ -16,15 +16,22 @@
         <ui:define name="content">
             <h:form id="form">
                 <f:event type="preRenderView" listener="#{personaBean.listarPersonas()}"/>
-                <p:dataTable id="dataPersonas" var="persona" value="#{personaBean.lstPersonas}" selectionMode="single" selection="#{personaBean.persona}" rowKey="#{persona.prsCodigo}" style="font-size: smaller; width: auto;" emptyMessage="No hay datos." scrollable="true" scrollHeight="500px">
+                <f:event type="preRenderView" listener="#{congregacionBean.listarCongregaciones()}"/>
+                <f:event type="preRenderView" listener="#{grupoBean.listarGrupos()}"/>
+                <f:event type="preRenderView" listener="#{privilegioBean.listarPrivilegios()}"/>
+                <p:dataTable id="dataPersonas" var="persona" value="#{personaBean.lstPersonas}"
+                             selectionMode="single" selection="#{personaBean.persona}" rowKey="#{persona.prsCodigo}"
+                             style="font-size: smaller; width: auto;" emptyMessage="No hay datos." scrollable="true" scrollHeight="500px">
                     <f:facet style="background-image:url(resources/images/fondo.jpg)" name="header"  >
                         Personas
                     </f:facet>
-
-                    <p:column headerText="Id" filterBy="#{persona.prsNombres}" filterMatchMode="contains" style="width: 150px">
+                    <p:column headerText="Id" filterBy="#{persona.prsCodigo}" filterMatchMode="contains" style="width: 150px">
+                        <p:outputLabel value="#{persona.prsCodigo}"/>
+                    </p:column>
+                    <p:column headerText="Nombres" filterBy="#{persona.prsNombres}" filterMatchMode="contains" style="width: 150px">
                         <p:outputLabel value="#{persona.prsNombres}"/>
                     </p:column>
-                    <p:column headerText="Nombre" filterBy="#{persona.prsApellidos}" filterMatchMode="contains" style="width: 150px">
+                    <p:column headerText="Apellidos" filterBy="#{persona.prsApellidos}" filterMatchMode="contains" style="width: 150px">
                         <p:outputLabel value="#{persona.prsApellidos}"/>
                     </p:column>
                     <p:column headerText="Teléfono" style="width: 150px">
@@ -47,11 +54,10 @@
                         <p:commandButton value="Modificar" id="modificar" actionListener="#{personaBean.setBtnAccion('Actualizar')}" icon="ui-icon-disk" oncomplete="PF('wdgPersona').show();" update=":dlgPersona" />
                     </f:facet>
                 </p:dataTable>
-
             </h:form>
 
             <!--Dialog de personas-->
-            <p:dialog id="dlgPersona" header="Persona" widgetVar="wdgPersona" modal="true" width="310" style="font-size: smaller">
+            <p:dialog id="dlgPersona" header="Persona" widgetVar="wdgPersona" modal="true" width="400" style="font-size: smaller">
                 <h:form>
                     <p:panelGrid >
                         <p:row>
@@ -59,7 +65,7 @@
                                 <p:outputLabel value="Codigo" style="font-weight: bold" />
                             </p:column>
                             <p:column>
-                                <p:inputText value="#{personaBean.persona.prsCodigo}" disabled="true"/>
+                                <p:inputText value="#{personaBean.personaSelected.prsCodigo}" disabled="#{personaBean.btnAccion eq 'Actualizar'}"/>
                             </p:column>
                         </p:row>
                         <p:row>
@@ -67,7 +73,7 @@
                                 <p:outputLabel value="Nombres" style="font-weight: bold"/>
                             </p:column>
                             <p:column>
-                                <p:inputText value="#{personaBean.persona.prsNombres}"/>
+                                <p:inputText value="#{personaBean.personaSelected.prsNombres}"/>
                             </p:column>
                         </p:row>
                         <p:row>
@@ -75,7 +81,7 @@
                                 <p:outputLabel value="Apellidos" style="font-weight: bold"/>
                             </p:column>
                             <p:column>
-                                <p:inputText value="#{personaBean.persona.prsApellidos}"/>
+                                <p:inputText value="#{personaBean.personaSelected.prsApellidos}"/>
                             </p:column>
                         </p:row>
                         <p:row>
@@ -83,7 +89,7 @@
                                 <p:outputLabel value="Estado" style="font-weight: bold"/>
                             </p:column>
                             <p:column>
-                                <p:selectOneMenu value="#{personaBean.persona.prsEstado}" disabled="true">
+                                <p:selectOneMenu value="#{personaBean.personaSelected.prsEstado}" disabled="#{personaBean.btnAccion eq 'Ingresar'}">
                                     <f:selectItem itemLabel="Activo" itemValue="A"/>
                                     <f:selectItem itemLabel="Inactivo" itemValue="I"/>
                                 </p:selectOneMenu>
@@ -94,7 +100,7 @@
                                 <p:outputLabel value="Teléfono" style="font-weight: bold"/>
                             </p:column>
                             <p:column>
-                                <p:inputText value="#{personaBean.persona.prsTelefono}"/>
+                                <p:inputText value="#{personaBean.personaSelected.prsTelefono}"/>
                             </p:column>
                         </p:row>
                         <p:row>
@@ -102,7 +108,40 @@
                                 <p:outputLabel value="Celular" style="font-weight: bold"/>
                             </p:column>
                             <p:column>
-                                <p:inputText value="#{personaBean.persona.prsCelular}"/>
+                                <p:inputText value="#{personaBean.personaSelected.prsCelular}"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <p:outputLabel value="Congregacion" style="font-weight: bold"/>
+                            </p:column>
+                            <p:column>
+                                <p:selectOneMenu value="#{personaBean.personaSelected.congregacion}" converter="omnifaces.SelectItemsConverter" >
+                                    <f:selectItem noSelectionOption="true" itemLabel="Seleccione..." itemValue="#{null}"/>
+                                    <f:selectItems value="#{congregacionBean.lstCongregaciones}" var="congregacion" itemLabel="#{congregacion.cngNombre}" itemValue="#{congregacion}"/>
+                                </p:selectOneMenu>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <p:outputLabel value="Grupo" style="font-weight: bold"/>
+                            </p:column>
+                            <p:column>
+                                <p:selectOneMenu value="#{personaBean.personaSelected.grupo}" converter="omnifaces.SelectItemsConverter">
+                                    <f:selectItem noSelectionOption="true" itemLabel="Seleccione..." itemValue="#{null}"/>
+                                    <f:selectItems value="#{grupoBean.lstGrupos}" var="grupo" itemLabel="#{grupo.grpNombre}" itemValue="#{grupo}"/>
+                                </p:selectOneMenu>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <p:outputLabel value="Privilegio" style="font-weight: bold"/>
+                            </p:column>
+                            <p:column>
+                                <p:selectOneMenu value="#{personaBean.personaSelected.privilegio}" converter="omnifaces.SelectItemsConverter">
+                                    <f:selectItem noSelectionOption="true" itemLabel="Seleccione..." itemValue="#{null}"/>
+                                    <f:selectItems value="#{privilegioBean.lstPrivilegios}" var="privilegio" itemLabel="#{privilegio.prvNombre}" itemValue="#{privilegio}"/>
+                                </p:selectOneMenu>
                             </p:column>
                         </p:row>
                     </p:panelGrid>

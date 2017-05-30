@@ -16,7 +16,8 @@
         <ui:define name="content">
             <h:form id="form">
                 <f:event type="preRenderView" listener="#{congregacionBean.listarCongregaciones()}"/>
-                <p:dataTable id="dataCongregacion" var="congregacion" value="#{congregacionBean.lstCongregaciones}" selectionMode="single" selection="#{congregacionBean.congregacion}" rowKey="#{congregacion.cngCodigo}"
+                <p:dataTable id="dataCongregacion" var="congregacion" value="#{congregacionBean.lstCongregaciones}"
+                             selectionMode="single" selection="#{congregacionBean.congregacion}" rowKey="#{congregacion.cngCodigo}"
                              style="font-size: smaller; width: auto;" emptyMessage="No hay datos." scrollable="true" scrollHeight="500px">
                     <f:facet style="background-image:url(resources/images/fondo.jpg)" name="header"  >
                         Congregaciones

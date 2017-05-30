@@ -21,7 +21,7 @@ public class privilegio implements Serializable {
     private String prvEstado;
 
     @OneToMany(mappedBy = "privilegio", cascade = CascadeType.ALL)
-    Set<persona> personas;
+    private Set<persona> personas;
 
 //    CONSTRUCTORES
     public privilegio(){
@@ -72,23 +72,20 @@ public class privilegio implements Serializable {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (!(o instanceof privilegio)) return false;
 
         privilegio that = (privilegio) o;
 
-        if (!prvCodigo.equals(that.prvCodigo)) return false;
-        if (!prvNombre.equals(that.prvNombre)) return false;
-        if (!prvEstado.equals(that.prvEstado)) return false;
-        return personas.equals(that.personas);
-
+        if (!getPrvCodigo().equals(that.getPrvCodigo())) return false;
+        if (!getPrvNombre().equals(that.getPrvNombre())) return false;
+        return getPrvEstado().equals(that.getPrvEstado());
     }
 
     @Override
     public int hashCode() {
-        int result = prvCodigo.hashCode();
-        result = 31 * result + prvNombre.hashCode();
-        result = 31 * result + prvEstado.hashCode();
-        result = 31 * result + personas.hashCode();
+        int result = getPrvCodigo().hashCode();
+        result = 31 * result + getPrvNombre().hashCode();
+        result = 31 * result + getPrvEstado().hashCode();
         return result;
     }
 }

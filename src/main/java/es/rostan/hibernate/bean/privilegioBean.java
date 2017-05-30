@@ -16,7 +16,9 @@ import java.util.List;
 @ViewScoped
 public class privilegioBean implements Serializable {
 
-    private privilegio privilegio;
+    private privilegio privilegio = new privilegio();
+
+    private privilegio privilegioSelected = new privilegio();
 
     private List<privilegio> lstPrivilegios = new ArrayList<>();
 
@@ -50,15 +52,60 @@ public class privilegioBean implements Serializable {
 
     public void setBtnAccion(String btnAccion) {
         this.btnAccion = btnAccion;
+        switch (this.btnAccion){
+            case "Ingresar":
+                this.limpiar();
+                break;
+            case "Actualizar":
+                this.privilegioSelected = this.privilegio;
+                break;
+        }
     }
 
-//    METODOS
+    public es.rostan.hibernate.entidades.privilegio getPrivilegioSelected() {
+        return privilegioSelected;
+    }
+
+    public void setPrivilegioSelected(es.rostan.hibernate.entidades.privilegio privilegioSelected) {
+        this.privilegioSelected = privilegioSelected;
+    }
+
+    //    METODOS
     public void listarPrivilegios(){
         privilegioDAO pd = new privilegioDAO();
         this.lstPrivilegios = pd.listarPrivilegios();
     }
 
-    public void operar(){
+    public void ingresarPrivilegio(){
+        privilegioDAO pd = new privilegioDAO();
+        pd.ingresarPrivilegio(this.privilegioSelected);
+    }
 
+    public void actualizarPrivilegio(){
+        privilegioDAO pd = new privilegioDAO();
+        try{
+            pd.actualizarPrivilegio(this.privilegioSelected);
+        }catch(Exception e){
+            System.out.println(e.toString());
+        }
+    }
+
+    public void operar(){
+        switch (btnAccion){
+            case "Ingresar":
+                this.ingresarPrivilegio();
+                this.limpiar();
+                break;
+            case "Actualizar":
+                this.actualizarPrivilegio();
+                this.limpiar();
+                break;
+        }
+    }
+
+    private void limpiar(){
+        this.privilegioSelected.setPrvCodigo("");
+        this.privilegioSelected.setPrvNombre("");
+        this.privilegioSelected.setPrvEstado("A");
     }
 }

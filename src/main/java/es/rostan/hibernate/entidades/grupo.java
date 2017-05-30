@@ -21,7 +21,7 @@ public class grupo implements Serializable {
     private String grpEstado;
 
     @OneToMany(mappedBy = "grupo", cascade = CascadeType.ALL)
-    Set<persona> personas;
+    private Set<persona> personas;
 
 //    CONSTRUCTORES
     public grupo(){
@@ -73,23 +73,20 @@ public class grupo implements Serializable {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (!(o instanceof grupo)) return false;
 
         grupo grupo = (grupo) o;
 
-        if (!grpCodigo.equals(grupo.grpCodigo)) return false;
-        if (!grpNombre.equals(grupo.grpNombre)) return false;
-        if (!grpEstado.equals(grupo.grpEstado)) return false;
-        return personas.equals(grupo.personas);
-
+        if (!getGrpCodigo().equals(grupo.getGrpCodigo())) return false;
+        if (!getGrpNombre().equals(grupo.getGrpNombre())) return false;
+        return getGrpEstado().equals(grupo.getGrpEstado());
     }
 
     @Override
     public int hashCode() {
-        int result = grpCodigo.hashCode();
-        result = 31 * result + grpNombre.hashCode();
-        result = 31 * result + grpEstado.hashCode();
-        result = 31 * result + personas.hashCode();
+        int result = getGrpCodigo().hashCode();
+        result = 31 * result + getGrpNombre().hashCode();
+        result = 31 * result + getGrpEstado().hashCode();
         return result;
     }
 }

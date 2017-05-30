@@ -8,6 +8,8 @@
         <class>es.rostan.hibernate.entidades.grupo</class>
         <class>es.rostan.hibernate.entidades.grupo</class>
         <class>es.rostan.hibernate.entidades.privilegio</class>
+        <class>es.rostan.hibernate.entidades.reunion</class>
+        <class>es.rostan.hibernate.entidades.asistenciaReuniones</class>
 
         <properties>
             <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />

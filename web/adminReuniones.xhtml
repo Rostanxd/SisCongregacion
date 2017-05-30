@@ -15,27 +15,29 @@
     <ui:composition template="./WEB-INF/templates/plantilla.xhtml">
         <ui:define name="content">
             <h:form id="form">
-                <f:event type="preRenderView" listener="#{privilegioBean.listarPrivilegios()}"/>
-                <p:dataTable id="dataPrivilegios" var="privilegio" value="#{privilegioBean.lstPrivilegios}" selectionMode="single" selection="#{privilegioBean.privilegio}" rowKey="#{privilegio.prvCodigo}" style="font-size: smaller; width: auto;" emptyMessage="No hay datos." scrollable="true" scrollHeight="500px">
+                <f:event type="preRenderView" listener="#{reunionBean.listarReuniones()}"/>
+                <p:dataTable id="dataReunion" var="reunion" value="#{reunionBean.lstReuniones}"
+                             selectionMode="single" selection="#{reunionBean.reunion}" rowKey="#{reunion.renCodigo}"
+                             style="font-size: smaller; width: auto;" emptyMessage="No hay datos." scrollable="true" scrollHeight="500px">
                     <f:facet style="background-image:url(resources/images/fondo.jpg)" name="header"  >
-                        Privilegios
+                        Reuniones
                     </f:facet>
-                    <p:column headerText="Id" filterBy="#{privilegio.prvCodigo}" filterMatchMode="contains" style="width: 50px">
-                        <p:outputLabel value="#{privilegio.prvCodigo}"/>
+                    <p:column headerText="Id" filterBy="#{reunion.renCodigo}" filterMatchMode="contains" style="width: 50px">
+                        <p:outputLabel value="#{reunion.renCodigo}"/>
                     </p:column>
-                    <p:column headerText="Nombre" filterBy="#{privilegio.prvNombre}" filterMatchMode="contains" style="width: 150px">
-                        <p:outputLabel value="#{privilegio.prvNombre}"/>
+                    <p:column headerText="Nombre" filterBy="#{reunion.renNombre}" filterMatchMode="contains" style="width: 150px">
+                        <p:outputLabel value="#{reunion.renNombre}"/>
                     </p:column>
                     <f:facet name="footer">
-                        <p:commandButton value="Ingresar" id="ingresar" actionListener="#{privilegioBean.setBtnAccion('Ingresar')}" icon="ui-icon-disk" oncomplete="PF('wdgPrivilegio').show();" update=":dlgPrivilegio"/>
-                        <p:commandButton value="Modificar" id="modificar" actionListener="#{privilegioBean.setBtnAccion('Actualizar')}" icon="ui-icon-disk" oncomplete="PF('wdgPrivilegio').show();" update=":dlgPrivilegio" />
+                        <p:commandButton value="Ingresar" id="ingresar" actionListener="#{reunionBean.setBtnAccion('Ingresar')}" icon="ui-icon-disk" oncomplete="PF('wdgReunion').show();" update=":dlgReunion"/>
+                        <p:commandButton value="Modificar" id="modificar" actionListener="#{reunionBean.setBtnAccion('Actualizar')}" icon="ui-icon-disk" oncomplete="PF('wdgReunion').show();" update=":dlgReunion" />
                     </f:facet>
                 </p:dataTable>
 
             </h:form>
 
-            <!--Dialog de personas-->
-            <p:dialog id="dlgPrivilegio" header="Privilegio" widgetVar="wdgPrivilegio" modal="true" width="310" style="font-size: smaller">
+            <!--Dialog de Reuniones-->
+            <p:dialog id="dlgReunion" header="Reunion" widgetVar="wdgReunion" modal="true" width="310" style="font-size: smaller">
                 <h:form>
                     <p:panelGrid >
                         <p:row>
@@ -43,7 +45,7 @@
                                 <p:outputLabel value="Codigo" style="font-weight: bold" />
                             </p:column>
                             <p:column>
-                                <p:inputText value="#{privilegioBean.privilegioSelected.prvCodigo}" disabled="#{privilegioBean.btnAccion eq 'Actualizar'}"/>
+                                <p:inputText value="#{reunionBean.reunionSelected.renCodigo}" disabled="#{reunionBean.btnAccion eq 'Actualizar'}"/>
                             </p:column>
                         </p:row>
                         <p:row>
@@ -51,7 +53,7 @@
                                 <p:outputLabel value="Nombres" style="font-weight: bold"/>
                             </p:column>
                             <p:column>
-                                <p:inputText value="#{privilegioBean.privilegioSelected.prvNombre}"/>
+                                <p:inputText value="#{reunionBean.reunionSelected.renNombre}"/>
                             </p:column>
                         </p:row>
                         <p:row>
@@ -59,7 +61,7 @@
                                 <p:outputLabel value="Estado" style="font-weight: bold"/>
                             </p:column>
                             <p:column>
-                                <p:selectOneMenu value="#{privilegioBean.privilegioSelected.prvEstado}" disabled="#{privilegioBean.btnAccion eq 'Ingresar'}">
+                                <p:selectOneMenu value="#{reunionBean.reunionSelected.renEstado}" disabled="#{reunionBean.btnAccion eq 'Ingresar'}">
                                     <f:selectItem itemLabel="Activo" itemValue="A"/>
                                     <f:selectItem itemLabel="Inactivo" itemValue="I"/>
                                 </p:selectOneMenu>
@@ -67,8 +69,8 @@
                         </p:row>
                     </p:panelGrid>
                     <!--Botones-->
-                    <p:commandButton value="#{privilegioBean.btnAccion}" action="#{privilegioBean.operar()}" oncomplete="PF('wdgPrivilegio').hide()" update=":form"/>
-                    <p:commandButton value="Cancel" oncomplete="PF('wdgPrivilegio').hide()" immediate="true"/>
+                    <p:commandButton value="#{reunionBean.btnAccion}" action="#{reunionBean.operar()}" oncomplete="PF('wdgReunion').hide()" update=":form"/>
+                    <p:commandButton value="Cancel" oncomplete="PF('wdgReunion').hide()" immediate="true"/>
                 </h:form>
             </p:dialog>
         </ui:define>

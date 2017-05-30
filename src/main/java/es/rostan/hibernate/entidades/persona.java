@@ -39,15 +39,15 @@ public class persona implements Serializable {
     private String prsEstado;
 
 //    RELACIONES
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "cngCodigo")
     private congregacion congregacion;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "grpCodigo")
     private grupo grupo;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "prvCodigo")
     private privilegio privilegio;
 
@@ -141,6 +141,30 @@ public class persona implements Serializable {
         this.prsEstado = prsEstado;
     }
 
+    public es.rostan.hibernate.entidades.congregacion getCongregacion() {
+        return congregacion;
+    }
+
+    public void setCongregacion(es.rostan.hibernate.entidades.congregacion congregacion) {
+        this.congregacion = congregacion;
+    }
+
+    public es.rostan.hibernate.entidades.grupo getGrupo() {
+        return grupo;
+    }
+
+    public void setGrupo(es.rostan.hibernate.entidades.grupo grupo) {
+        this.grupo = grupo;
+    }
+
+    public es.rostan.hibernate.entidades.privilegio getPrivilegio() {
+        return privilegio;
+    }
+
+    public void setPrivilegio(es.rostan.hibernate.entidades.privilegio privilegio) {
+        this.privilegio = privilegio;
+    }
+
     @Override
     public String toString() {
         return "persona{" +
@@ -153,48 +177,47 @@ public class persona implements Serializable {
                 ", prsFecNacimiento=" + prsFecNacimiento +
                 ", prsFecBautismo=" + prsFecBautismo +
                 ", prsEstado='" + prsEstado + '\'' +
-                ", congregacion=" + congregacion +
-                ", grupo=" + grupo +
-                ", privilegio=" + privilegio +
+                ", congregacion=" + congregacion.getCngNombre() +
+                ", grupo=" + grupo.getGrpNombre() +
+                ", privilegio=" + privilegio.getPrvNombre() +
                 '}';
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (!(o instanceof persona)) return false;
 
         persona persona = (persona) o;
 
-        if (!prsCodigo.equals(persona.prsCodigo)) return false;
-        if (!prsNombres.equals(persona.prsNombres)) return false;
-        if (!prsApellidos.equals(persona.prsApellidos)) return false;
-        if (!prsGenero.equals(persona.prsGenero)) return false;
-        if (!prsTelefono.equals(persona.prsTelefono)) return false;
-        if (!prsCelular.equals(persona.prsCelular)) return false;
-        if (!prsFecNacimiento.equals(persona.prsFecNacimiento)) return false;
-        if (!prsFecBautismo.equals(persona.prsFecBautismo)) return false;
-        if (!prsEstado.equals(persona.prsEstado)) return false;
-        if (!congregacion.equals(persona.congregacion)) return false;
-        if (!grupo.equals(persona.grupo)) return false;
-        return privilegio.equals(persona.privilegio);
-
+        if (!getPrsCodigo().equals(persona.getPrsCodigo())) return false;
+        if (!getPrsNombres().equals(persona.getPrsNombres())) return false;
+        if (!getPrsApellidos().equals(persona.getPrsApellidos())) return false;
+        if (!getPrsGenero().equals(persona.getPrsGenero())) return false;
+        if (!getPrsTelefono().equals(persona.getPrsTelefono())) return false;
+        if (!getPrsCelular().equals(persona.getPrsCelular())) return false;
+        if (!getPrsFecNacimiento().equals(persona.getPrsFecNacimiento())) return false;
+        if (!getPrsFecBautismo().equals(persona.getPrsFecBautismo())) return false;
+        if (!getPrsEstado().equals(persona.getPrsEstado())) return false;
+        if (!getCongregacion().equals(persona.getCongregacion())) return false;
+        if (!getGrupo().equals(persona.getGrupo())) return false;
+        return getPrivilegio().equals(persona.getPrivilegio());
     }
 
     @Override
     public int hashCode() {
-        int result = prsCodigo.hashCode();
-        result = 31 * result + prsNombres.hashCode();
-        result = 31 * result + prsApellidos.hashCode();
-        result = 31 * result + prsGenero.hashCode();
-        result = 31 * result + prsTelefono.hashCode();
-        result = 31 * result + prsCelular.hashCode();
-        result = 31 * result + prsFecNacimiento.hashCode();
-        result = 31 * result + prsFecBautismo.hashCode();
-        result = 31 * result + prsEstado.hashCode();
-        result = 31 * result + congregacion.hashCode();
-        result = 31 * result + grupo.hashCode();
-        result = 31 * result + privilegio.hashCode();
+        int result = getPrsCodigo().hashCode();
+        result = 31 * result + getPrsNombres().hashCode();
+        result = 31 * result + getPrsApellidos().hashCode();
+        result = 31 * result + getPrsGenero().hashCode();
+        result = 31 * result + getPrsTelefono().hashCode();
+        result = 31 * result + getPrsCelular().hashCode();
+        result = 31 * result + getPrsFecNacimiento().hashCode();
+        result = 31 * result + getPrsFecBautismo().hashCode();
+        result = 31 * result + getPrsEstado().hashCode();
+        result = 31 * result + getCongregacion().hashCode();
+        result = 31 * result + getGrupo().hashCode();
+        result = 31 * result + getPrivilegio().hashCode();
         return result;
     }
 }
