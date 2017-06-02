@@ -7,8 +7,7 @@ import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 /**
  * Created by Rostan on 27/05/2017.
@@ -23,6 +22,12 @@ public class asistenciaReunionesBean implements Serializable{
 
     private List<asistenciaReuniones> lstAsistencias = new ArrayList<>();
 
+    private Map<Integer, String> lstMeses = new HashMap<Integer, String>();
+
+    private Map<String, String> lstSemana = new HashMap<String, String>();
+
+    private String mesSelected;
+
     private String btnAccion;
 
 //    CONSTRUCTOR
@@ -32,7 +37,28 @@ public class asistenciaReunionesBean implements Serializable{
 
     @PostConstruct
     public void init(){
+//        Enlistar Meses
+        lstMeses = new HashMap<Integer, String>();
+        lstMeses.put(1, "Enero");
+        lstMeses.put(2, "Febrero");
+        lstMeses.put(3, "Marzo");
+        lstMeses.put(4, "Abril");
+        lstMeses.put(5, "Mayo");
+        lstMeses.put(6, "Junio");
+        lstMeses.put(7, "Julio");
+        lstMeses.put(8, "Agosto");
+        lstMeses.put(9, "Septiembre");
+        lstMeses.put(10, "Octubre");
+        lstMeses.put(11, "Noviembre");
+        lstMeses.put(12, "Dciembre");
 
+//        Enlistar Semanas
+        lstSemana = new HashMap<String, String>();
+        lstSemana.put("Primera", "Primera");
+        lstSemana.put("Segunda", "Segunda");
+        lstSemana.put("Tercera", "Tercera");
+        lstSemana.put("Cuarta", "Cuarta");
+        lstSemana.put("Quinta", "Quinta");
     }
 
 //    GETTER Y SETTERS
@@ -76,13 +102,39 @@ public class asistenciaReunionesBean implements Serializable{
         }
     }
 
-//    METODOS
+    public Map<Integer, String> getLstMeses() {
+        return lstMeses;
+    }
+
+    public void setLstMeses(Map<Integer, String> lstMeses) {
+        this.lstMeses = lstMeses;
+    }
+
+    public Map<String, String> getLstSemana() {
+        return lstSemana;
+    }
+
+    public void setLstSemana(Map<String, String> lstSemana) {
+        this.lstSemana = lstSemana;
+    }
+
+    public String getMesSelected() {
+        return mesSelected;
+    }
+
+    public void setMesSelected(String mesSelected) {
+        this.mesSelected = mesSelected;
+    }
+
+    //    METODOS
     public void listarAsistencias(){
         asistenciaReunionesDAO ad = new asistenciaReunionesDAO();
         this.lstAsistencias = ad.lstAsistencias();
     }
 
     public void ingrearAsistencias(){
+        System.out.println("mes seleccionado: " + this.mesSelected);
+        this.asistenciaSelected.setAsrMes(this.buscaMes(this.mesSelected));
         asistenciaReunionesDAO ad = new asistenciaReunionesDAO();
         ad.ingresarAsistencia(this.asistenciaSelected);
     }
@@ -110,13 +162,27 @@ public class asistenciaReunionesBean implements Serializable{
     }
 
     public void limpiar(){
-        this.asistenciaSelected.setAsrAnio(0);
-        this.asistenciaSelected.setAsrAnioTeo(0);
+        Calendar now = Calendar.getInstance();
+        int year = now.get(Calendar.YEAR);
+
+        this.asistenciaSelected.setAsrAnio(year);
+        this.asistenciaSelected.setAsrAnioTeo(year);
         this.asistenciaSelected.setCongregacion(null);
         this.asistenciaSelected.setAsrMes(0);
         this.asistenciaSelected.setAsrNumReunion(0);
         this.asistenciaSelected.setReunion(null);
         this.asistenciaSelected.setAsrSemana("");
         this.asistenciaSelected.setAsrAsistencias(0);
+    }
+
+    public Integer buscaMes(String mes){
+        Integer key = 0;
+        for (Map.Entry<Integer, String> e : this.lstMeses.entrySet()){
+            if (e.getValue().equals(mes)){
+                key = e.getKey();
+                break;
+            }
+        }
+        return key;
     }
 }

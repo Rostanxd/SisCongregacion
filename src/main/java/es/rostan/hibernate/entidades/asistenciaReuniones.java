@@ -144,5 +144,4 @@ public class asistenciaReuniones implements Serializable {
                 '}';
     }
 
-
 }

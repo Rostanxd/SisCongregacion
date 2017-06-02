@@ -20,7 +20,6 @@
                 <f:event type="preRenderView" listener="#{reunionBean.listarReuniones()}"/>
 
                 <p:dataTable id="dataasistencia" var="asistencia" value="#{asistenciaBean.lstAsistencias}"
-                             selectionMode="single" selection="#{asistenciaBean.asistencia}" rowKey="#{asistencia.compositeKey}"
                              style="font-size: smaller; width: auto;" emptyMessage="No hay datos." scrollable="true" scrollHeight="500px">
                     <f:facet style="background-image:url(resources/images/fondo.jpg)" name="header"  >
                         Asistencia Reuniones
@@ -40,6 +39,9 @@
                     <p:column headerText="Num. Reuniones" filterBy="#{asistencia.asrNumReunion}" filterMatchMode="contains" style="width: 150px">
                         <p:outputLabel value="#{asistencia.asrNumReunion}"/>
                     </p:column>
+                    <p:column headerText="Reunión" filterBy="#{asistencia.reunion.renNombre}" filterMatchMode="contains" style="width: 150px">
+                        <p:outputLabel value="#{asistencia.reunion.renNombre}"/>
+                    </p:column>
                     <p:column headerText="Semana" filterBy="#{asistencia.asrSemana}" filterMatchMode="contains" style="width: 150px">
                         <p:outputLabel value="#{asistencia.asrSemana}"/>
                     </p:column>
@@ -54,39 +56,60 @@
             </h:form>
 
             <!--Dialog de asistenciaes-->
-            <p:dialog id="dlgAsistencia" header="asistencia" widgetVar="wdgAsistencia" modal="true" width="310" style="font-size: smaller">
+            <p:dialog id="dlgAsistencia" header="Asistencia a Reuniones" widgetVar="wdgAsistencia" modal="true" width="710px" style="font-size: smaller">
                 <h:form>
                     <p:panelGrid >
                         <p:row>
                             <p:column>
-                                <p:outputLabel value="Año" style="font-weight: bold" />
+                                <p:outputLabel value="Año" style="font-weight: bold; color: darkred"/>
                             </p:column>
                             <p:column>
-                                <p:inputText value="#{asistenciaBean.asistenciaSelected.asrAnio}" disabled="#{asistenciaBean.btnAccion eq 'Actualizar'}"/>
-                            </p:column>
-                        </p:row>
-                        <p:row>
-                            <p:column>
-                                <p:outputLabel value="Año Teocrático" style="font-weight: bold"/>
+                                <p:inputText value="#{asistenciaBean.asistenciaSelected.asrAnio}" disabled="#{asistenciaBean.btnAccion eq 'Actualizar'}" style="width: 100px"/>
                             </p:column>
                             <p:column>
-                                <p:inputText value="#{asistenciaBean.asistenciaSelected.asrAnioTeo}"/>
+                                <p:outputLabel value="Año Teocrático" style="font-weight: bold; color: darkred"/>
+                            </p:column>
+                            <p:column>
+                                <p:inputText value="#{asistenciaBean.asistenciaSelected.asrAnioTeo}" disabled="#{asistenciaBean.btnAccion eq 'Actualizar'}" style="width: 100px"/>
                             </p:column>
                         </p:row>
                         <p:row>
                             <p:column>
-                                <p:outputLabel value="Mes" style="font-weight: bold"/>
+                                <p:outputLabel value="Mes" style="font-weight: bold; color: darkred"/>
                             </p:column>
                             <p:column>
-                                <p:inputText value="#{asistenciaBean.asistenciaSelected.asrMes}"/>
+                                <p:selectOneMenu value="#{asistenciaBean.mesSelected}" converter="omnifaces.SelectItemsConverter" style="width: 150px" disabled="#{asistenciaBean.btnAccion eq 'Actualizar'}">
+                                    <f:selectItem noSelectionOption="true" itemLabel="Seleccione..." itemValue="#{null}"/>
+                                    <f:selectItems value="#{asistenciaBean.lstMeses}" var="mes" itemLabel="#{mes}"/>
+                                </p:selectOneMenu>
+                            </p:column>
+                            <p:column>
+                                <p:outputLabel value="Congregacion" style="font-weight: bold; color: darkred"/>
+                            </p:column>
+                            <p:column>
+                                <p:selectOneMenu value="#{asistenciaBean.asistenciaSelected.congregacion}" converter="omnifaces.SelectItemsConverter" disabled="#{asistenciaBean.btnAccion eq 'Actualizar'}" style="width: 150px">
+                                    <f:selectItem noSelectionOption="true" itemLabel="Seleccione..." itemValue="#{null}"/>
+                                    <f:selectItems value="#{congregacionBean.lstCongregaciones}" var="congregacion" itemLabel="#{congregacion.cngNombre}" itemValue="#{congregacion}"/>
+                                </p:selectOneMenu>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <p:outputLabel value="Reunión" style="font-weight: bold"/>
+                            </p:column>
+                            <p:column colspan="3">
+                                <p:selectOneMenu value="#{asistenciaBean.asistenciaSelected.reunion}" converter="omnifaces.SelectItemsConverter" >
+                                    <f:selectItem noSelectionOption="true" itemLabel="Seleccione..." itemValue="#{null}"/>
+                                    <f:selectItems value="#{reunionBean.lstReuniones}" var="reunion" itemLabel="#{reunion.renNombre}" itemValue="#{reunion}"/>
+                                </p:selectOneMenu>
                             </p:column>
                         </p:row>
                         <p:row>
                             <p:column>
                                 <p:outputLabel value="No. Reuniones" style="font-weight: bold"/>
                             </p:column>
-                            <p:column>
-                                <p:inputText value="#{asistenciaBean.asistenciaSelected.asrNumReunion}"/>
+                            <p:column colspan="3">
+                                <p:inputText value="#{asistenciaBean.asistenciaSelected.asrNumReunion}" style="width: 100px"/>
                             </p:column>
                         </p:row>
                         <p:row>
@@ -94,7 +117,10 @@
                                 <p:outputLabel value="Semana" style="font-weight: bold"/>
                             </p:column>
                             <p:column>
-                                <p:inputText value="#{asistenciaBean.asistenciaSelected.asrSemana}"/>
+                                <p:selectOneMenu value="#{asistenciaBean.asistenciaSelected.asrSemana}" converter="omnifaces.SelectItemsConverter" style="width: 150px">
+                                    <f:selectItem noSelectionOption="true" itemLabel="Seleccione..." itemValue="#{null}"/>
+                                    <f:selectItems value="#{asistenciaBean.lstSemana}" var="semana" itemLabel="#{semana}" itemValue="#{semana}"/>
+                                </p:selectOneMenu>
                             </p:column>
                         </p:row>
                         <p:row>
@@ -102,7 +128,7 @@
                                 <p:outputLabel value="Asistencias" style="font-weight: bold"/>
                             </p:column>
                             <p:column>
-                                <p:inputText value="#{asistenciaBean.asistenciaSelected.asrAsistencias}"/>
+                                <p:inputText value="#{asistenciaBean.asistenciaSelected.asrAsistencias}" style="width: 100px"/>
                             </p:column>
                         </p:row>
                     </p:panelGrid>

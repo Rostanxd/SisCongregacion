@@ -26,6 +26,8 @@ public class asistenciaReunionesDAO implements Serializable{
     }
 
     public void ingresarAsistencia(asistenciaReuniones asistenciaReuniones){
+        asistenciaReuniones.setCngCodigo(asistenciaReuniones.getCongregacion().getCngCodigo());
+
         EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();
         em.persist(asistenciaReuniones);
