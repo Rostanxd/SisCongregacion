@@ -10,10 +10,7 @@ import es.rostan.hibernate.entidades.persona;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 /**
  * Created by Rostan on 21/05/2017.
@@ -131,6 +128,8 @@ public class personaBean {
     }
 
     public void limpiar(){
+        Calendar now = Calendar.getInstance();
+
         this.personaSelected.setPrsCodigo("");
         this.personaSelected.setPrsNombres("");
         this.personaSelected.setPrsApellidos("");
@@ -146,5 +145,7 @@ public class personaBean {
         this.personaSelected.setCongregacion(null);
         this.personaSelected.setGrupo(null);
         this.personaSelected.setPrivilegio(null);
+        this.personaSelected.setPrsNpr(0);
+        this.personaSelected.setPrsFrp(now.getTime());
     }
 }

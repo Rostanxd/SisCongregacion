@@ -27,6 +27,9 @@ public class congregacion implements Serializable {
     @OneToMany(mappedBy = "congregacion", cascade = CascadeType.ALL)
     private Set<asistenciaReuniones> asistencias;
 
+    @OneToMany(mappedBy = "congregacion", cascade = CascadeType.ALL)
+    private Set<horasServicio> horasServicios;
+
 //    CONSTRUCTORES
     public congregacion(){
 

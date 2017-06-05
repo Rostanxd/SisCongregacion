@@ -10,6 +10,7 @@ import es.rostan.hibernate.entidades.reunion;
  */
 @Entity
 @Table(name = "asistenciaReuniones")
+@IdClass(asistenciaReunionesPK.class)
 public class asistenciaReuniones implements Serializable {
 
     @Id

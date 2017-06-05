@@ -133,7 +133,6 @@ public class asistenciaReunionesBean implements Serializable{
     }
 
     public void ingrearAsistencias(){
-        System.out.println("mes seleccionado: " + this.mesSelected);
         this.asistenciaSelected.setAsrMes(this.buscaMes(this.mesSelected));
         asistenciaReunionesDAO ad = new asistenciaReunionesDAO();
         ad.ingresarAsistencia(this.asistenciaSelected);

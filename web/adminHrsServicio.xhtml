@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+<f:view>
+    <h:outputLabel value="Hello, world"/>
+</f:view>
+<h:head>
+</h:head>
+<h:body>
+    <ui:composition template="./WEB-INF/templates/plantilla.xhtml">
+        <ui:define name="content">
+            <h:form id="form">
+                <f:event type="preRenderView" listener="#{hrsServicioBean.listarHrsServicio()}"/>
+                <f:event type="preRenderView" listener="#{congregacionBean.listarCongregaciones()}"/>
+                <f:event type="preRenderView" listener="#{personaBean.listarPersonas}"/>
+
+                <p:dataTable id="dataHrsServicio" var="hrsServicio" value="#{hrsServicioBean.lstHrsServicio}"
+                             style="font-size: smaller; width: auto;" emptyMessage="No hay datos." scrollable="true" scrollHeight="500px">
+                    <f:facet style="background-image:url(resources/images/fondo.jpg)" name="header"  >
+                        Horas de Servicio
+                    </f:facet>
+                    <p:column headerText="Año" filterBy="#{hrsServicio.achAnio}" filterMatchMode="contains" style="width: 100px">
+                        <p:outputLabel value="#{hrsServicio.achAnio}"/>
+                    </p:column>
+                    <p:column headerText="Año Teocrático" filterBy="#{hrsServicio.achAnioServ}" filterMatchMode="contains" style="width: 100px">
+                        <p:outputLabel value="#{hrsServicio.achAnioServ}"/>
+                    </p:column>
+                    <p:column headerText="Mes" filterBy="#{hrsServicio.achMes}" filterMatchMode="contains" style="width: 100px">
+                        <p:outputLabel value="#{hrsServicio.achMes}"/>
+                    </p:column>
+                    <p:column headerText="Congregación" filterBy="#{hrsServicio.congregacion.cngNombre}" filterMatchMode="contains" style="width: 150px">
+                        <p:outputLabel value="#{hrsServicio.congregacion.cngNombre}"/>
+                    </p:column>
+                    <p:column headerText="Nombres" filterBy="#{hrsServicio.persona.prsNombres}" filterMatchMode="contains" style="width: 300px">
+                        <p:outputLabel value="#{hrsServicio.persona.prsNombres}"/>
+                    </p:column>
+                    <p:column headerText="Apellidos" filterBy="#{hrsServicio.persona.prsApellidos}" filterMatchMode="contains" style="width: 300px">
+                        <p:outputLabel value="#{hrsServicio.persona.prsApellidos}"/>
+                    </p:column>
+                    <p:column headerText="Total Horas" style="width: 150px">
+                        <p:outputLabel value="#{hrsServicio.achHrsEstudio + hrsServicio.achHrsMinisterio}"/>
+                    </p:column>
+                    <f:facet name="footer">
+                        <p:commandButton value="Ingresar" id="ingresar" actionListener="#{hrsServicioBean.setBtnAccion('Ingresar')}" icon="ui-icon-disk" oncomplete="PF('wdghrsServicio').show();" update=":dlghrsServicio"/>
+                        <p:commandButton value="Modificar" id="modificar" actionListener="#{hrsServicioBean.setBtnAccion('Actualizar')}" icon="ui-icon-disk" oncomplete="PF('wdghrsServicio').show();" update=":dlghrsServicio" />
+                    </f:facet>
+                </p:dataTable>
+            </h:form>
+
+            <!--Dialog de hrsServicioes-->
+            <p:dialog id="dlghrsServicio" header="Horas de Servicio" widgetVar="wdghrsServicio" modal="true" width="625px" style="font-size: smaller">
+                <h:form>
+                    <p:panelGrid>
+                        <p:row>
+                            <p:column>
+                                <p:outputLabel value="Año" style="font-weight: bold; color: darkred"/>
+                            </p:column>
+                            <p:column>
+                                <p:inputText value="#{hrsServicioBean.hrsServicioSelected.achAnio}" disabled="#{hrsServicioBean.btnAccion eq 'Actualizar'}" style="width: 100px"/>
+                            </p:column>
+                            <p:column>
+                                <p:outputLabel value="Año Servicio" style="font-weight: bold; color: darkred"/>
+                            </p:column>
+                            <p:column>
+                                <p:inputText value="#{hrsServicioBean.hrsServicioSelected.achAnioServ}" disabled="#{hrsServicioBean.btnAccion eq 'Actualizar'}" style="width: 100px"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <p:outputLabel value="Mes" style="font-weight: bold; color: darkred"/>
+                            </p:column>
+                            <p:column>
+                                <p:selectOneMenu value="#{hrsServicioBean.mesSelected}" converter="omnifaces.SelectItemsConverter" style="width: 150px" disabled="#{hrsServicioBean.btnAccion eq 'Actualizar'}">
+                                    <f:selectItem noSelectionOption="true" itemLabel="Seleccione..." itemValue="#{null}"/>
+                                    <f:selectItems value="#{hrsServicioBean.lstMeses}" var="mes" itemLabel="#{mes}"/>
+                                </p:selectOneMenu>
+                            </p:column>
+                            <p:column>
+                                <p:outputLabel value="Congregacion" style="font-weight: bold; color: darkred"/>
+                            </p:column>
+                            <p:column>
+                                <p:selectOneMenu value="#{hrsServicioBean.hrsServicioSelected.congregacion}" converter="omnifaces.SelectItemsConverter" disabled="#{hrsServicioBean.btnAccion eq 'Actualizar'}" style="width: 150px">
+                                    <f:selectItem noSelectionOption="true" itemLabel="Seleccione..." itemValue="#{null}"/>
+                                    <f:selectItems value="#{congregacionBean.lstCongregaciones}" var="congregacion" itemLabel="#{congregacion.cngNombre}" itemValue="#{congregacion}"/>
+                                </p:selectOneMenu>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column colspan="4" style="font-weight: bold; color: darkslategrey; font-size: medium">
+                                Información
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <p:outputLabel value="Persona:" style="font-weight: bold"/>
+                            </p:column>
+                            <p:column colspan="3">
+                                <p:selectOneMenu value="#{hrsServicioBean.hrsServicioSelected.persona}" converter="omnifaces.SelectItemsConverter" style="width: 450px">
+                                    <f:selectItem noSelectionOption="true" itemLabel="Seleccione..." itemValue="#{null}"/>
+                                    <f:selectItems value="#{personaBean.lstPersonas}" var="persona" itemLabel="#{persona.prsNombres}" itemValue="#{persona}"/>
+                                </p:selectOneMenu>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <p:outputLabel value="# Publicaciones" style="font-weight: bold"/>
+                            </p:column>
+                            <p:column>
+                                <p:inputText value="#{hrsServicioBean.hrsServicioSelected.achNumPublicaciones}" style="width: 100px"/>
+                            </p:column>
+                            <p:column>
+                                <p:outputLabel value="# Videos" style="font-weight: bold"/>
+                            </p:column>
+                            <p:column>
+                                <p:inputText value="#{hrsServicioBean.hrsServicioSelected.achNumVideos}" style="width: 100px"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <p:outputLabel value="#. Revistas" style="font-weight: bold"/>
+                            </p:column>
+                            <p:column>
+                                <p:inputText value="#{hrsServicioBean.hrsServicioSelected.achNumRevistas}" style="width: 100px"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <p:outputLabel value="Hrs. Estudio" style="font-weight: bold"/>
+                            </p:column>
+                            <p:column>
+                                <p:inputText value="#{hrsServicioBean.hrsServicioSelected.achHrsEstudio}" style="width: 100px"/>
+                            </p:column>
+                            <p:column>
+                                <p:outputLabel value="Hrs. Ministerio" style="font-weight: bold"/>
+                            </p:column>
+                            <p:column>
+                                <p:inputText value="#{hrsServicioBean.hrsServicioSelected.achHrsMinisterio}" style="width: 100px"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <p:outputLabel value="Observaciones" style="font-weight: bold"/>
+                            </p:column>
+                            <p:column colspan="3">
+                                <p:inputTextarea value="#{hrsServicioBean.hrsServicioSelected.achObservaciones}" cols="60" rows="6"/>
+                            </p:column>
+                        </p:row>
+                    </p:panelGrid>
+                    <!--Botones-->
+                    <p:commandButton value="#{hrsServicioBean.btnAccion}" action="#{hrsServicioBean.operar()}" oncomplete="PF('wdghrsServicio').hide()" update=":form"/>
+                    <p:commandButton value="Cancel" oncomplete="PF('wdghrsServicio').hide()" immediate="true"/>
+                </h:form>
+            </p:dialog>
+        </ui:define>
+    </ui:composition>
+</h:body>
+</html>

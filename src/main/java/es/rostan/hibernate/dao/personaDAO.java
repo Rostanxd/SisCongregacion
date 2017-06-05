@@ -51,6 +51,8 @@ public class personaDAO {
             persona.setCongregacion(personaUpd.getCongregacion());
             persona.setPrivilegio(personaUpd.getPrivilegio());
             persona.setGrupo(personaUpd.getGrupo());
+            persona.setPrsNpr(personaUpd.getPrsNpr());
+            persona.setPrsFrp(personaUpd.getPrsFrp());
             em.getTransaction().commit();
         }catch (Exception e){
             em.getTransaction().rollback();

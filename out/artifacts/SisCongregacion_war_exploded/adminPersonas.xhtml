@@ -57,34 +57,16 @@
             </h:form>
 
             <!--Dialog de personas-->
-            <p:dialog id="dlgPersona" header="Persona" widgetVar="wdgPersona" modal="true" width="400" style="font-size: smaller">
+            <p:dialog id="dlgPersona" header="Persona" widgetVar="wdgPersona" modal="true" width="770" style="font-size: smaller">
                 <h:form>
                     <p:panelGrid >
                         <p:row>
                             <p:column>
-                                <p:outputLabel value="Codigo" style="font-weight: bold" />
+                                <p:outputLabel value="Codigo" style="font-weight: bold; color: darkred" />
                             </p:column>
                             <p:column>
                                 <p:inputText value="#{personaBean.personaSelected.prsCodigo}" disabled="#{personaBean.btnAccion eq 'Actualizar'}"/>
                             </p:column>
-                        </p:row>
-                        <p:row>
-                            <p:column>
-                                <p:outputLabel value="Nombres" style="font-weight: bold"/>
-                            </p:column>
-                            <p:column>
-                                <p:inputText value="#{personaBean.personaSelected.prsNombres}"/>
-                            </p:column>
-                        </p:row>
-                        <p:row>
-                            <p:column>
-                                <p:outputLabel value="Apellidos" style="font-weight: bold"/>
-                            </p:column>
-                            <p:column>
-                                <p:inputText value="#{personaBean.personaSelected.prsApellidos}"/>
-                            </p:column>
-                        </p:row>
-                        <p:row>
                             <p:column>
                                 <p:outputLabel value="Estado" style="font-weight: bold"/>
                             </p:column>
@@ -97,29 +79,30 @@
                         </p:row>
                         <p:row>
                             <p:column>
+                                <p:outputLabel value="Nombres" style="font-weight: bold"/>
+                            </p:column>
+                            <p:column>
+                                <p:inputText value="#{personaBean.personaSelected.prsNombres}"/>
+                            </p:column>
+                            <p:column>
+                                <p:outputLabel value="Apellidos" style="font-weight: bold"/>
+                            </p:column>
+                            <p:column>
+                                <p:inputText value="#{personaBean.personaSelected.prsApellidos}"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
                                 <p:outputLabel value="Teléfono" style="font-weight: bold"/>
                             </p:column>
                             <p:column>
                                 <p:inputText value="#{personaBean.personaSelected.prsTelefono}"/>
                             </p:column>
-                        </p:row>
-                        <p:row>
                             <p:column>
                                 <p:outputLabel value="Celular" style="font-weight: bold"/>
                             </p:column>
                             <p:column>
                                 <p:inputText value="#{personaBean.personaSelected.prsCelular}"/>
-                            </p:column>
-                        </p:row>
-                        <p:row>
-                            <p:column>
-                                <p:outputLabel value="Congregacion" style="font-weight: bold"/>
-                            </p:column>
-                            <p:column>
-                                <p:selectOneMenu value="#{personaBean.personaSelected.congregacion}" converter="omnifaces.SelectItemsConverter" >
-                                    <f:selectItem noSelectionOption="true" itemLabel="Seleccione..." itemValue="#{null}"/>
-                                    <f:selectItems value="#{congregacionBean.lstCongregaciones}" var="congregacion" itemLabel="#{congregacion.cngNombre}" itemValue="#{congregacion}"/>
-                                </p:selectOneMenu>
                             </p:column>
                         </p:row>
                         <p:row>
@@ -135,6 +118,15 @@
                         </p:row>
                         <p:row>
                             <p:column>
+                                <p:outputLabel value="Congregacion" style="font-weight: bold"/>
+                            </p:column>
+                            <p:column>
+                                <p:selectOneMenu value="#{personaBean.personaSelected.congregacion}" converter="omnifaces.SelectItemsConverter" >
+                                    <f:selectItem noSelectionOption="true" itemLabel="Seleccione..." itemValue="#{null}"/>
+                                    <f:selectItems value="#{congregacionBean.lstCongregaciones}" var="congregacion" itemLabel="#{congregacion.cngNombre}" itemValue="#{congregacion}"/>
+                                </p:selectOneMenu>
+                            </p:column>
+                            <p:column>
                                 <p:outputLabel value="Privilegio" style="font-weight: bold"/>
                             </p:column>
                             <p:column>
@@ -142,6 +134,20 @@
                                     <f:selectItem noSelectionOption="true" itemLabel="Seleccione..." itemValue="#{null}"/>
                                     <f:selectItems value="#{privilegioBean.lstPrivilegios}" var="privilegio" itemLabel="#{privilegio.prvNombre}" itemValue="#{privilegio}"/>
                                 </p:selectOneMenu>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <p:outputLabel value="# Reg. Precursor" style="font-weight: bold"/>
+                            </p:column>
+                            <p:column>
+                                <p:inputText value="#{personaBean.personaSelected.prsNpr}"/>
+                            </p:column>
+                            <p:column>
+                                <p:outputLabel value="Fec. Reg. Precursor" style="font-weight: bold"/>
+                            </p:column>
+                            <p:column>
+                                <p:calendar id="inline" value="#{personaBean.personaSelected.prsFrp}"/>
                             </p:column>
                         </p:row>
                     </p:panelGrid>

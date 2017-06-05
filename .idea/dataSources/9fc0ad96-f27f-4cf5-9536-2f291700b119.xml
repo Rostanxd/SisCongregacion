@@ -24,182 +24,252 @@
     <table id="18" parent="2" name="asistenciareuniones"/>
     <table id="19" parent="2" name="congregacion"/>
     <table id="20" parent="2" name="grupo"/>
-    <table id="21" parent="2" name="persona"/>
-    <table id="22" parent="2" name="privilegio"/>
-    <table id="23" parent="2" name="reunion"/>
-    <column id="24" parent="18" name="cngCodigo">
+    <table id="21" parent="2" name="horasservicio"/>
+    <table id="22" parent="2" name="persona"/>
+    <table id="23" parent="2" name="privilegio"/>
+    <table id="24" parent="2" name="reunion"/>
+    <column id="25" parent="18" name="cngCodigo">
       <Position>1</Position>
       <DataType>varchar(255)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="25" parent="18" name="asrMes">
+    <column id="26" parent="18" name="asrMes">
       <Position>2</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="26" parent="18" name="asrAnioTeo">
+    <column id="27" parent="18" name="asrAnioTeo">
       <Position>3</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="27" parent="18" name="asrAnio">
+    <column id="28" parent="18" name="asrAnio">
       <Position>4</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="28" parent="18" name="asrAsistencias">
+    <column id="29" parent="18" name="asrAsistencias">
       <Position>5</Position>
       <DataType>int(11)|0</DataType>
     </column>
-    <column id="29" parent="18" name="asrNumReunion">
+    <column id="30" parent="18" name="asrNumReunion">
       <Position>6</Position>
       <DataType>int(11)|0</DataType>
     </column>
-    <column id="30" parent="18" name="asrSemana">
+    <column id="31" parent="18" name="asrSemana">
       <Position>7</Position>
       <DataType>varchar(255)|0</DataType>
     </column>
-    <column id="31" parent="18" name="renCodigo">
+    <column id="32" parent="18" name="renCodigo">
       <Position>8</Position>
       <DataType>varchar(255)|0</DataType>
     </column>
-    <index id="32" parent="18" name="FKfyu7xmnfyj4nadfue1795s71o">
+    <index id="33" parent="18" name="FKfyu7xmnfyj4nadfue1795s71o">
       <ColNames>renCodigo</ColNames>
     </index>
-    <key id="33" parent="18" name="PRIMARY">
+    <key id="34" parent="18" name="PRIMARY">
       <ColNames>cngCodigo
 asrMes
 asrAnioTeo
 asrAnio</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="34" parent="19" name="cngCodigo">
+    <column id="35" parent="19" name="cngCodigo">
       <Position>1</Position>
       <DataType>varchar(255)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="35" parent="19" name="cngEstado">
+    <column id="36" parent="19" name="cngEstado">
       <Position>2</Position>
       <DataType>varchar(255)|0</DataType>
     </column>
-    <column id="36" parent="19" name="cngNombre">
+    <column id="37" parent="19" name="cngNombre">
       <Position>3</Position>
       <DataType>varchar(255)|0</DataType>
     </column>
-    <key id="37" parent="19" name="PRIMARY">
+    <key id="38" parent="19" name="PRIMARY">
       <ColNames>cngCodigo</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="38" parent="20" name="grpCodigo">
+    <column id="39" parent="20" name="grpCodigo">
       <Position>1</Position>
       <DataType>varchar(255)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="39" parent="20" name="grpEstado">
+    <column id="40" parent="20" name="grpEstado">
       <Position>2</Position>
       <DataType>varchar(255)|0</DataType>
     </column>
-    <column id="40" parent="20" name="grpNombre">
+    <column id="41" parent="20" name="grpNombre">
       <Position>3</Position>
       <DataType>varchar(255)|0</DataType>
     </column>
-    <key id="41" parent="20" name="PRIMARY">
+    <key id="42" parent="20" name="PRIMARY">
       <ColNames>grpCodigo</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="42" parent="21" name="prsCodigo">
+    <column id="43" parent="21" name="achAnio">
       <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="44" parent="21" name="achAnioServ">
+      <Position>2</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="45" parent="21" name="achMes">
+      <Position>3</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="46" parent="21" name="cngCodigo">
+      <Position>4</Position>
       <DataType>varchar(255)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="43" parent="21" name="prsApellidos">
-      <Position>2</Position>
-      <DataType>varchar(255)|0</DataType>
-    </column>
-    <column id="44" parent="21" name="prsCelular">
-      <Position>3</Position>
-      <DataType>varchar(255)|0</DataType>
-    </column>
-    <column id="45" parent="21" name="prsEstado">
-      <Position>4</Position>
-      <DataType>varchar(255)|0</DataType>
-    </column>
-    <column id="46" parent="21" name="prsFecBautismo">
+    <column id="47" parent="21" name="achHrsEstudio">
       <Position>5</Position>
-      <DataType>datetime|0</DataType>
+      <DataType>int(11)|0</DataType>
     </column>
-    <column id="47" parent="21" name="prsFecNacimiento">
+    <column id="48" parent="21" name="achHrsMinisterio">
       <Position>6</Position>
-      <DataType>datetime|0</DataType>
+      <DataType>int(11)|0</DataType>
     </column>
-    <column id="48" parent="21" name="prsGenero">
+    <column id="49" parent="21" name="achNumPublicaciones">
       <Position>7</Position>
-      <DataType>varchar(255)|0</DataType>
+      <DataType>int(11)|0</DataType>
     </column>
-    <column id="49" parent="21" name="prsNombres">
+    <column id="50" parent="21" name="achNumRevistas">
       <Position>8</Position>
-      <DataType>varchar(255)|0</DataType>
+      <DataType>int(11)|0</DataType>
     </column>
-    <column id="50" parent="21" name="prsTelefono">
+    <column id="51" parent="21" name="achNumVideos">
       <Position>9</Position>
-      <DataType>varchar(255)|0</DataType>
+      <DataType>int(11)|0</DataType>
     </column>
-    <column id="51" parent="21" name="cngCodigo">
+    <column id="52" parent="21" name="achObservaciones">
       <Position>10</Position>
       <DataType>varchar(255)|0</DataType>
     </column>
-    <column id="52" parent="21" name="grpCodigo">
+    <column id="53" parent="21" name="prsCodigo">
       <Position>11</Position>
       <DataType>varchar(255)|0</DataType>
     </column>
-    <column id="53" parent="21" name="prvCodigo">
+    <index id="54" parent="21" name="FKc6gnvdhar4dr5a9u0frg9h2c9">
+      <ColNames>cngCodigo</ColNames>
+    </index>
+    <index id="55" parent="21" name="FKldtusar8n10sjiklxhj8xqqb9">
+      <ColNames>prsCodigo</ColNames>
+    </index>
+    <key id="56" parent="21" name="PRIMARY">
+      <ColNames>achAnio
+achAnioServ
+achMes
+cngCodigo</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="57" parent="22" name="prsCodigo">
+      <Position>1</Position>
+      <DataType>varchar(255)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="58" parent="22" name="prsApellidos">
+      <Position>2</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="59" parent="22" name="prsCelular">
+      <Position>3</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="60" parent="22" name="prsEstado">
+      <Position>4</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="61" parent="22" name="prsFecBautismo">
+      <Position>5</Position>
+      <DataType>datetime|0</DataType>
+    </column>
+    <column id="62" parent="22" name="prsFecNacimiento">
+      <Position>6</Position>
+      <DataType>datetime|0</DataType>
+    </column>
+    <column id="63" parent="22" name="prsGenero">
+      <Position>7</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="64" parent="22" name="prsNombres">
+      <Position>8</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="65" parent="22" name="prsTelefono">
+      <Position>9</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="66" parent="22" name="cngCodigo">
+      <Position>10</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="67" parent="22" name="grpCodigo">
+      <Position>11</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="68" parent="22" name="prvCodigo">
       <Position>12</Position>
       <DataType>varchar(255)|0</DataType>
     </column>
-    <index id="54" parent="21" name="FK4b3h76xt6ik61wiq2tv2v9dfm">
+    <column id="69" parent="22" name="prsFrp">
+      <Position>13</Position>
+      <DataType>datetime|0</DataType>
+    </column>
+    <column id="70" parent="22" name="prsNpr">
+      <Position>14</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <index id="71" parent="22" name="FK4b3h76xt6ik61wiq2tv2v9dfm">
       <ColNames>cngCodigo</ColNames>
     </index>
-    <index id="55" parent="21" name="FK7tl86ighrt6lkh2nh0mk1mf3v">
+    <index id="72" parent="22" name="FK7tl86ighrt6lkh2nh0mk1mf3v">
       <ColNames>prvCodigo</ColNames>
     </index>
-    <index id="56" parent="21" name="FK888hjpatvo13jxnllvg0hn3df">
+    <index id="73" parent="22" name="FK888hjpatvo13jxnllvg0hn3df">
       <ColNames>grpCodigo</ColNames>
     </index>
-    <key id="57" parent="21" name="PRIMARY">
+    <key id="74" parent="22" name="PRIMARY">
       <ColNames>prsCodigo</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="58" parent="22" name="prvCodigo">
+    <column id="75" parent="23" name="prvCodigo">
       <Position>1</Position>
       <DataType>varchar(255)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="59" parent="22" name="prvEstado">
+    <column id="76" parent="23" name="prvEstado">
       <Position>2</Position>
       <DataType>varchar(255)|0</DataType>
     </column>
-    <column id="60" parent="22" name="prvNombre">
+    <column id="77" parent="23" name="prvNombre">
       <Position>3</Position>
       <DataType>varchar(255)|0</DataType>
     </column>
-    <key id="61" parent="22" name="PRIMARY">
+    <key id="78" parent="23" name="PRIMARY">
       <ColNames>prvCodigo</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="62" parent="23" name="renCodigo">
+    <column id="79" parent="24" name="renCodigo">
       <Position>1</Position>
       <DataType>varchar(255)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="63" parent="23" name="renEstado">
+    <column id="80" parent="24" name="renEstado">
       <Position>2</Position>
       <DataType>varchar(255)|0</DataType>
     </column>
-    <column id="64" parent="23" name="renNombre">
+    <column id="81" parent="24" name="renNombre">
       <Position>3</Position>
       <DataType>varchar(255)|0</DataType>
     </column>
-    <key id="65" parent="23" name="PRIMARY">
+    <key id="82" parent="24" name="PRIMARY">
       <ColNames>renCodigo</ColNames>
       <Primary>1</Primary>
     </key>
