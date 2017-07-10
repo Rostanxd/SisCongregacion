@@ -21,16 +21,20 @@
                 <f:event type="preRenderView" listener="#{privilegioBean.listarPrivilegios()}"/>
                 <p:dataTable id="dataPersonas" var="persona" value="#{personaBean.lstPersonas}"
                              selectionMode="single" selection="#{personaBean.persona}" rowKey="#{persona.prsCodigo}"
-                             style="font-size: smaller; width: auto;" emptyMessage="No hay datos." scrollable="true" scrollHeight="500px">
+                             style="font-size: smaller; width: auto;" emptyMessage="No hay datos." scrollable="true" scrollHeight="500px"
+                             rows="25"
+                             paginator="true"
+                             paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                             rowsPerPageTemplate="10,25,50">
                     <f:facet style="background-image:url(resources/images/fondo.jpg)" name="header"  >
                         Personas
                     </f:facet>
                     <p:column headerText="Id" filterBy="#{persona.prsCodigo}" filterMatchMode="contains" style="width: 150px">
                         <p:outputLabel value="#{persona.prsCodigo}"/>
                     </p:column>
-                    <p:column headerText="Nombres" filterBy="#{persona.prsNombres}" filterMatchMode="contains" style="width: 150px">
-                        <p:outputLabel value="#{persona.prsNombres}"/>
-                    </p:column>
+                    <!--<p:column headerText="Nombres" filterBy="#{persona.prsNombres}" filterMatchMode="contains" style="width: 150px">-->
+                        <!--<p:outputLabel value="#{persona.prsNombres}"/>-->
+                    <!--</p:column>-->
                     <p:column headerText="Apellidos" filterBy="#{persona.prsApellidos}" filterMatchMode="contains" style="width: 150px">
                         <p:outputLabel value="#{persona.prsApellidos}"/>
                     </p:column>

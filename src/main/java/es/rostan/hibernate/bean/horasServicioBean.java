@@ -115,7 +115,7 @@ public class horasServicioBean implements Serializable{
 
     public void ingresarHrsServicio() {
         System.out.println("Congregacion seleccionada..." + this.hrsServicioSelected.getCongregacion().getCngNombre());
-        this.hrsServicioSelected.setAchMes(this.buscaMes(this.mesSelected));
+        this.hrsServicioSelected.setAchMes(this.buscaMesId(this.mesSelected));
         horasServicioDAO hrd = new horasServicioDAO();
         hrd.ingresarHrsServicio(this.hrsServicioSelected);
     }
@@ -152,13 +152,13 @@ public class horasServicioBean implements Serializable{
         this.hrsServicioSelected.setPersona(null);
         this.hrsServicioSelected.setAchNumPublicaciones(0);
         this.hrsServicioSelected.setAchNumVideos(0);
-        this.hrsServicioSelected.setAchHrsMinisterio(0);
+        this.hrsServicioSelected.setAchHrsMinisterio(0.0);
         this.hrsServicioSelected.setAchNumRevistas(0);
-        this.hrsServicioSelected.setAchHrsEstudio(0);
+        this.hrsServicioSelected.setAchHrsEstudio(0.0);
         this.hrsServicioSelected.setAchObservaciones("");
     }
 
-    public Integer buscaMes(String mes){
+    public Integer buscaMesId(String mes){
         Integer key = 0;
         for (Map.Entry<Integer, String> e : this.lstMeses.entrySet()){
             if (e.getValue().equals(mes)){
@@ -167,5 +167,17 @@ public class horasServicioBean implements Serializable{
             }
         }
         return key;
+    }
+
+    public String buscaMesNombre(Integer mes){
+        String mesNombre = "";
+
+        for (Map.Entry<Integer, String> e : this.lstMeses.entrySet()){
+            if (e.getKey().equals(mes)){
+                mesNombre = e.getValue();
+                break;
+            }
+        }
+        return mesNombre;
     }
 }

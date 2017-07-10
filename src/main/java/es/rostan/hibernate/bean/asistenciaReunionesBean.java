@@ -133,7 +133,7 @@ public class asistenciaReunionesBean implements Serializable{
     }
 
     public void ingrearAsistencias(){
-        this.asistenciaSelected.setAsrMes(this.buscaMes(this.mesSelected));
+        this.asistenciaSelected.setAsrMes(this.buscaMesId(this.mesSelected));
         asistenciaReunionesDAO ad = new asistenciaReunionesDAO();
         ad.ingresarAsistencia(this.asistenciaSelected);
     }
@@ -174,7 +174,7 @@ public class asistenciaReunionesBean implements Serializable{
         this.asistenciaSelected.setAsrAsistencias(0);
     }
 
-    public Integer buscaMes(String mes){
+    public Integer buscaMesId(String mes){
         Integer key = 0;
         for (Map.Entry<Integer, String> e : this.lstMeses.entrySet()){
             if (e.getValue().equals(mes)){
@@ -183,5 +183,17 @@ public class asistenciaReunionesBean implements Serializable{
             }
         }
         return key;
+    }
+
+    public String buscaMesNombre(Integer mes){
+        String mesNombre = "";
+
+        for (Map.Entry<Integer, String> e : this.lstMeses.entrySet()){
+            if (e.getKey().equals(mes)){
+                mesNombre = e.getValue();
+                break;
+            }
+        }
+        return mesNombre;
     }
 }

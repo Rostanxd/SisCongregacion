@@ -21,6 +21,9 @@ public class horasServicio implements Serializable{
     private Integer achMes;
 
     @Id
+    private Integer achNumRegistro;
+
+    @Id
     private String cngCodigo;
 
     @ManyToOne(fetch = FetchType.EAGER)
@@ -36,20 +39,22 @@ public class horasServicio implements Serializable{
 
     private Integer achNumVideos;
 
-    private Integer achHrsMinisterio;
+    private Double achHrsMinisterio;
 
     private Integer achNumRevistas;
 
-    private Integer achHrsEstudio;
+    private Double achHrsEstudio;
 
     private String achObservaciones;
+
+    private String achPrsNombres;
 
 //    CONSTRUCTOR
     public horasServicio(){
 
     }
 
-    public horasServicio(Integer achAnio, Integer achAnioServ, Integer achMes, String cngCodigo, es.rostan.hibernate.entidades.congregacion congregacion, es.rostan.hibernate.entidades.persona persona, Integer achNumPublicaciones, Integer achNumVideos, Integer achHrsMinisterio, Integer achNumRevistas, Integer achHrsEstudio, String achObservaciones) {
+    public horasServicio(Integer achAnio, Integer achAnioServ, Integer achMes, String cngCodigo, es.rostan.hibernate.entidades.congregacion congregacion, es.rostan.hibernate.entidades.persona persona, Integer achNumPublicaciones, Integer achNumVideos, Double achHrsMinisterio, Integer achNumRevistas, Double achHrsEstudio, String achObservaciones) {
         this.achAnio = achAnio;
         this.achAnioServ = achAnioServ;
         this.achMes = achMes;
@@ -64,7 +69,40 @@ public class horasServicio implements Serializable{
         this.achObservaciones = achObservaciones;
     }
 
-//    GETTERS Y SETTERS
+    public horasServicio(Integer achAnio, Integer achAnioServ, Integer achMes, String cngCodigo, es.rostan.hibernate.entidades.congregacion congregacion, es.rostan.hibernate.entidades.persona persona, Integer achNumPublicaciones, Integer achNumVideos, Double achHrsMinisterio, Integer achNumRevistas, Double achHrsEstudio, String achObservaciones, String achPrsNombres) {
+        this.achAnio = achAnio;
+        this.achAnioServ = achAnioServ;
+        this.achMes = achMes;
+        this.cngCodigo = cngCodigo;
+        this.congregacion = congregacion;
+        this.persona = persona;
+        this.achNumPublicaciones = achNumPublicaciones;
+        this.achNumVideos = achNumVideos;
+        this.achHrsMinisterio = achHrsMinisterio;
+        this.achNumRevistas = achNumRevistas;
+        this.achHrsEstudio = achHrsEstudio;
+        this.achObservaciones = achObservaciones;
+        this.achPrsNombres = achPrsNombres;
+    }
+
+    public horasServicio(Integer achAnio, Integer achAnioServ, Integer achMes, Integer achNumRegistro, String cngCodigo, es.rostan.hibernate.entidades.congregacion congregacion, es.rostan.hibernate.entidades.persona persona, Integer achNumPublicaciones, Integer achNumVideos, Double achHrsMinisterio, Integer achNumRevistas, Double achHrsEstudio, String achObservaciones, String achPrsNombres) {
+        this.achAnio = achAnio;
+        this.achAnioServ = achAnioServ;
+        this.achMes = achMes;
+        this.achNumRegistro = achNumRegistro;
+        this.cngCodigo = cngCodigo;
+        this.congregacion = congregacion;
+        this.persona = persona;
+        this.achNumPublicaciones = achNumPublicaciones;
+        this.achNumVideos = achNumVideos;
+        this.achHrsMinisterio = achHrsMinisterio;
+        this.achNumRevistas = achNumRevistas;
+        this.achHrsEstudio = achHrsEstudio;
+        this.achObservaciones = achObservaciones;
+        this.achPrsNombres = achPrsNombres;
+    }
+
+    //    GETTERS Y SETTERS
     public Integer getAchAnio() {
         return achAnio;
     }
@@ -129,11 +167,11 @@ public class horasServicio implements Serializable{
         this.achNumVideos = achNumVideos;
     }
 
-    public Integer getAchHrsMinisterio() {
+    public Double getAchHrsMinisterio() {
         return achHrsMinisterio;
     }
 
-    public void setAchHrsMinisterio(Integer achHrsMinisterio) {
+    public void setAchHrsMinisterio(Double achHrsMinisterio) {
         this.achHrsMinisterio = achHrsMinisterio;
     }
 
@@ -145,11 +183,11 @@ public class horasServicio implements Serializable{
         this.achNumRevistas = achNumRevistas;
     }
 
-    public Integer getAchHrsEstudio() {
+    public Double getAchHrsEstudio() {
         return achHrsEstudio;
     }
 
-    public void setAchHrsEstudio(Integer achHrsEstudio) {
+    public void setAchHrsEstudio(Double achHrsEstudio) {
         this.achHrsEstudio = achHrsEstudio;
     }
 
@@ -159,5 +197,21 @@ public class horasServicio implements Serializable{
 
     public void setAchObservaciones(String achObservaciones) {
         this.achObservaciones = achObservaciones;
+    }
+
+    public String getAchPrsNombres() {
+        return achPrsNombres;
+    }
+
+    public void setAchPrsNombres(String achPrsNombres) {
+        this.achPrsNombres = achPrsNombres;
+    }
+
+    public Integer getAchNumRegistro() {
+        return achNumRegistro;
+    }
+
+    public void setAchNumRegistro(Integer achNumRegistro) {
+        this.achNumRegistro = achNumRegistro;
     }
 }

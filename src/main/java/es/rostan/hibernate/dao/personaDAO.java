@@ -61,4 +61,15 @@ public class personaDAO {
             em.close();
         }
     }
+
+    public persona buscaPrsCodigo(String prsApellidos){
+        persona p = new persona();
+        EntityManager em = emf.createEntityManager();
+        Query qry = em.createQuery("SELECT p FROM persona AS p WHERE p.prsApellidos LIKE '%:prsApellidos%'");
+        qry.setParameter(prsApellidos, "prsApellidos");
+        qry.setMaxResults(1);
+        em.getTransaction().begin();
+        p = (persona) qry.getSingleResult();
+        return p;
+    }
 }

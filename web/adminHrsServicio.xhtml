@@ -20,7 +20,11 @@
                 <f:event type="preRenderView" listener="#{personaBean.listarPersonas}"/>
 
                 <p:dataTable id="dataHrsServicio" var="hrsServicio" value="#{hrsServicioBean.lstHrsServicio}"
-                             style="font-size: smaller; width: auto;" emptyMessage="No hay datos." scrollable="true" scrollHeight="500px">
+                             style="font-size: smaller; width: auto;" emptyMessage="No hay datos." scrollable="true" scrollHeight="500px"
+                             rows="25"
+                             paginator="true"
+                             paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                             rowsPerPageTemplate="25,50,100">
                     <f:facet style="background-image:url(resources/images/fondo.jpg)" name="header"  >
                         Horas de Servicio
                     </f:facet>
@@ -30,17 +34,20 @@
                     <p:column headerText="Año Teocrático" filterBy="#{hrsServicio.achAnioServ}" filterMatchMode="contains" style="width: 100px">
                         <p:outputLabel value="#{hrsServicio.achAnioServ}"/>
                     </p:column>
-                    <p:column headerText="Mes" filterBy="#{hrsServicio.achMes}" filterMatchMode="contains" style="width: 100px">
-                        <p:outputLabel value="#{hrsServicio.achMes}"/>
+                    <p:column headerText="Mes" style="width: 100px">
+                        <p:outputLabel value="#{hrsServicioBean.buscaMesNombre(hrsServicio.achMes)}"/>
                     </p:column>
                     <p:column headerText="Congregación" filterBy="#{hrsServicio.congregacion.cngNombre}" filterMatchMode="contains" style="width: 150px">
                         <p:outputLabel value="#{hrsServicio.congregacion.cngNombre}"/>
                     </p:column>
-                    <p:column headerText="Nombres" filterBy="#{hrsServicio.persona.prsNombres}" filterMatchMode="contains" style="width: 300px">
-                        <p:outputLabel value="#{hrsServicio.persona.prsNombres}"/>
-                    </p:column>
-                    <p:column headerText="Apellidos" filterBy="#{hrsServicio.persona.prsApellidos}" filterMatchMode="contains" style="width: 300px">
-                        <p:outputLabel value="#{hrsServicio.persona.prsApellidos}"/>
+                    <!--<p:column headerText="Nombres" filterBy="#{hrsServicio.persona.prsNombres}" filterMatchMode="contains" style="width: 300px">-->
+                        <!--<p:outputLabel value="#{hrsServicio.persona.prsNombres}"/>-->
+                    <!--</p:column>-->
+                    <!--<p:column headerText="Apellidos" filterBy="#{hrsServicio.persona.prsApellidos}" filterMatchMode="contains" style="width: 300px">-->
+                        <!--<p:outputLabel value="#{hrsServicio.persona.prsApellidos}"/>-->
+                    <!--</p:column>-->
+                    <p:column headerText="Nombres y Apellidos" filterBy="#{hrsServicio.achPrsNombres}" filterMatchMode="contains" style="width: 300px">
+                        <p:outputLabel value="#{hrsServicio.achPrsNombres}"/>
                     </p:column>
                     <p:column headerText="Total Horas" style="width: 150px">
                         <p:outputLabel value="#{hrsServicio.achHrsEstudio + hrsServicio.achHrsMinisterio}"/>

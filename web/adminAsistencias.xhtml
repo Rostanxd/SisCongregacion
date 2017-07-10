@@ -24,14 +24,14 @@
                     <f:facet style="background-image:url(resources/images/fondo.jpg)" name="header"  >
                         Asistencia Reuniones
                     </f:facet>
-                    <p:column headerText="Año" filterBy="#{asistencia.asrAnio}" filterMatchMode="contains" style="width: 50px">
+                    <p:column headerText="Año" filterBy="#{asistencia.asrAnio}" filterMatchMode="contains" style="width: 75px">
                         <p:outputLabel value="#{asistencia.asrAnio}"/>
                     </p:column>
                     <p:column headerText="Año Teocrático" filterBy="#{asistencia.asrAnioTeo}" filterMatchMode="contains" style="width: 150px">
                         <p:outputLabel value="#{asistencia.asrAnioTeo}"/>
                     </p:column>
-                    <p:column headerText="Mes" filterBy="#{asistencia.asrMes}" filterMatchMode="contains" style="width: 150px">
-                        <p:outputLabel value="#{asistencia.asrMes}"/>
+                    <p:column headerText="Mes" style="width: 150px">
+                        <p:outputLabel value="#{asistenciaBean.buscaMesNombre(asistencia.asrMes)}"/>
                     </p:column>
                     <p:column headerText="Congregación" filterBy="#{asistencia.congregacion.cngNombre}" filterMatchMode="contains" style="width: 150px">
                         <p:outputLabel value="#{asistencia.congregacion.cngNombre}"/>

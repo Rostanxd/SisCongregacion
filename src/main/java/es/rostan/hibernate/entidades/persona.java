@@ -38,6 +38,9 @@ public class persona implements Serializable {
     @Column
     private String prsEstado;
 
+    @Column
+    private String prsDireccion;
+
 //    RELACIONES
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "cngCodigo")
@@ -84,6 +87,24 @@ public class persona implements Serializable {
         this.prsFecNacimiento = prsFecNacimiento;
         this.prsFecBautismo = prsFecBautismo;
         this.prsEstado = prsEstado;
+        this.congregacion = congregacion;
+        this.grupo = grupo;
+        this.privilegio = privilegio;
+        this.prsNpr = prsNpr;
+        this.prsFrp = prsFrp;
+    }
+
+    public persona(String prsCodigo, String prsNombres, String prsApellidos, String prsGenero, String prsTelefono, String prsCelular, Date prsFecNacimiento, Date prsFecBautismo, String prsEstado, String prsDireccion, es.rostan.hibernate.entidades.congregacion congregacion, es.rostan.hibernate.entidades.grupo grupo, es.rostan.hibernate.entidades.privilegio privilegio, Integer prsNpr, Date prsFrp) {
+        this.prsCodigo = prsCodigo;
+        this.prsNombres = prsNombres;
+        this.prsApellidos = prsApellidos;
+        this.prsGenero = prsGenero;
+        this.prsTelefono = prsTelefono;
+        this.prsCelular = prsCelular;
+        this.prsFecNacimiento = prsFecNacimiento;
+        this.prsFecBautismo = prsFecBautismo;
+        this.prsEstado = prsEstado;
+        this.prsDireccion = prsDireccion;
         this.congregacion = congregacion;
         this.grupo = grupo;
         this.privilegio = privilegio;
@@ -186,6 +207,14 @@ public class persona implements Serializable {
 
     public void setPrivilegio(es.rostan.hibernate.entidades.privilegio privilegio) {
         this.privilegio = privilegio;
+    }
+
+    public String getPrsDireccion() {
+        return prsDireccion;
+    }
+
+    public void setPrsDireccion(String prsDireccion) {
+        this.prsDireccion = prsDireccion;
     }
 
     public Integer getPrsNpr() {

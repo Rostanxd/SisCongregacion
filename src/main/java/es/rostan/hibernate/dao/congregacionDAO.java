@@ -48,4 +48,12 @@ public class congregacionDAO implements Serializable {
             em.close();
         }
     }
+
+    public congregacion buscaCongregacion(String cngCodigo){
+        EntityManager em = emf.createEntityManager();
+        em.getTransaction().begin();
+        congregacion congregacion = em.find(congregacion.class, cngCodigo);
+        em.getTransaction().commit();
+        return congregacion;
+    }
 }

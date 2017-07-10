@@ -68,7 +68,7 @@ public class personaBean {
                 break;
             case "Actualizar":
                 this.personaSelected = this.persona;
-                System.out.println(this.personaSelected.getCongregacion().toString());
+//                System.out.println(this.personaSelected.getCongregacion().toString());
                 break;
         }
     }
