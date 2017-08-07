@@ -56,4 +56,14 @@ public class congregacionDAO implements Serializable {
         em.getTransaction().commit();
         return congregacion;
     }
+
+    public congregacion buscaCongregacionPorNombre(String cngNombre){
+        System.out.println("buscaCongregacionPorNombre <- " + cngNombre);
+        EntityManager em = emf.createEntityManager();
+        Query qry = em.createQuery("SELECT c FROM congregacion AS c WHERE c.cngNombre = :cngNombre");
+        qry.setParameter("cngNombre", cngNombre);
+        congregacion congregacion = (congregacion) qry.getSingleResult();
+        System.out.println("buscaCongregacionPorNombre -> " + congregacion.getCngNombre());
+        return congregacion;
+    }
 }

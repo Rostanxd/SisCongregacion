@@ -12,12 +12,13 @@ import java.util.Set;
 public class grupo implements Serializable {
 
     @Id
+    @Column(length = 10)
     private String grpCodigo;
 
-    @Column
+    @Column(length = 80)
     private String grpNombre;
 
-    @Column
+    @Column(length = 1)
     private String grpEstado;
 
     @OneToMany(mappedBy = "grupo", cascade = CascadeType.ALL)

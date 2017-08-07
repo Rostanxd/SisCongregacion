@@ -3,54 +3,33 @@
   <component name="ArtifactsWorkspaceSettings">
     <artifacts-to-build>
       <artifact name="SisCongregacion:war" />
-      <artifact name="SisCongregacion:war exploded" />
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6d2ef175-35e4-42eb-b7df-6841fc04373b" name="Default" comment="Commit #6 - Se genera el programa para cargar el excel con las horas de servicio.">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/WEB-INF/lib/commons-collections4-4.1.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/WEB-INF/lib/poi-3.16.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/WEB-INF/lib/poi-ooxml-3.16.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/WEB-INF/lib/poi-ooxml-schemas-3.16.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/WEB-INF/lib/xmlbeans-2.6.0.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_github_virtuald_curvesapi_1_04.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__commons_codec_commons_codec_1_10.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_commons_commons_collections4_4_1.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_poi_poi_3_16.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_poi_poi_ooxml_3_16.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_poi_poi_ooxml_schemas_3_16.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_xmlbeans_xmlbeans_2_6_0.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__stax_stax_api_1_0_1.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/es/rostan/hibernate/bean/CargaExcelAsistencia.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/es/rostan/hibernate/bean/cargaExcelHrsServicio.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/adminCargaExcelAsistencia.xhtml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/adminCargaExcelHrsServicio.xhtml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/SisCongregacion_war_exploded/WEB-INF/classes/es/rostan/hibernate/bean/personaBean.class" afterPath="$PROJECT_DIR$/out/artifacts/SisCongregacion_war_exploded/WEB-INF/classes/es/rostan/hibernate/bean/personaBean.class" />
+    <list default="true" id="6d2ef175-35e4-42eb-b7df-6841fc04373b" name="Default" comment="Commit #7 - Se genera el programa para cargar el excel con las asistencias. Cambio de estructura a nivel de modelo y base de datos en las asistencias ya que el número de PK's que se debían usar era alto. Se piensa proceder de igual forma con las horas, para asi usar un esquema similar y mejor respuesta en la base.">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/es/rostan/servicio/Utils.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/SisCongregacion_war_exploded/WEB-INF/classes/es/rostan/hibernate/dao/congregacionDAO.class" afterPath="$PROJECT_DIR$/out/artifacts/SisCongregacion_war_exploded/WEB-INF/classes/es/rostan/hibernate/dao/congregacionDAO.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/SisCongregacion_war_exploded/WEB-INF/classes/es/rostan/hibernate/dao/personaDAO.class" afterPath="$PROJECT_DIR$/out/artifacts/SisCongregacion_war_exploded/WEB-INF/classes/es/rostan/hibernate/dao/personaDAO.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/SisCongregacion_war_exploded/WEB-INF/classes/es/rostan/hibernate/entidades/persona.class" afterPath="$PROJECT_DIR$/out/artifacts/SisCongregacion_war_exploded/WEB-INF/classes/es/rostan/hibernate/entidades/persona.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/es/rostan/hibernate/bean/personaBean.class" afterPath="$PROJECT_DIR$/target/classes/es/rostan/hibernate/bean/personaBean.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/SisCongregacion_war_exploded/WEB-INF/classes/es/rostan/hibernate/entidades/congregacion.class" afterPath="$PROJECT_DIR$/out/artifacts/SisCongregacion_war_exploded/WEB-INF/classes/es/rostan/hibernate/entidades/congregacion.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/SisCongregacion_war_exploded/WEB-INF/classes/es/rostan/hibernate/entidades/grupo.class" afterPath="$PROJECT_DIR$/out/artifacts/SisCongregacion_war_exploded/WEB-INF/classes/es/rostan/hibernate/entidades/grupo.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/es/rostan/hibernate/dao/congregacionDAO.class" afterPath="$PROJECT_DIR$/target/classes/es/rostan/hibernate/dao/congregacionDAO.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/es/rostan/hibernate/dao/personaDAO.class" afterPath="$PROJECT_DIR$/target/classes/es/rostan/hibernate/dao/personaDAO.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/es/rostan/hibernate/entidades/persona.class" afterPath="$PROJECT_DIR$/target/classes/es/rostan/hibernate/entidades/persona.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/es/rostan/hibernate/entidades/congregacion.class" afterPath="$PROJECT_DIR$/target/classes/es/rostan/hibernate/entidades/congregacion.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/es/rostan/hibernate/entidades/grupo.class" afterPath="$PROJECT_DIR$/target/classes/es/rostan/hibernate/entidades/grupo.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources/9fc0ad96-f27f-4cf5-9536-2f291700b119.xml" afterPath="$PROJECT_DIR$/.idea/dataSources/9fc0ad96-f27f-4cf5-9536-2f291700b119.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SisCongregacion.iml" afterPath="$PROJECT_DIR$/SisCongregacion.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/SisCongregacion_war_exploded/WEB-INF/templates/plantilla.xhtml" afterPath="$PROJECT_DIR$/out/artifacts/SisCongregacion_war_exploded/WEB-INF/templates/plantilla.xhtml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/SisCongregacion_war_exploded/adminPersonas.xhtml" afterPath="$PROJECT_DIR$/out/artifacts/SisCongregacion_war_exploded/adminPersonas.xhtml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/es/rostan/hibernate/bean/asistenciaReunionesBean.java" afterPath="$PROJECT_DIR$/src/main/java/es/rostan/hibernate/bean/asistenciaReunionesBean.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/es/rostan/hibernate/bean/horasServicioBean.java" afterPath="$PROJECT_DIR$/src/main/java/es/rostan/hibernate/bean/horasServicioBean.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/es/rostan/hibernate/bean/personaBean.java" afterPath="$PROJECT_DIR$/src/main/java/es/rostan/hibernate/bean/personaBean.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/es/rostan/hibernate/bean/CargaExcelAsistencia.java" afterPath="$PROJECT_DIR$/src/main/java/es/rostan/hibernate/bean/CargaExcelAsistencia.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/es/rostan/hibernate/bean/cargaExcelHrsServicio.java" afterPath="$PROJECT_DIR$/src/main/java/es/rostan/hibernate/bean/cargaExcelHrsServicio.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/es/rostan/hibernate/dao/asistenciaReunionesDAO.java" afterPath="$PROJECT_DIR$/src/main/java/es/rostan/hibernate/dao/asistenciaReunionesDAO.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/es/rostan/hibernate/dao/congregacionDAO.java" afterPath="$PROJECT_DIR$/src/main/java/es/rostan/hibernate/dao/congregacionDAO.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/es/rostan/hibernate/dao/personaDAO.java" afterPath="$PROJECT_DIR$/src/main/java/es/rostan/hibernate/dao/personaDAO.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/es/rostan/hibernate/dao/reunionDAO.java" afterPath="$PROJECT_DIR$/src/main/java/es/rostan/hibernate/dao/reunionDAO.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/es/rostan/hibernate/entidades/asistenciaReuniones.java" afterPath="$PROJECT_DIR$/src/main/java/es/rostan/hibernate/entidades/asistenciaReuniones.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/es/rostan/hibernate/entidades/asistenciaReunionesPK.java" afterPath="$PROJECT_DIR$/src/main/java/es/rostan/hibernate/entidades/asistenciaReunionesPK.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/es/rostan/hibernate/entidades/congregacion.java" afterPath="$PROJECT_DIR$/src/main/java/es/rostan/hibernate/entidades/congregacion.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/es/rostan/hibernate/entidades/grupo.java" afterPath="$PROJECT_DIR$/src/main/java/es/rostan/hibernate/entidades/grupo.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/es/rostan/hibernate/entidades/horasServicio.java" afterPath="$PROJECT_DIR$/src/main/java/es/rostan/hibernate/entidades/horasServicio.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/es/rostan/hibernate/entidades/horasServicioPK.java" afterPath="$PROJECT_DIR$/src/main/java/es/rostan/hibernate/entidades/horasServicioPK.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/es/rostan/hibernate/entidades/persona.java" afterPath="$PROJECT_DIR$/src/main/java/es/rostan/hibernate/entidades/persona.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/es/rostan/hibernate/entidades/reunion.java" afterPath="$PROJECT_DIR$/src/main/java/es/rostan/hibernate/entidades/reunion.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/WEB-INF/templates/plantilla.xhtml" afterPath="$PROJECT_DIR$/web/WEB-INF/templates/plantilla.xhtml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/adminAsistencias.xhtml" afterPath="$PROJECT_DIR$/web/adminAsistencias.xhtml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/adminHrsServicio.xhtml" afterPath="$PROJECT_DIR$/web/adminHrsServicio.xhtml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/adminPersonas.xhtml" afterPath="$PROJECT_DIR$/web/adminPersonas.xhtml" />
     </list>
     <ignored path="SisCongregacion.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -115,6 +94,7 @@
       <find>asistencia</find>
       <find>'NULL'</find>
       <find>ISNULL</find>
+      <find>btnAccion</find>
     </findStrings>
     <replaceStrings>
       <replace>dlgReunion</replace>
@@ -147,7 +127,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/META-INF/persistence.xml" />
         <option value="$PROJECT_DIR$/web/WEB-INF/home.xhtml" />
         <option value="$PROJECT_DIR$/web/home.xhtml" />
         <option value="$PROJECT_DIR$/src/main/java/es/rostan/hibernate/bean/login.java" />
@@ -156,48 +135,49 @@
         <option value="$PROJECT_DIR$/web/personas.xhtml" />
         <option value="$PROJECT_DIR$/web/adminCongregaciones.xhtml" />
         <option value="$PROJECT_DIR$/web/adminGrupos.xhtml" />
-        <option value="$PROJECT_DIR$/src/main/java/es/rostan/hibernate/bean/congregacionBean.java" />
         <option value="$PROJECT_DIR$/src/main/java/es/rostan/hibernate/dao/privilegioDAO.java" />
         <option value="$PROJECT_DIR$/src/main/java/es/rostan/hibernate/bean/privilegioBean.java" />
         <option value="$PROJECT_DIR$/web/adminPrivilegios.xhtml" />
         <option value="$PROJECT_DIR$/src/main/java/es/rostan/hibernate/bean/grupoBean.java" />
         <option value="$PROJECT_DIR$/src/main/java/es/rostan/hibernate/bean/reunionBean.java" />
         <option value="$PROJECT_DIR$/web/adminReuniones.xhtml" />
-        <option value="$PROJECT_DIR$/src/main/java/es/rostan/hibernate/entidades/reunion.java" />
-        <option value="$PROJECT_DIR$/src/main/java/es/rostan/hibernate/entidades/asistenciaReunionesPK.java" />
-        <option value="$PROJECT_DIR$/src/main/java/es/rostan/hibernate/entidades/grupo.java" />
         <option value="$PROJECT_DIR$/src/main/java/es/rostan/hibernate/entidades/privilegio.java" />
         <option value="$PROJECT_DIR$/src/main/java/es/rostan/hibernate/dao/grupoDAO.java" />
-        <option value="$PROJECT_DIR$/src/main/java/es/rostan/hibernate/dao/reunionDAO.java" />
-        <option value="$PROJECT_DIR$/src/main/java/es/rostan/hibernate/dao/asistenciaReunionesDAO.java" />
         <option value="$PROJECT_DIR$/src/main/java/es/rostan/hibernate/model/asistenciaDataModel.java" />
-        <option value="$PROJECT_DIR$/src/main/java/es/rostan/hibernate/entidades/congregacion.java" />
-        <option value="$PROJECT_DIR$/src/main/java/es/rostan/hibernate/entidades/asistenciaReuniones.java" />
-        <option value="$PROJECT_DIR$/src/main/java/es/rostan/hibernate/test/testPersona.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml" />
         <option value="$PROJECT_DIR$/src/main/java/es/rostan/hibernate/dao/horasServicioDAO.java" />
         <option value="$PROJECT_DIR$/src/main/java/es/rostan/hibernate/bean/asistenciaReunionesBean.java" />
         <option value="$PROJECT_DIR$/web/adminCargaExcelAsistencias.xhtml" />
         <option value="$PROJECT_DIR$/pom.xml" />
-        <option value="$PROJECT_DIR$/web/adminAsistencias.xhtml" />
         <option value="$PROJECT_DIR$/src/main/java/es/rostan/hibernate/entidades/persona.java" />
         <option value="$PROJECT_DIR$/src/main/java/es/rostan/hibernate/bean/personaBean.java" />
         <option value="$PROJECT_DIR$/src/main/java/es/rostan/hibernate/dao/personaDAO.java" />
         <option value="$PROJECT_DIR$/src/main/java/es/rostan/hibernate/bean/cargaExcelAsistencias.java" />
         <option value="$PROJECT_DIR$/web/adminCargaExcel.xhtml" />
         <option value="$PROJECT_DIR$/src/main/java/es/rostan/hibernate/bean/cargaExcelAsistencia.java" />
-        <option value="$PROJECT_DIR$/src/main/java/es/rostan/hibernate/bean/CargaExcelAsistencia.java" />
-        <option value="$PROJECT_DIR$/web/WEB-INF/templates/plantilla.xhtml" />
         <option value="$PROJECT_DIR$/web/adminCargaExcelHrsServicio.xhtml" />
         <option value="$PROJECT_DIR$/web/adminCargaExcelAsistencia.xhtml" />
-        <option value="$PROJECT_DIR$/src/main/java/es/rostan/hibernate/dao/congregacionDAO.java" />
         <option value="$PROJECT_DIR$/src/main/java/es/rostan/hibernate/entidades/horasServicioPK.java" />
-        <option value="$PROJECT_DIR$/src/main/java/es/rostan/hibernate/entidades/horasServicio.java" />
         <option value="$PROJECT_DIR$/src/main/java/es/rostan/hibernate/bean/horasServicioBean.java" />
-        <option value="$PROJECT_DIR$/src/main/java/es/rostan/hibernate/bean/cargaExcelHrsServicio.java" />
         <option value="$PROJECT_DIR$/web/adminPersonas.xhtml" />
         <option value="$PROJECT_DIR$/web/adminHrsServicio.xhtml" />
+        <option value="$PROJECT_DIR$/src/main/java/es/rostan/hibernate/bean/congregacionBean.java" />
+        <option value="$PROJECT_DIR$/web/WEB-INF/templates/plantilla.xhtml" />
+        <option value="$PROJECT_DIR$/src/main/java/es/rostan/servicio/Utils.java" />
+        <option value="$PROJECT_DIR$/src/main/java/es/rostan/hibernate/bean/cargaExcelHrsServicio.java" />
+        <option value="$PROJECT_DIR$/src/main/java/es/rostan/hibernate/dao/congregacionDAO.java" />
+        <option value="$PROJECT_DIR$/src/main/java/es/rostan/hibernate/dao/reunionDAO.java" />
+        <option value="$PROJECT_DIR$/src/main/java/es/rostan/hibernate/test/testPersona.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/es/rostan/hibernate/entidades/congregacion.java" />
+        <option value="$PROJECT_DIR$/src/main/java/es/rostan/hibernate/entidades/reunion.java" />
+        <option value="$PROJECT_DIR$/src/main/java/es/rostan/hibernate/entidades/grupo.java" />
+        <option value="$PROJECT_DIR$/src/main/java/es/rostan/hibernate/entidades/horasServicio.java" />
+        <option value="$PROJECT_DIR$/src/main/java/es/rostan/hibernate/entidades/asistenciaReunionesPK.java" />
+        <option value="$PROJECT_DIR$/web/adminAsistencias.xhtml" />
+        <option value="$PROJECT_DIR$/src/main/java/es/rostan/hibernate/entidades/asistenciaReuniones.java" />
+        <option value="$PROJECT_DIR$/src/main/java/es/rostan/hibernate/dao/asistenciaReunionesDAO.java" />
         <option value="$APPLICATION_CONFIG_DIR$/consoles/db/9fc0ad96-f27f-4cf5-9536-2f291700b119/console.sql" />
+        <option value="$PROJECT_DIR$/src/main/java/es/rostan/hibernate/bean/CargaExcelAsistencia.java" />
       </list>
     </option>
   </component>
@@ -211,7 +191,7 @@
     <option name="FILTER_ERRORS" value="false" />
     <option name="FILTER_WARNINGS" value="false" />
     <option name="FILTER_INFO" value="false" />
-    <option name="FILTER_DEBUG" value="false" />
+    <option name="FILTER_DEBUG" value="true" />
     <option name="CUSTOM_FILTER" />
   </component>
   <component name="ProjectFrameBounds">
@@ -235,6 +215,9 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -261,11 +244,174 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SisCongregacion_2505" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SisCongregacion_2505" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="WEB-INF" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SisCongregacion_2505" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SisCongregacion_2505" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="WEB-INF" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="templates" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SisCongregacion_2505" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SisCongregacion_2505" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="resources" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="images" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SisCongregacion_2505" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SisCongregacion_2505" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="resources" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="META-INF" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SisCongregacion_2505" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SisCongregacion_2505" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rostan" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="servicio" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SisCongregacion_2505" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SisCongregacion_2505" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rostan" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="hibernate" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SisCongregacion_2505" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SisCongregacion_2505" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="out" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="artifacts" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
-      <pane id="Scratches" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -274,13 +420,14 @@
     <property name="aspect.path.notification.shown" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="js-jscs-nodeInterpreter" value="C:\Program Files\nodejs\node.exe" />
-    <property name="project.structure.last.edited" value="Artifacts" />
+    <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.26610646" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources/META-INF/MANIFEST.MF" />
     <property name="com.intellij.database.dataSource.DataSourceTemplate" value="MySQL" />
     <property name="nodejs_interpreter_path" value="C:/Program Files/nodejs/node" />
     <property name="js.eslint.eslintPackage" value="" />
+    <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file://C:/Users/HP/Documents/Programming/Java/Projects/FHaro/Versionamiento/SisCongregacion_2505/src/main/java/es/rostan/hibernate/bean/asistenciaReunionesBean.java" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -926,7 +1073,12 @@
       <workItem from="1498344309623" duration="2603000" />
       <workItem from="1498413693474" duration="1944000" />
       <workItem from="1498593050815" duration="2668000" />
-      <workItem from="1499625569093" duration="21323000" />
+      <workItem from="1499625569093" duration="21821000" />
+      <workItem from="1499717092042" duration="601000" />
+      <workItem from="1499794600728" duration="1193000" />
+      <workItem from="1500415256619" duration="224000" />
+      <workItem from="1501426501986" duration="8863000" />
+      <workItem from="1502040472739" duration="15026000" />
     </task>
     <task id="LOCAL-00001" summary="Se termina la interfaz basica de maestros del sistema.">
       <created>1496184359114</created>
@@ -970,11 +1122,27 @@
       <option name="project" value="LOCAL" />
       <updated>1496649467559</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Commit #6 - Se genera el programa para cargar el excel con las horas de servicio.">
+      <created>1499652915901</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1499652915901</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="196020000" />
+    <option name="totallyTimeSpent" value="222425000" />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -983,30 +1151,30 @@
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32576618" sideWeight="0.5088889" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32998884" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="CDI" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2521322" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22921109" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.1672043" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="JSF" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39910814" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.39910814" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2173913" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5195095" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32998884" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2543235" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33667782" sideWeight="0.4911111" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.42474917" sideWeight="0.4911111" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Persistence" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.26" sideWeight="0.32378855" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21404682" sideWeight="0.49333334" order="13" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.18123667" sideWeight="0.6762115" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32664436" sideWeight="0.49333334" order="13" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.14978679" sideWeight="0.6762115" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32995737" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32887402" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -1098,11 +1266,12 @@
     <MESSAGE value="Commit #4 - Asistencia a Reuniones, transacción." />
     <MESSAGE value="Commit #5 - Se agregan campos en la Tabla de Persona y se pueden generar ingresos en la tabla de Horas de Servicio desde el Sistema." />
     <MESSAGE value="Commit #6 - Se genera el programa para cargar el excel con las horas de servicio." />
-    <option name="LAST_COMMIT_MESSAGE" value="Commit #6 - Se genera el programa para cargar el excel con las horas de servicio." />
+    <MESSAGE value="Commit #7 - Se genera el programa para cargar el excel con las asistencias. Cambio de estructura a nivel de modelo y base de datos en las asistencias ya que el número de PK's que se debían usar era alto. Se piensa proceder de igual forma con las horas, para asi usar un esquema similar y mejor respuesta en la base." />
+    <option name="LAST_COMMIT_MESSAGE" value="Commit #7 - Se genera el programa para cargar el excel con las asistencias. Cambio de estructura a nivel de modelo y base de datos en las asistencias ya que el número de PK's que se debían usar era alto. Se piensa proceder de igual forma con las horas, para asi usar un esquema similar y mejor respuesta en la base." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="6" />
+      <option name="time" value="10" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -1111,48 +1280,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/es/rostan/hibernate/bean/privilegioBean.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="83" column="4" lean-forward="false" selection-start-line="83" selection-start-column="4" selection-end-line="83" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/es/rostan/hibernate/bean/reunionBean.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="89" column="4" lean-forward="false" selection-start-line="89" selection-start-column="4" selection-end-line="89" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/es/rostan/hibernate/dao/reunionDAO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="23" column="23" lean-forward="false" selection-start-line="23" selection-start-column="23" selection-end-line="23" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/es/rostan/hibernate/bean/grupoBean.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="55" column="4" lean-forward="false" selection-start-line="55" selection-start-column="4" selection-end-line="55" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/adminPrivilegios.xhtml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="173">
-          <caret line="18" column="182" lean-forward="false" selection-start-line="18" selection-start-column="182" selection-end-line="18" selection-end-column="182" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/adminReuniones.xhtml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="173">
-          <caret line="19" column="97" lean-forward="false" selection-start-line="19" selection-start-column="97" selection-end-line="19" selection-end-column="97" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/target/classes/es/rostan/hibernate/entidades/privilegio.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1164,13 +1291,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-153">
           <caret line="17" column="23" lean-forward="true" selection-start-line="17" selection-start-column="23" selection-end-line="17" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/es/rostan/hibernate/entidades/grupo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="6" column="0" lean-forward="false" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -1188,41 +1308,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/es/rostan/hibernate/entidades/asistenciaReunionesPK.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="29" column="63" lean-forward="false" selection-start-line="29" selection-start-column="63" selection-end-line="29" selection-end-column="63" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/index.xhtml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="22" column="59" lean-forward="false" selection-start-line="22" selection-start-column="59" selection-end-line="22" selection-end-column="59" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/META-INF/MANIFEST.MF">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/es/rostan/hibernate/dao/asistenciaReunionesDAO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="26" column="0" lean-forward="false" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/es/rostan/hibernate/bean/asistenciaReunionesBean.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="639">
-          <caret line="193" column="22" lean-forward="true" selection-start-line="193" selection-start-column="22" selection-end-line="193" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/web/adminGrupos.xhtml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="173">
@@ -1237,10 +1322,92 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/es/rostan/hibernate/dao/privilegioDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="39" column="41" lean-forward="true" selection-start-line="35" selection-start-column="12" selection-end-line="39" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/es/rostan/hibernate/entidades/horasServicioPK.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="663">
+          <caret line="41" column="37" lean-forward="false" selection-start-line="41" selection-start-column="37" selection-end-line="41" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/hibernate/hibernate-core/5.2.10.Final/hibernate-core-5.2.10.Final.jar!/org/hibernate/hql/spi/id/persistent/PersistentTableBulkIdStrategy.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/es/rostan/hibernate/bean/horasServicioBean.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="115" column="4" lean-forward="false" selection-start-line="115" selection-start-column="4" selection-end-line="115" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/es/rostan/hibernate/bean/personaBean.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="161">
+          <caret line="120" column="4" lean-forward="false" selection-start-line="120" selection-start-column="4" selection-end-line="120" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/adminPersonas.xhtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="22" column="97" lean-forward="false" selection-start-line="22" selection-start-column="97" selection-end-line="22" selection-end-column="97" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="359">
-          <caret line="85" column="45" lean-forward="true" selection-start-line="85" selection-start-column="45" selection-end-line="85" selection-end-column="45" />
+        <state relative-caret-position="1530">
+          <caret line="90" column="47" lean-forward="true" selection-start-line="90" selection-start-column="47" selection-end-line="90" selection-end-column="47" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/META-INF/MANIFEST.MF">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/WEB-INF/web.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="17" column="10" lean-forward="false" selection-start-line="17" selection-start-column="10" selection-end-line="17" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/es/rostan/hibernate/bean/congregacionBean.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="251">
+          <caret line="93" column="37" lean-forward="false" selection-start-line="93" selection-start-column="37" selection-end-line="93" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/adminCongregaciones.xhtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="22" column="38" lean-forward="true" selection-start-line="22" selection-start-column="38" selection-end-line="22" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/index.xhtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="22" column="59" lean-forward="false" selection-start-line="22" selection-start-column="59" selection-end-line="22" selection-end-column="59" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1252,167 +1419,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/es/rostan/hibernate/bean/congregacionBean.java">
+    <entry file="file://$PROJECT_DIR$/web/adminCargaExcelHrsServicio.xhtml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1224">
-          <caret line="93" column="4" lean-forward="false" selection-start-line="93" selection-start-column="4" selection-end-line="93" selection-end-column="4" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#870#871#0" expanded="false" />
-            <element signature="e#900#901#0" expanded="false" />
-            <element signature="e#998#999#0" expanded="false" />
-            <element signature="e#1033#1034#0" expanded="false" />
-            <element signature="e#1256#1257#0" expanded="false" />
-            <element signature="e#1299#1300#0" expanded="false" />
-            <element signature="e#1557#1558#0" expanded="false" />
-            <element signature="e#1597#1598#0" expanded="false" />
-            <element signature="e#1799#1800#0" expanded="false" />
-            <element signature="e#1831#1832#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/adminCongregaciones.xhtml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="8" lean-forward="false" selection-start-line="11" selection-start-column="8" selection-end-line="11" selection-end-column="8" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/adminAsistencias.xhtml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="46" column="31" lean-forward="false" selection-start-line="46" selection-start-column="31" selection-end-line="46" selection-end-column="31" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/es/rostan/hibernate/entidades/congregacion.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="901">
-          <caret line="68" column="0" lean-forward="true" selection-start-line="68" selection-start-column="0" selection-end-line="68" selection-end-column="0" />
-          <folding>
-            <element signature="method#toString#0;class#congregacion#0" expanded="false" />
-            <element signature="method#equals#0;class#congregacion#0" expanded="false" />
-            <element signature="method#hashCode#0;class#congregacion#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="dbDummy://dbtable:/cdf3f75c/9fc0ad96-f27f-4cf5-9536-2f291700b119/dbcongregacion.congregacion">
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="dbDummy://dbtable:/cdf3f75c/9fc0ad96-f27f-4cf5-9536-2f291700b119/dbcongregacion.grupo">
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="dbDummy://dbtable:/cdf3f75c/9fc0ad96-f27f-4cf5-9536-2f291700b119/dbcongregacion.asistenciareuniones">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="dbDummy://dbtable:/cdf3f75c/9fc0ad96-f27f-4cf5-9536-2f291700b119/dbcongregacion.persona">
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/es/rostan/hibernate/entidades/asistenciaReuniones.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="612">
-          <caret line="51" column="37" lean-forward="true" selection-start-line="51" selection-start-column="37" selection-end-line="51" selection-end-column="37" />
+        <state relative-caret-position="323">
+          <caret line="19" column="0" lean-forward="false" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web/adminCargaExcelAsistencia.xhtml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" column="34" lean-forward="true" selection-start-line="15" selection-start-column="34" selection-end-line="15" selection-end-column="34" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/adminCargaExcelHrsServicio.xhtml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="19" column="0" lean-forward="false" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
-          <folding>
-            <marker date="1499639348653" expanded="true" signature="211:1010" ph="..." />
-            <marker date="1499639348653" expanded="true" signature="484:1002" ph="..." />
-            <marker date="1499639348653" expanded="true" signature="552:992" ph="..." />
-            <marker date="1499639348653" expanded="true" signature="587:970" ph="..." />
-            <marker date="1499639348653" expanded="true" signature="618:949" ph="..." />
-            <marker date="1499639348653" expanded="true" signature="752:866" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/es/rostan/hibernate/dao/privilegioDAO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="39" column="41" lean-forward="true" selection-start-line="35" selection-start-column="12" selection-end-line="39" selection-end-column="41" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/es/rostan/hibernate/entidades/horasServicioPK.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="663">
-          <caret line="41" column="37" lean-forward="false" selection-start-line="41" selection-start-column="37" selection-end-line="41" selection-end-column="37" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/hibernate/hibernate-core/5.2.10.Final/hibernate-core-5.2.10.Final.jar!/org/hibernate/hql/spi/id/persistent/PersistentTableBulkIdStrategy.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#6976#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="26" column="74" lean-forward="true" selection-start-line="26" selection-start-column="74" selection-end-line="26" selection-end-column="74" />
+        <state relative-caret-position="289">
+          <caret line="17" column="79" lean-forward="false" selection-start-line="17" selection-start-column="79" selection-end-line="17" selection-end-column="79" />
           <folding />
         </state>
       </provider>
@@ -1430,26 +1448,88 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/es/rostan/hibernate/test/testPersona.java">
+    <entry file="dbDummy://dbtable:/cdf3f75c/9fc0ad96-f27f-4cf5-9536-2f291700b119/dbcongregacion.persona">
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/glassfish-4.1.1-web/glassfish4/glassfish/modules/trilead-ssh2-repackaged.jar!/com/trilead/ssh2/packets/PacketServiceAccept.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="17" column="1" lean-forward="false" selection-start-line="17" selection-start-column="1" selection-end-line="17" selection-end-column="1" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#1353#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="60" lean-forward="true" selection-start-line="5" selection-start-column="60" selection-end-line="5" selection-end-column="60" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/es/rostan/hibernate/dao/personaDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="20" column="25" lean-forward="false" selection-start-line="20" selection-start-column="25" selection-end-line="20" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/es/rostan/hibernate/entidades/congregacion.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="19" column="29" lean-forward="false" selection-start-line="19" selection-start-column="29" selection-end-line="19" selection-end-column="29" />
+          <folding>
+            <element signature="method#congregacion#1;class#congregacion#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="dbDummy://dbtable:/cdf3f75c/9fc0ad96-f27f-4cf5-9536-2f291700b119/dbcongregacion.grupo">
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/es/rostan/hibernate/entidades/reunion.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="16" column="0" lean-forward="false" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/es/rostan/hibernate/dao/horasServicioDAO.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="104">
-          <caret line="24" column="61" lean-forward="true" selection-start-line="24" selection-start-column="61" selection-end-line="24" selection-end-column="61" />
+        <state relative-caret-position="316">
+          <caret line="29" column="37" lean-forward="false" selection-start-line="29" selection-start-column="37" selection-end-line="29" selection-end-column="37" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/adminHrsServicio.xhtml">
+    <entry file="file://$PROJECT_DIR$/src/main/java/es/rostan/hibernate/entidades/asistenciaReunionesPK.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="280">
-          <caret line="37" column="73" lean-forward="true" selection-start-line="37" selection-start-column="73" selection-end-line="37" selection-end-column="73" />
+        <state relative-caret-position="493">
+          <caret line="31" column="0" lean-forward="true" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -1467,10 +1547,105 @@
         </state>
       </provider>
     </entry>
+    <entry file="dbDummy://dbtable:/cdf3f75c/9fc0ad96-f27f-4cf5-9536-2f291700b119/dbcongregacion.congregacion">
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/es/rostan/hibernate/entidades/persona.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="281">
+          <caret line="46" column="25" lean-forward="false" selection-start-line="46" selection-start-column="25" selection-end-line="46" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/adminReuniones.xhtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="836">
+          <caret line="52" column="54" lean-forward="false" selection-start-line="52" selection-start-column="54" selection-end-line="52" selection-end-column="54" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/adminHrsServicio.xhtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="15" column="34" lean-forward="true" selection-start-line="15" selection-start-column="34" selection-end-line="15" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/es/rostan/hibernate/entidades/asistenciaReuniones.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-565">
+          <caret line="54" column="0" lean-forward="false" selection-start-line="54" selection-start-column="0" selection-end-line="54" selection-end-column="0" />
+          <folding>
+            <element signature="method#asistenciaReuniones#0;class#asistenciaReuniones#0" expanded="false" />
+            <element signature="method#asistenciaReuniones#1;class#asistenciaReuniones#0" expanded="false" />
+            <element signature="method#setCongregacion#0;class#asistenciaReuniones#0" expanded="false" />
+            <element signature="method#toString#0;class#asistenciaReuniones#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/es/rostan/hibernate/bean/asistenciaReunionesBean.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="452">
+          <caret line="140" column="39" lean-forward="false" selection-start-line="140" selection-start-column="39" selection-end-line="140" selection-end-column="39" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/es/rostan/hibernate/test/testPersona.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="17" column="1" lean-forward="false" selection-start-line="17" selection-start-column="1" selection-end-line="17" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="dbDummy://dbtable:/cdf3f75c/9fc0ad96-f27f-4cf5-9536-2f291700b119/dbcongregacion.asistenciareuniones">
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/9fc0ad96-f27f-4cf5-9536-2f291700b119/console.sql">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" column="58" lean-forward="false" selection-start-line="1" selection-start-column="58" selection-end-line="1" selection-end-column="58" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/es/rostan/hibernate/dao/asistenciaReunionesDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="197">
+          <caret line="32" column="74" lean-forward="true" selection-start-line="32" selection-start-column="74" selection-end-line="32" selection-end-column="74" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/es/rostan/servicio/Utils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -1480,90 +1655,68 @@
         <state relative-caret-position="68">
           <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
           <folding>
-            <element signature="method#horasServicio#1;class#horasServicio#0" expanded="false" />
-            <element signature="method#horasServicio#2;class#horasServicio#0" expanded="false" />
-            <element signature="method#horasServicio#3;class#horasServicio#0" expanded="false" />
-            <element signature="method#setCongregacion#0;class#horasServicio#0" expanded="false" />
+            <element signature="method#horasServicio#0;class#horasServicio#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/es/rostan/hibernate/entidades/persona.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/es/rostan/hibernate/entidades/grupo.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="266" column="8" lean-forward="false" selection-start-line="266" selection-start-column="8" selection-end-line="266" selection-end-column="8" />
-          <folding>
-            <element signature="method#persona#1;class#persona#0" expanded="false" />
-            <element signature="method#persona#2;class#persona#0" expanded="false" />
-            <element signature="method#persona#3;class#persona#0" expanded="false" />
-            <element signature="method#setCongregacion#0;class#persona#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/es/rostan/hibernate/bean/horasServicioBean.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="115" column="4" lean-forward="false" selection-start-line="115" selection-start-column="4" selection-end-line="115" selection-end-column="4" />
+        <state relative-caret-position="134">
+          <caret line="81" column="8" lean-forward="false" selection-start-line="81" selection-start-column="8" selection-end-line="81" selection-end-column="8" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web/WEB-INF/templates/plantilla.xhtml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
+        <state relative-caret-position="134">
           <caret line="19" column="113" lean-forward="false" selection-start-line="19" selection-start-column="113" selection-end-line="19" selection-end-column="113" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/es/rostan/hibernate/dao/reunionDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="134">
+          <caret line="23" column="23" lean-forward="false" selection-start-line="23" selection-start-column="23" selection-end-line="23" selection-end-column="23" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/es/rostan/hibernate/dao/congregacionDAO.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="247">
-          <caret line="51" column="49" lean-forward="false" selection-start-line="51" selection-start-column="49" selection-end-line="51" selection-end-column="49" />
+        <state relative-caret-position="134">
+          <caret line="17" column="25" lean-forward="false" selection-start-line="17" selection-start-column="25" selection-end-line="17" selection-end-column="25" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/es/rostan/hibernate/dao/personaDAO.java">
+    <entry file="file://$PROJECT_DIR$/web/adminAsistencias.xhtml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="239">
-          <caret line="65" column="20" lean-forward="false" selection-start-line="65" selection-start-column="20" selection-end-line="65" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/es/rostan/hibernate/bean/personaBean.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="161">
-          <caret line="120" column="4" lean-forward="false" selection-start-line="120" selection-start-column="4" selection-end-line="120" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/es/rostan/hibernate/bean/CargaExcelAsistencia.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-43">
-          <caret line="23" column="31" lean-forward="false" selection-start-line="23" selection-start-column="31" selection-end-line="23" selection-end-column="31" />
+        <state relative-caret-position="134">
+          <caret line="22" column="103" lean-forward="false" selection-start-line="22" selection-start-column="103" selection-end-line="22" selection-end-column="103" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/es/rostan/hibernate/bean/cargaExcelHrsServicio.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="239">
-          <caret line="87" column="13" lean-forward="false" selection-start-line="87" selection-start-column="13" selection-end-line="87" selection-end-column="13" />
+        <state relative-caret-position="125">
+          <caret line="48" column="25" lean-forward="false" selection-start-line="48" selection-start-column="25" selection-end-line="48" selection-end-column="25" />
           <folding>
-            <element signature="method#mesInt#0;class#cargaExcelHrsServicio#0" expanded="false" />
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/adminPersonas.xhtml">
+    <entry file="file://$PROJECT_DIR$/src/main/java/es/rostan/hibernate/bean/CargaExcelAsistencia.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="22" column="97" lean-forward="false" selection-start-line="22" selection-start-column="97" selection-end-line="22" selection-end-column="97" />
-          <folding />
+        <state relative-caret-position="142">
+          <caret line="22" column="20" lean-forward="false" selection-start-line="22" selection-start-column="20" selection-end-line="22" selection-end-column="20" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1621,7 +1774,7 @@
       </state>
       <state key="ModuleStructureConfigurable.UI">
         <settings>
-          <last-edited>SisCongregacion</last-edited>
+          <last-edited>JPA|SisCongregacion</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>

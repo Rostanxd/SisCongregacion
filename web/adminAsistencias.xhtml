@@ -20,32 +20,35 @@
                 <f:event type="preRenderView" listener="#{reunionBean.listarReuniones()}"/>
 
                 <p:dataTable id="dataasistencia" var="asistencia" value="#{asistenciaBean.lstAsistencias}"
-                             style="font-size: smaller; width: auto;" emptyMessage="No hay datos." scrollable="true" scrollHeight="500px">
+                             selectionMode="single" selection="#{asistenciaBean.asistencia}" rowKey="#{asistencia.asrNumRegistro}"
+                             style="font-size: smaller; width: auto;" emptyMessage="No hay datos." scrollable="true" scrollHeight="500px"
+                             rows="25" paginator="true" paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                             rowsPerPageTemplate="25,50,100">
                     <f:facet style="background-image:url(resources/images/fondo.jpg)" name="header"  >
                         Asistencia Reuniones
                     </f:facet>
-                    <p:column headerText="Año" filterBy="#{asistencia.asrAnio}" filterMatchMode="contains" style="width: 75px">
+                    <p:column headerText="Año" filterBy="#{asistencia.asrAnio}" filterMatchMode="contains" style="width: 50px">
                         <p:outputLabel value="#{asistencia.asrAnio}"/>
                     </p:column>
-                    <p:column headerText="Año Teocrático" filterBy="#{asistencia.asrAnioTeo}" filterMatchMode="contains" style="width: 150px">
+                    <p:column headerText="Año Teocrático" filterBy="#{asistencia.asrAnioTeo}" filterMatchMode="contains" style="width: 50px">
                         <p:outputLabel value="#{asistencia.asrAnioTeo}"/>
                     </p:column>
-                    <p:column headerText="Mes" style="width: 150px">
+                    <p:column headerText="Mes" style="width: 50px">
                         <p:outputLabel value="#{asistenciaBean.buscaMesNombre(asistencia.asrMes)}"/>
                     </p:column>
-                    <p:column headerText="Congregación" filterBy="#{asistencia.congregacion.cngNombre}" filterMatchMode="contains" style="width: 150px">
+                    <p:column headerText="Congregación" filterBy="#{asistencia.congregacion.cngNombre}" filterMatchMode="contains" style="width: 100px">
                         <p:outputLabel value="#{asistencia.congregacion.cngNombre}"/>
                     </p:column>
-                    <p:column headerText="Num. Reuniones" filterBy="#{asistencia.asrNumReunion}" filterMatchMode="contains" style="width: 150px">
+                    <p:column headerText="Num. Reuniones" filterBy="#{asistencia.asrNumReunion}" filterMatchMode="contains" style="width: 50px">
                         <p:outputLabel value="#{asistencia.asrNumReunion}"/>
                     </p:column>
                     <p:column headerText="Reunión" filterBy="#{asistencia.reunion.renNombre}" filterMatchMode="contains" style="width: 150px">
                         <p:outputLabel value="#{asistencia.reunion.renNombre}"/>
                     </p:column>
-                    <p:column headerText="Semana" filterBy="#{asistencia.asrSemana}" filterMatchMode="contains" style="width: 150px">
+                    <p:column headerText="Semana" filterBy="#{asistencia.asrSemana}" filterMatchMode="contains" style="width: 50px">
                         <p:outputLabel value="#{asistencia.asrSemana}"/>
                     </p:column>
-                    <p:column headerText="# Asistencias" filterBy="#{asistencia.asrAsistencias}" filterMatchMode="contains" style="width: 150px">
+                    <p:column headerText="# Asistencias" filterBy="#{asistencia.asrAsistencias}" filterMatchMode="contains" style="width: 50px">
                         <p:outputLabel value="#{asistencia.asrAsistencias}"/>
                     </p:column>
                     <f:facet name="footer">

@@ -47,4 +47,14 @@ public class reunionDAO implements Serializable{
             em.close();
         }
     }
+
+    public reunion buscaReunionPorNombre(String renNombre){
+        System.out.println("buscaReunionPorNombre <- " + renNombre);
+        EntityManager em = emf.createEntityManager();
+        Query qry = em.createQuery("SELECT r FROM reunion AS r WHERE r.renNombre LIKE :renNombre");
+        qry.setParameter("renNombre", "%" + renNombre + "%");
+        reunion r = (reunion) qry.getSingleResult();
+        System.out.println("buscaReunionPorNombre -> " + r.getRenNombre());
+        return r;
+    }
 }

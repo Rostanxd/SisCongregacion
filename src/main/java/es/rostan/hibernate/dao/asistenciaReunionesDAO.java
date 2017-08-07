@@ -8,6 +8,8 @@ import javax.persistence.Persistence;
 import javax.persistence.Query;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -16,6 +18,14 @@ import java.util.List;
 public class asistenciaReunionesDAO implements Serializable{
 
     private EntityManagerFactory emf = Persistence.createEntityManagerFactory("Persistencia");
+
+    public Integer secuenciaAsistencia(){
+        EntityManager em = emf.createEntityManager();
+        Query qry = em.createQuery("SELECT COUNT(a) FROM asistenciaReuniones AS a");
+        Long numRegistros = (Long) qry.getSingleResult();
+        em.close();
+        return numRegistros.intValue();
+    }
 
     public List<asistenciaReuniones> lstAsistencias(){
         List<asistenciaReuniones> lstAsistencia = new ArrayList<>();
@@ -26,7 +36,17 @@ public class asistenciaReunionesDAO implements Serializable{
     }
 
     public void ingresarAsistencia(asistenciaReuniones asistenciaReuniones){
-        asistenciaReuniones.setCngCodigo(asistenciaReuniones.getCongregacion().getCngCodigo());
+        Date date = Calendar.getInstance().getTime();
+        Integer numRegistros = secuenciaAsistencia();
+        System.out.println("ingresarAsistencia - numRegistro -> " + numRegistros.toString());
+
+        asistenciaReuniones.setCongregacion(asistenciaReuniones.getCongregacion());
+        asistenciaReuniones.setReunion(asistenciaReuniones.getReunion());
+        asistenciaReuniones.setAsrNumRegistro(numRegistros + 1);
+        asistenciaReuniones.setAsrFecRegistro(date);
+        asistenciaReuniones.setAsrUsrRegistro("ADMIN");
+        asistenciaReuniones.setAsrFecModifica(date);
+        asistenciaReuniones.setAsrUsrModifica("ADMIN");
 
         EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();
@@ -36,15 +56,11 @@ public class asistenciaReunionesDAO implements Serializable{
     }
 
     public void actualizarAsistencia(asistenciaReuniones asisUpd){
+        Date date = Calendar.getInstance().getTime();
         EntityManager em = emf.createEntityManager();
         try{
-            Query qry = em.createQuery("SELECT a FROM asistenciaReuniones as a " +
-                    "WHERE a.asrAnio = :anio AND a.asrAnioTeo = :anioTeo AND " +
-                    "a.cngCodigo = :cng AND a.asrMes = :mes");
-            qry.setParameter("anio", asisUpd.getAsrAnio());
-            qry.setParameter("anioTeo", asisUpd.getAsrAnioTeo());
-            qry.setParameter("cng", asisUpd.getCngCodigo());
-            qry.setParameter("mes", asisUpd.getAsrMes());
+            Query qry = em.createQuery("SELECT a FROM asistenciaReuniones as a WHERE a.asrNumRegistro = :asrNumRegistro");
+            qry.setParameter("asrNumRegistro", asisUpd.getAsrNumRegistro());
 
             em.getTransaction().begin();
             asistenciaReuniones asis = (asistenciaReuniones) qry.getSingleResult();
@@ -52,7 +68,11 @@ public class asistenciaReunionesDAO implements Serializable{
             asis.setReunion(asisUpd.getReunion());
             asis.setAsrSemana(asisUpd.getAsrSemana());
             asis.setAsrAsistencias(asisUpd.getAsrAsistencias());
+            asis.setAsrFecModifica(date);
+            asis.setAsrUsrModifica("ADMIN");
+
             em.getTransaction().commit();
+
         }catch (Exception e){
             em.getTransaction().rollback();
             throw e;

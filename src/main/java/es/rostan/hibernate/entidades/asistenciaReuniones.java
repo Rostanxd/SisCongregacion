@@ -2,6 +2,7 @@ package es.rostan.hibernate.entidades;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Date;
 
 import es.rostan.hibernate.entidades.reunion;
 
@@ -10,55 +11,92 @@ import es.rostan.hibernate.entidades.reunion;
  */
 @Entity
 @Table(name = "asistenciaReuniones")
-@IdClass(asistenciaReunionesPK.class)
 public class asistenciaReuniones implements Serializable {
 
     @Id
+    @Column(length = 4)
+    private Integer asrNumRegistro;
+
+    @Column(length = 4)
     private Integer asrAnio;
 
-    @Id
+    @Column(length = 4)
     private Integer asrAnioTeo;
 
-    @Id
+    @Column(length = 10)
     private Integer asrMes;
 
-    @Id
+    @Column
     private String cngCodigo;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "cngCodigo", updatable = false, insertable = false,
-        referencedColumnName = "cngCodigo")
-    private congregacion congregacion;
+    @Column(length = 4)
+    private Integer asrNumReunion;
+
+    @Column(length = 2)
+    private String renCodigo;
+
+    @Column(length = 10)
+    private String asrSemana;
+
+    @Column(length = 4)
+    private Integer asrAsistencias;
 
     @Column
-    private Integer asrNumReunion;
+    private Date asrFecRegistro;
+
+    @Column
+    private String asrUsrRegistro;
+
+    @Column
+    private Date asrFecModifica;
+
+    @Column
+    private String asrUsrModifica;
+
+//    RELACIONES
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "cngCodigo", updatable = false, insertable = false,
+            referencedColumnName = "cngCodigo")
+    private congregacion congregacion;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "renCodigo", updatable = false, insertable = false,
-        referencedColumnName = "renCodigo")
+            referencedColumnName = "renCodigo")
     private reunion reunion;
-
-    private String asrSemana;
-
-    private Integer asrAsistencias;
 
 //    CONSTRUCTOR
     public asistenciaReuniones(){
 
     }
 
-    public asistenciaReuniones(Integer asrAnio, Integer asrAnioTeo, Integer asrMes, es.rostan.hibernate.entidades.congregacion congregacion, Integer asrNumReunion, es.rostan.hibernate.entidades.reunion reunion, String asrSemana, Integer asrAsistencias) {
+    public asistenciaReuniones(Integer asrNumRegistro, Integer asrAnio, Integer asrAnioTeo, Integer asrMes, Integer asrNumReunion, String asrSemana, Integer asrAsistencias, Date asrFecRegistro, String asrUsrRegistro, Date asrFecModifica, String asrUsrModifica, es.rostan.hibernate.entidades.congregacion congregacion, es.rostan.hibernate.entidades.reunion reunion) {
+        this.asrNumRegistro = asrNumRegistro;
         this.asrAnio = asrAnio;
         this.asrAnioTeo = asrAnioTeo;
         this.asrMes = asrMes;
-        this.congregacion = congregacion;
         this.asrNumReunion = asrNumReunion;
-        this.reunion = reunion;
         this.asrSemana = asrSemana;
         this.asrAsistencias = asrAsistencias;
+        this.asrFecRegistro = asrFecRegistro;
+        this.asrUsrRegistro = asrUsrRegistro;
+        this.asrFecModifica = asrFecModifica;
+        this.asrUsrModifica = asrUsrModifica;
+        this.congregacion = congregacion;
+        this.reunion = reunion;
+
+        this.cngCodigo = congregacion.getCngCodigo();
+        this.renCodigo = reunion.getRenCodigo();
     }
 
-//    GETTER Y SETTERS
+    //    GETTER Y SETTERS
+    public Integer getAsrNumRegistro() {
+        return asrNumRegistro;
+    }
+
+    public void setAsrNumRegistro(Integer asrNumRegistro) {
+        this.asrNumRegistro = asrNumRegistro;
+    }
+
     public Integer getAsrAnio() {
         return asrAnio;
     }
@@ -129,6 +167,46 @@ public class asistenciaReuniones implements Serializable {
 
     public void setAsrAsistencias(Integer asrAsistencias) {
         this.asrAsistencias = asrAsistencias;
+    }
+
+    public String getRenCodigo() {
+        return renCodigo;
+    }
+
+    public void setRenCodigo(String renCodigo) {
+        this.renCodigo = renCodigo;
+    }
+
+    public Date getAsrFecRegistro() {
+        return asrFecRegistro;
+    }
+
+    public void setAsrFecRegistro(Date asrFecRegistro) {
+        this.asrFecRegistro = asrFecRegistro;
+    }
+
+    public String getAsrUsrRegistro() {
+        return asrUsrRegistro;
+    }
+
+    public void setAsrUsrRegistro(String asrUsrRegistro) {
+        this.asrUsrRegistro = asrUsrRegistro;
+    }
+
+    public Date getAsrFecModifica() {
+        return asrFecModifica;
+    }
+
+    public void setAsrFecModifica(Date asrFecModifica) {
+        this.asrFecModifica = asrFecModifica;
+    }
+
+    public String getAsrUsrModifica() {
+        return asrUsrModifica;
+    }
+
+    public void setAsrUsrModifica(String asrUsrModifica) {
+        this.asrUsrModifica = asrUsrModifica;
     }
 
     @Override

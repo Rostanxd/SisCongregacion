@@ -12,12 +12,13 @@ import java.util.Set;
 public class reunion implements Serializable{
 
     @Id
+    @Column(length = 2)
     private String renCodigo;
 
-    @Column
+    @Column(length = 10)
     private String renNombre;
 
-    @Column
+    @Column(length = 1)
     private String renEstado;
 
     @OneToMany(mappedBy = "reunion", cascade = CascadeType.ALL)

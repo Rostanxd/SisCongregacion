@@ -12,20 +12,47 @@ import java.io.Serializable;
 public class horasServicio implements Serializable{
 
     @Id
+    @Column(length = 4)
     private Integer achAnio;
 
     @Id
+    @Column(length = 4)
     private Integer achAnioServ;
 
     @Id
+    @Column(length = 2)
     private Integer achMes;
 
     @Id
+    @Column(length = 11)
     private Integer achNumRegistro;
 
     @Id
+    @Column(length = 2)
     private String cngCodigo;
 
+    @Column(length = 7)
+    private Integer achNumPublicaciones;
+
+    @Column(length = 7)
+    private Integer achNumVideos;
+
+    @Column(length = 7, precision = 2)
+    private Double achHrsMinisterio;
+
+    @Column(length = 7)
+    private Integer achNumRevistas;
+
+    @Column(length = 7, precision = 2)
+    private Double achHrsEstudio;
+
+    @Column(length = 150)
+    private String achObservaciones;
+
+    @Column(length = 80)
+    private String achPrsNombres;
+
+//    RELACIONES
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "cngCodigo", updatable = false, insertable = false,
             referencedColumnName = "cngCodigo")
@@ -34,20 +61,6 @@ public class horasServicio implements Serializable{
     @OneToOne
     @JoinColumn(name = "prsCodigo")
     private persona persona;
-
-    private Integer achNumPublicaciones;
-
-    private Integer achNumVideos;
-
-    private Double achHrsMinisterio;
-
-    private Integer achNumRevistas;
-
-    private Double achHrsEstudio;
-
-    private String achObservaciones;
-
-    private String achPrsNombres;
 
 //    CONSTRUCTOR
     public horasServicio(){

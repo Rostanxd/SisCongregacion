@@ -11,6 +11,9 @@ import java.io.Serializable;
 public class asistenciaReunionesPK implements Serializable{
 
     @Column
+    private Integer asrNumRegistro;
+
+    @Column
     private Integer asrAnio;
 
     @Column
@@ -27,7 +30,8 @@ public class asistenciaReunionesPK implements Serializable{
 
     }
 
-    public asistenciaReunionesPK(Integer asrAnio, Integer asrAnioTeo, Integer asrMes, String cngCodigo) {
+    public asistenciaReunionesPK(Integer asrNumRegistro, Integer asrAnio, Integer asrAnioTeo, Integer asrMes, String cngCodigo) {
+        this.asrNumRegistro = asrNumRegistro;
         this.asrAnio = asrAnio;
         this.asrAnioTeo = asrAnioTeo;
         this.asrMes = asrMes;
@@ -41,6 +45,7 @@ public class asistenciaReunionesPK implements Serializable{
 
         asistenciaReunionesPK that = (asistenciaReunionesPK) o;
 
+        if (!asrNumRegistro.equals(that.asrNumRegistro)) return false;
         if (!asrAnio.equals(that.asrAnio)) return false;
         if (!asrAnioTeo.equals(that.asrAnioTeo)) return false;
         if (!asrMes.equals(that.asrMes)) return false;
@@ -49,7 +54,8 @@ public class asistenciaReunionesPK implements Serializable{
 
     @Override
     public int hashCode() {
-        int result = asrAnio.hashCode();
+        int result = asrNumRegistro.hashCode();
+        result = 31 * result + asrAnio.hashCode();
         result = 31 * result + asrAnioTeo.hashCode();
         result = 31 * result + asrMes.hashCode();
         result = 31 * result + cngCodigo.hashCode();

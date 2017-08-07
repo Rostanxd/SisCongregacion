@@ -13,12 +13,13 @@ import java.util.Set;
 public class congregacion implements Serializable {
 
     @Id
+    @Column(length = 2)
     private String cngCodigo;
 
-    @Column
+    @Column(length = 80)
     private String cngNombre;
 
-    @Column
+    @Column(length = 1)
     private String cngEstado;
 
     @OneToMany(mappedBy = "congregacion", cascade = CascadeType.ALL)

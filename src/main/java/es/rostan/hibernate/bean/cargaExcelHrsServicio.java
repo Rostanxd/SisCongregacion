@@ -1,10 +1,10 @@
 package es.rostan.hibernate.bean;
 
-import com.sun.scenario.effect.impl.sw.sse.SSEBlend_SRC_OUTPeer;
 import es.rostan.hibernate.dao.congregacionDAO;
 import es.rostan.hibernate.dao.horasServicioDAO;
 import es.rostan.hibernate.entidades.congregacion;
 import es.rostan.hibernate.entidades.horasServicio;
+import es.rostan.servicio.Utils;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
@@ -29,7 +29,7 @@ public class cargaExcelHrsServicio implements Serializable {
     public void handleFileUpload(FileUploadEvent event) {
         FacesMessage message = null;
         try{
-            lecturaExcelAsistencias(event.getFile().getInputstream());
+            lecturaExcelHrsServicio(event.getFile().getInputstream());
             message = new FacesMessage("Mesaje del Sistema", event.getFile().getFileName() + " ha sido cargado exitosamente.");
             FacesContext.getCurrentInstance().addMessage(null, message);
         }catch (IOException e){
@@ -39,7 +39,7 @@ public class cargaExcelHrsServicio implements Serializable {
         }
     }
 
-    public void lecturaExcelAsistencias(InputStream input) throws IOException{
+    public void lecturaExcelHrsServicio(InputStream input) throws IOException{
 
         XSSFWorkbook workbook = new XSSFWorkbook(input);
         XSSFSheet sheet = workbook.getSheetAt(0);   //  Pestaña a trabajar del Excel.
@@ -66,7 +66,7 @@ public class cargaExcelHrsServicio implements Serializable {
                     //  PK's
                     hs.setAchAnio((int) row.getCell(0).getNumericCellValue());
                     hs.setAchAnioServ((int) row.getCell(1).getNumericCellValue());
-                    hs.setAchMes(mesInt(row.getCell(2).getStringCellValue()));
+                    hs.setAchMes(Utils.mesInt(row.getCell(2).getStringCellValue()));
                     hs.setAchNumRegistro(cont - 1);
                     hs.setCongregacion(c);
 
@@ -85,54 +85,9 @@ public class cargaExcelHrsServicio implements Serializable {
 
                     System.out.println("Linea: " + String.valueOf(cont - 1) + " " + row.getCell(4).getStringCellValue());
                 }
-            }else{
-                //  Titulos del Excel
             }
         }
 
         System.out.println("Registros totales: " + String.valueOf(cont));
-    }
-
-    private int mesInt(String mesString){
-        int mes = 0;
-        switch (mesString){
-            case "Enero":
-                mes = 1;
-                break;
-            case "Febrero":
-                mes = 2;
-                break;
-            case "Marzo":
-                mes = 3;
-                break;
-            case "Abril":
-                mes = 4;
-                break;
-            case "Mayo":
-                mes = 5;
-                break;
-            case "Junio":
-                mes = 6;
-                break;
-            case "Julio":
-                mes = 7;
-                break;
-            case "Agosto":
-                mes = 8;
-                break;
-            case "Septiembre":
-                mes = 9;
-                break;
-            case "Octubre":
-                mes = 10;
-                break;
-            case "Noviembre":
-                mes = 11;
-                break;
-            case "Diciembre":
-                mes = 12;
-                break;
-        }
-        return mes;
     }
 }
