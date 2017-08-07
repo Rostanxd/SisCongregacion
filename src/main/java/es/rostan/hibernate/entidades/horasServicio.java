@@ -2,32 +2,29 @@ package es.rostan.hibernate.entidades;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  * Created by Rostan on 02/06/2017.
  */
 @Entity
 @Table(name = "horasServicio")
-@IdClass(horasServicioPK.class)
+//@IdClass(horasServicioPK.class)
 public class horasServicio implements Serializable{
-
-    @Id
-    @Column(length = 4)
-    private Integer achAnio;
-
-    @Id
-    @Column(length = 4)
-    private Integer achAnioServ;
-
-    @Id
-    @Column(length = 2)
-    private Integer achMes;
 
     @Id
     @Column(length = 11)
     private Integer achNumRegistro;
 
-    @Id
+    @Column(length = 4)
+    private Integer achAnio;
+
+    @Column(length = 4)
+    private Integer achAnioServ;
+
+    @Column(length = 2)
+    private Integer achMes;
+
     @Column(length = 2)
     private String cngCodigo;
 
@@ -52,6 +49,14 @@ public class horasServicio implements Serializable{
     @Column(length = 80)
     private String achPrsNombres;
 
+    private Date achFecRegistro;
+
+    private String achUsrRegistro;
+
+    private Date achFecModifica;
+
+    private String achUsrModifica;
+
 //    RELACIONES
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "cngCodigo", updatable = false, insertable = false,
@@ -67,45 +72,11 @@ public class horasServicio implements Serializable{
 
     }
 
-    public horasServicio(Integer achAnio, Integer achAnioServ, Integer achMes, String cngCodigo, es.rostan.hibernate.entidades.congregacion congregacion, es.rostan.hibernate.entidades.persona persona, Integer achNumPublicaciones, Integer achNumVideos, Double achHrsMinisterio, Integer achNumRevistas, Double achHrsEstudio, String achObservaciones) {
-        this.achAnio = achAnio;
-        this.achAnioServ = achAnioServ;
-        this.achMes = achMes;
-        this.cngCodigo = cngCodigo;
-        this.congregacion = congregacion;
-        this.persona = persona;
-        this.achNumPublicaciones = achNumPublicaciones;
-        this.achNumVideos = achNumVideos;
-        this.achHrsMinisterio = achHrsMinisterio;
-        this.achNumRevistas = achNumRevistas;
-        this.achHrsEstudio = achHrsEstudio;
-        this.achObservaciones = achObservaciones;
-    }
-
-    public horasServicio(Integer achAnio, Integer achAnioServ, Integer achMes, String cngCodigo, es.rostan.hibernate.entidades.congregacion congregacion, es.rostan.hibernate.entidades.persona persona, Integer achNumPublicaciones, Integer achNumVideos, Double achHrsMinisterio, Integer achNumRevistas, Double achHrsEstudio, String achObservaciones, String achPrsNombres) {
-        this.achAnio = achAnio;
-        this.achAnioServ = achAnioServ;
-        this.achMes = achMes;
-        this.cngCodigo = cngCodigo;
-        this.congregacion = congregacion;
-        this.persona = persona;
-        this.achNumPublicaciones = achNumPublicaciones;
-        this.achNumVideos = achNumVideos;
-        this.achHrsMinisterio = achHrsMinisterio;
-        this.achNumRevistas = achNumRevistas;
-        this.achHrsEstudio = achHrsEstudio;
-        this.achObservaciones = achObservaciones;
-        this.achPrsNombres = achPrsNombres;
-    }
-
-    public horasServicio(Integer achAnio, Integer achAnioServ, Integer achMes, Integer achNumRegistro, String cngCodigo, es.rostan.hibernate.entidades.congregacion congregacion, es.rostan.hibernate.entidades.persona persona, Integer achNumPublicaciones, Integer achNumVideos, Double achHrsMinisterio, Integer achNumRevistas, Double achHrsEstudio, String achObservaciones, String achPrsNombres) {
-        this.achAnio = achAnio;
-        this.achAnioServ = achAnioServ;
-        this.achMes = achMes;
+    public horasServicio(Integer achNumRegistro, Integer achAnio, Integer achAnioServ, Integer achMes, Integer achNumPublicaciones, Integer achNumVideos, Double achHrsMinisterio, Integer achNumRevistas, Double achHrsEstudio, String achObservaciones, String achPrsNombres, Date achFecRegistro, String achUsrRegistro, Date achFecModifica, String achUsrModifica, es.rostan.hibernate.entidades.congregacion congregacion, es.rostan.hibernate.entidades.persona persona) {
         this.achNumRegistro = achNumRegistro;
-        this.cngCodigo = cngCodigo;
-        this.congregacion = congregacion;
-        this.persona = persona;
+        this.achAnio = achAnio;
+        this.achAnioServ = achAnioServ;
+        this.achMes = achMes;
         this.achNumPublicaciones = achNumPublicaciones;
         this.achNumVideos = achNumVideos;
         this.achHrsMinisterio = achHrsMinisterio;
@@ -113,6 +84,14 @@ public class horasServicio implements Serializable{
         this.achHrsEstudio = achHrsEstudio;
         this.achObservaciones = achObservaciones;
         this.achPrsNombres = achPrsNombres;
+        this.achFecRegistro = achFecRegistro;
+        this.achUsrRegistro = achUsrRegistro;
+        this.achFecModifica = achFecModifica;
+        this.achUsrModifica = achUsrModifica;
+        this.congregacion = congregacion;
+        this.persona = persona;
+
+        this.cngCodigo = congregacion.getCngCodigo();
     }
 
     //    GETTERS Y SETTERS
@@ -226,5 +205,37 @@ public class horasServicio implements Serializable{
 
     public void setAchNumRegistro(Integer achNumRegistro) {
         this.achNumRegistro = achNumRegistro;
+    }
+
+    public Date getAchFecRegistro() {
+        return achFecRegistro;
+    }
+
+    public void setAchFecRegistro(Date achFecRegistro) {
+        this.achFecRegistro = achFecRegistro;
+    }
+
+    public String getAchUsrRegistro() {
+        return achUsrRegistro;
+    }
+
+    public void setAchUsrRegistro(String achUsrRegistro) {
+        this.achUsrRegistro = achUsrRegistro;
+    }
+
+    public Date getAchFecModifica() {
+        return achFecModifica;
+    }
+
+    public void setAchFecModifica(Date achFecModifica) {
+        this.achFecModifica = achFecModifica;
+    }
+
+    public String getAchUsrModifica() {
+        return achUsrModifica;
+    }
+
+    public void setAchUsrModifica(String achUsrModifica) {
+        this.achUsrModifica = achUsrModifica;
     }
 }

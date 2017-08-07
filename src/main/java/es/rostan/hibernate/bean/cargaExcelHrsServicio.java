@@ -46,10 +46,6 @@ public class cargaExcelHrsServicio implements Serializable {
         Iterator<Row> rowIterator = sheet.iterator();
         int cont = 0;
 
-        congregacion c = new congregacion();
-        congregacionDAO cd = new congregacionDAO();
-        c = cd.buscaCongregacion("1");
-
         Row row;
         while(rowIterator.hasNext()){
             row = rowIterator.next();
@@ -60,6 +56,8 @@ public class cargaExcelHrsServicio implements Serializable {
                 if ((int) row.getCell(0).getNumericCellValue() == 0){
                     break;
                 }else {
+                    congregacionDAO cd = new congregacionDAO();
+
                     horasServicio hs = new horasServicio();
 
                     //  Creacion de la Horas Servicio
@@ -68,7 +66,6 @@ public class cargaExcelHrsServicio implements Serializable {
                     hs.setAchAnioServ((int) row.getCell(1).getNumericCellValue());
                     hs.setAchMes(Utils.mesInt(row.getCell(2).getStringCellValue()));
                     hs.setAchNumRegistro(cont - 1);
-                    hs.setCongregacion(c);
 
                     hs.setPersona(null);
                     hs.setAchPrsNombres(row.getCell(4).getStringCellValue());
@@ -80,10 +77,14 @@ public class cargaExcelHrsServicio implements Serializable {
                     hs.setAchHrsEstudio(row.getCell(9).getNumericCellValue());
                     hs.setAchObservaciones(row.getCell(10).getStringCellValue());
 
+//                    FK's
+                    hs.setCngCodigo(cd.buscaCongregacionPorNombre(row.getCell(3).getStringCellValue()).getCngCodigo());
+                    hs.setCongregacion(cd.buscaCongregacionPorNombre(row.getCell(3).getStringCellValue()));
+
                     horasServicioDAO hsd = new horasServicioDAO();
                     hsd.ingresarHrsServicio(hs);
 
-                    System.out.println("Linea: " + String.valueOf(cont - 1) + " " + row.getCell(4).getStringCellValue());
+                    System.out.println("Linea: " + String.valueOf(cont) + " " + row.getCell(4).getStringCellValue());
                 }
             }
         }

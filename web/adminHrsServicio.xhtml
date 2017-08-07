@@ -20,6 +20,7 @@
                 <f:event type="preRenderView" listener="#{personaBean.listarPersonas}"/>
 
                 <p:dataTable id="dataHrsServicio" var="hrsServicio" value="#{hrsServicioBean.lstHrsServicio}"
+                             selectionMode="single" selection="#{hrsServicioBean.hrsServicio}" rowKey="#{hrsServicio.achNumRegistro}"
                              style="font-size: smaller; width: auto;" emptyMessage="No hay datos." scrollable="true" scrollHeight="500px"
                              rows="25"
                              paginator="true"
