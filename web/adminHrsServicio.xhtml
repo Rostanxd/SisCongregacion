@@ -28,7 +28,19 @@
                              rowsPerPageTemplate="25,50,100">
                     <f:facet style="background-image:url(resources/images/fondo.jpg)" name="header"  >
                         Horas de Servicio
+                        <div style="float:right">
+                            <h:commandLink>
+                                <p:graphicImage url="resources/images/excel.png" width="16"/>
+                                <p:dataExporter type="xls" target="dataHrsServicio" fileName="hrsServicio" />
+                            </h:commandLink>
+
+                            <h:commandLink>
+                                <p:graphicImage width="16" url="resources/images/pdf.png"/>
+                                <p:dataExporter type="pdf" target="dataHrsServicio" fileName="hrsServicio"/>
+                            </h:commandLink>
+                        </div>
                     </f:facet>
+
                     <p:column headerText="Año" filterBy="#{hrsServicio.achAnio}" filterMatchMode="contains" style="width: 100px">
                         <p:outputLabel value="#{hrsServicio.achAnio}"/>
                     </p:column>
@@ -110,7 +122,7 @@
                             <p:column colspan="3">
                                 <p:selectOneMenu value="#{hrsServicioBean.hrsServicioSelected.persona}" converter="omnifaces.SelectItemsConverter" style="width: 450px">
                                     <f:selectItem noSelectionOption="true" itemLabel="Seleccione..." itemValue="#{null}"/>
-                                    <f:selectItems value="#{personaBean.lstPersonas}" var="persona" itemLabel="#{persona.prsNombres}" itemValue="#{persona}"/>
+                                    <f:selectItems value="#{personaBean.lstPersonas}" var="persona" itemLabel="#{persona.prsApellidos}" itemValue="#{persona}"/>
                                 </p:selectOneMenu>
                             </p:column>
                         </p:row>

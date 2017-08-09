@@ -17,7 +17,9 @@ import javax.faces.context.FacesContext;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 
 /**
  * Created by Rostan on 06/06/2017.
@@ -26,12 +28,16 @@ import java.util.Iterator;
 @ViewScoped
 public class cargaExcelHrsServicio implements Serializable {
 
+    private List<horasServicio> list = new ArrayList<>();
+
+    private FacesMessage message;
+
     public void handleFileUpload(FileUploadEvent event) {
-        FacesMessage message = null;
         try{
-            lecturaExcelHrsServicio(event.getFile().getInputstream());
-            message = new FacesMessage("Mesaje del Sistema", event.getFile().getFileName() + " ha sido cargado exitosamente.");
-            FacesContext.getCurrentInstance().addMessage(null, message);
+            if (lecturaExcelHrsServicio(event.getFile().getInputstream())) {
+                message = new FacesMessage("Mesaje del Sistema", event.getFile().getFileName() + " ha sido cargado exitosamente.");
+                FacesContext.getCurrentInstance().addMessage(null, message);
+            }
         }catch (IOException e){
             message = new FacesMessage("Mesaje del Sistema", event.getFile().getFileName() + ": Error cargando el archivo");
             FacesContext.getCurrentInstance().addMessage(null, message);
@@ -39,56 +45,81 @@ public class cargaExcelHrsServicio implements Serializable {
         }
     }
 
-    public void lecturaExcelHrsServicio(InputStream input) throws IOException{
+    public Boolean lecturaExcelHrsServicio(InputStream input) throws IOException{
 
-        XSSFWorkbook workbook = new XSSFWorkbook(input);
-        XSSFSheet sheet = workbook.getSheetAt(0);   //  Pestaña a trabajar del Excel.
-        Iterator<Row> rowIterator = sheet.iterator();
+        boolean flag = false;
+        list.clear();
         int cont = 0;
 
-        Row row;
-        while(rowIterator.hasNext()){
-            row = rowIterator.next();
-            cont += 1;
+        try {
+            XSSFWorkbook workbook = new XSSFWorkbook(input);
+            XSSFSheet sheet = workbook.getSheetAt(0);   //  Pestaña a trabajar del Excel.
+            Iterator<Row> rowIterator = sheet.iterator();
 
-            if (cont != 1) {
+            Row row;
+            while (rowIterator.hasNext()) {
+                row = rowIterator.next();
+                cont += 1;
 
-                if ((int) row.getCell(0).getNumericCellValue() == 0){
-                    break;
-                }else {
-                    congregacionDAO cd = new congregacionDAO();
+                if (cont != 1) {
 
-                    horasServicio hs = new horasServicio();
+                    if ((int) row.getCell(0).getNumericCellValue() == 0) {
+                        break;
+                    } else {
+                        congregacionDAO cd = new congregacionDAO();
 
-                    //  Creacion de la Horas Servicio
-                    //  PK's
-                    hs.setAchAnio((int) row.getCell(0).getNumericCellValue());
-                    hs.setAchAnioServ((int) row.getCell(1).getNumericCellValue());
-                    hs.setAchMes(Utils.mesInt(row.getCell(2).getStringCellValue()));
-                    hs.setAchNumRegistro(cont - 1);
+                        horasServicio hs = new horasServicio();
 
-                    hs.setPersona(null);
-                    hs.setAchPrsNombres(row.getCell(4).getStringCellValue());
-                    hs.setAchNumPublicaciones((int) row.getCell(5).getNumericCellValue());
+                        //  Creacion de la Horas Servicio
+                        //  PK's
+                        hs.setAchAnio((int) row.getCell(0).getNumericCellValue());
+                        hs.setAchAnioServ((int) row.getCell(1).getNumericCellValue());
+                        hs.setAchMes(Utils.mesInt(row.getCell(2).getStringCellValue()));
+                        hs.setAchNumRegistro(cont - 1);
 
-                    hs.setAchNumVideos((int) row.getCell(6).getNumericCellValue());
-                    hs.setAchHrsMinisterio(row.getCell(7).getNumericCellValue());
-                    hs.setAchNumRevistas((int) row.getCell(8).getNumericCellValue());
-                    hs.setAchHrsEstudio(row.getCell(9).getNumericCellValue());
-                    hs.setAchObservaciones(row.getCell(10).getStringCellValue());
+                        hs.setPersona(null);
+                        hs.setAchPrsNombres(row.getCell(4).getStringCellValue());
+                        hs.setAchNumPublicaciones((int) row.getCell(5).getNumericCellValue());
+
+                        hs.setAchNumVideos((int) row.getCell(6).getNumericCellValue());
+                        hs.setAchHrsMinisterio(row.getCell(7).getNumericCellValue());
+                        hs.setAchNumRevistas((int) row.getCell(8).getNumericCellValue());
+                        hs.setAchHrsEstudio(row.getCell(9).getNumericCellValue());
+                        hs.setAchObservaciones(row.getCell(10).getStringCellValue());
 
 //                    FK's
-                    hs.setCngCodigo(cd.buscaCongregacionPorNombre(row.getCell(3).getStringCellValue()).getCngCodigo());
-                    hs.setCongregacion(cd.buscaCongregacionPorNombre(row.getCell(3).getStringCellValue()));
+                        hs.setCngCodigo(cd.buscaCongregacionPorNombre(row.getCell(3).getStringCellValue()).getCngCodigo());
+                        hs.setCongregacion(cd.buscaCongregacionPorNombre(row.getCell(3).getStringCellValue()));
 
-                    horasServicioDAO hsd = new horasServicioDAO();
-                    hsd.ingresarHrsServicio(hs);
+                        list.add(hs);
 
-                    System.out.println("Linea: " + String.valueOf(cont) + " " + row.getCell(4).getStringCellValue());
+                        System.out.println("Linea: " + String.valueOf(cont) + " " + row.getCell(4).getStringCellValue());
+                    }
                 }
             }
-        }
 
-        System.out.println("Registros totales: " + String.valueOf(cont));
+            System.out.println("Registros totales: " + String.valueOf(cont));
+
+//            Ingreso la lista de asistencia una vez que ya no tenga problemas de lectura con el excel.
+            ingresarLista();
+
+//            Devuelve TRUE si no hubo excepciones.
+            flag = true;
+
+
+        }catch(Exception ex){
+            message = new FacesMessage("Mesaje del Sistema", "Error de lectura en la Fila :" + String.valueOf(cont -1));
+            FacesContext.getCurrentInstance().addMessage(null, message);
+        }
+        return flag;
+    }
+
+    private void ingresarLista(){
+        if (list.size() > 0) {
+            for (horasServicio h : list) {
+                horasServicioDAO hsd = new horasServicioDAO();
+                hsd.ingresarHrsServicio(h);
+            }
+        }
     }
 }

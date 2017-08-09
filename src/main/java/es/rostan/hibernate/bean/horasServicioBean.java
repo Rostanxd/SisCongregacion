@@ -4,8 +4,10 @@ import es.rostan.hibernate.dao.horasServicioDAO;
 import es.rostan.hibernate.entidades.horasServicio;
 
 import javax.annotation.PostConstruct;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import javax.faces.context.FacesContext;
 import java.io.Serializable;
 import java.util.*;
 
@@ -27,6 +29,8 @@ public class horasServicioBean implements Serializable{
     private String mesSelected;
 
     private String btnAccion;
+
+    private FacesMessage message;
 
 //    CONSTRUCTOR
     public horasServicioBean(){

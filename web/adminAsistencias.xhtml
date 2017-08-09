@@ -26,6 +26,18 @@
                              rowsPerPageTemplate="25,50,100">
                     <f:facet style="background-image:url(resources/images/fondo.jpg)" name="header"  >
                         Asistencia Reuniones
+                        Horas de Servicio
+                        <div style="float:right">
+                            <h:commandLink>
+                                <p:graphicImage url="resources/images/excel.png" width="16"/>
+                                <p:dataExporter type="xls" target="dataasistencia" fileName="asistenciaReuniones" />
+                            </h:commandLink>
+
+                            <h:commandLink>
+                                <p:graphicImage width="16" url="resources/images/pdf.png"/>
+                                <p:dataExporter type="pdf" target="dataasistencia" fileName="asistenciaReuniones"/>
+                            </h:commandLink>
+                        </div>
                     </f:facet>
                     <p:column headerText="Año" filterBy="#{asistencia.asrAnio}" filterMatchMode="contains" style="width: 50px">
                         <p:outputLabel value="#{asistencia.asrAnio}"/>
