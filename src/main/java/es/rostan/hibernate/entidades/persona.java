@@ -2,6 +2,7 @@ package es.rostan.hibernate.entidades;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
@@ -231,6 +232,10 @@ public class persona implements Serializable {
 
     public void setPrsFrp(Date prsFrp) {
         this.prsFrp = prsFrp;
+    }
+
+    public String prsFechaNacimientoToString(){
+        return new SimpleDateFormat("dd-MM-yyyy").format(this.prsFecNacimiento);
     }
 
     @Override

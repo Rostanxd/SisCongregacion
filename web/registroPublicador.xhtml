@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+</h:head>
+<h:body>
+    <ui:composition template="./WEB-INF/templates/plantilla.xhtml">
+        <ui:define name="content">
+            <h:form id="form">
+                <p:panelGrid >
+                    <p:row>
+                        <p:column>
+                            <p:outputLabel value="Nombre" style="font-weight: bold; color: darkred; font-size: medium"/>
+                        </p:column>
+                        <p:column>
+                            <p:commandButton id="btnPersona" oncomplete="PF('wdgPersona').show();" update="dlgPersona" icon="ui-icon-search"/>
+                        </p:column>
+                        <p:column>
+                            <p:inputText value="#{registroPublicadorBean.personaSelected.prsApellidos} #{registroPublicadorBean.personaSelected.prsNombres}" disabled="true" style="width: 400px"/>
+                        </p:column>
+                        <p:column>
+                            <p:outputLabel value="Año de Servicio" style="font-weight: bold; color: darkred; font-size: medium"/>
+                        </p:column>
+                        <p:column colspan="2">
+                            <p:selectOneMenu value="#{registroPublicadorBean.anioServicio}" style="width: 150px">
+                                <f:selectItem noSelectionOption="true" itemLabel="Seleccione..." itemValue="#{null}"/>
+                                <f:selectItems value="#{registroPublicadorBean.aniosServicio}" var="anio" itemLabel="#{anio}"/>
+                            </p:selectOneMenu>
+                        </p:column>
+                    </p:row>
+                    <p:row>
+                        <p:column>
+                            <p:outputLabel value="Dirección" style="font-weight: bold; color: darkblue; font-size: medium"/>
+                        </p:column>
+                        <p:column colspan="5">
+                            <p:inputText value="#{registroPublicadorBean.personaSelected.prsDireccion}" disabled="true" style="width: 400px"/>
+                        </p:column>
+                    </p:row>
+                    <p:row>
+                        <p:column>
+                            <p:outputLabel value="Teléfono fijo" style="font-weight: bold; color: darkblue; font-size: medium"/>
+                        </p:column>
+                        <p:column>
+                            <p:inputText value="#{registroPublicadorBean.personaSelected.prsTelefono}" disabled="true" style="width: 100px"/>
+                        </p:column>
+                        <p:column>
+                            <p:outputLabel value="Teléfono celular" style="font-weight: bold; color: darkblue; font-size: medium"/>
+                        </p:column>
+                        <p:column>
+                            <p:inputText value="#{registroPublicadorBean.personaSelected.prsCelular}" disabled="true" style="width: 100px"/>
+                        </p:column>
+                        <p:column>
+                            <p:outputLabel value="Fecha de nacimiento" style="font-weight: bold; color: darkblue; font-size: medium"/>
+                        </p:column>
+                        <p:column >
+                            <p:calendar value="#{registroPublicadorBean.personaSelected.prsFecNacimiento}" disabled="true" style="width: 100px"/>
+                        </p:column>
+                    </p:row>
+                    <p:row>
+                        <p:column>
+                            <p:outputLabel value="Fecha de Bautismo" style="font-weight: bold; color: darkblue; font-size: medium"/>
+                        </p:column>
+                        <p:column>
+                            <p:inputText value="#{registroPublicadorBean.personaSelected.prsTelefono}" disabled="true" style="width: 100px"/>
+                        </p:column>
+                        <p:column>
+                            <p:outputLabel value="Ungido o de las Tres Obejas" style="font-weight: bold; color: darkblue; font-size: medium"/>
+                        </p:column>
+                        <p:column>
+                            <p:inputText value="" disabled="true" style="width: 100px"/>
+                        </p:column>
+                        <p:column>
+                            <p:outputLabel value="Privilegio" style="font-weight: bold; color: darkblue; font-size: medium"/>
+                        </p:column>
+                        <p:column>
+                            <p:inputText value="#{registroPublicadorBean.personaSelected.privilegio.prvNombre}" disabled="true" style="width: 400px"/>
+                        </p:column>
+                    </p:row>
+                    <p:row>
+                        <p:column>
+                            <p:commandButton id="btnLoad" update="dataRegistro" icon="ui-icon-search" action="#{registroPublicadorBean.loadRegistrosPublicador}"/>
+                        </p:column>
+                        <p:column>
+                            <h:commandLink>
+                                <p:graphicImage url="resources/images/excel.png" width="24"/>
+                                <p:dataExporter type="xls" target="dataRegistro" fileName="registroPublicacion" postProcessor="#{registroPublicadorBean.postProcessXLS}"/>
+                            </h:commandLink>
+                        </p:column>
+                        <p:column colspan="3">
+                            <h:commandLink>
+                                <p:graphicImage
+                                        url="resources/images/pdf.png" width="24"/>
+                                <p:dataExporter type="pdf" target="dataRegistro" fileName="registroPublicacion" preProcessor="#{registroPublicadorBean.preProcessPDF}"/>
+                            </h:commandLink>
+                        </p:column>
+                    </p:row>
+                </p:panelGrid>
+                <!--Registro de Publicacion-->
+                <p:dataTable id="dataRegistro" var="registro" value="#{registroPublicadorBean.registros}"
+                             style="font-size: smaller; width: auto;" emptyMessage="No hay datos." scrollable="true" scrollHeight="500px">
+                    <f:facet style="background-image:url(resources/images/fondo.jpg)" name="header"  >
+                        Registro de Publicación
+                    </f:facet>
+                    <p:column headerText="Mes" >
+                        <p:outputLabel value="#{registro.mesNombre}"/>
+                    </p:column>
+                    <p:column headerText="Publicaciones">
+                        <p:outputLabel value="#{registro.numPublicaciones}"/>
+                    </p:column>
+                    <p:column headerText="Presentacion de Videos">
+                        <p:outputLabel value="#{registro.numVideos}"/>
+                    </p:column>
+                    <p:column headerText="Horas" >
+                        <p:outputLabel value="#{registro.numHoras}"/>
+                    </p:column>
+                    <p:column headerText="Revistas">
+                        <p:outputLabel value="#{registro.numRevistas}"/>
+                    </p:column>
+                    <p:column headerText="Reunión">
+                        <p:outputLabel value="#{registro.numRevistas}"/>
+                    </p:column>
+                    <p:column headerText="Cursos Bíblicos">
+                        <p:outputLabel value="#{registro.numCursos}"/>
+                    </p:column>
+                </p:dataTable>
+            </h:form>
+
+            <!--Dialog de Personas-->
+            <p:dialog id="dlgPersona" header="Busca persona" widgetVar="wdgPersona" modal="true" width="710px" style="font-size: smaller">
+                <h:form>
+                    <p:dataTable id="dataPersona" var="persona" value="#{registroPublicadorBean.personas}"
+                                 selectionMode="single" selection="#{registroPublicadorBean.persona}" rowKey="#{persona.prsCodigo}"
+                                 style="font-size: smaller; width: auto;" emptyMessage="No hay datos." scrollable="true" scrollHeight="500px"
+                                 rows="10" paginator="true" paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}">
+                        <f:facet style="background-image:url(resources/images/fondo.jpg)" name="header"  >
+                            Listado de Personas
+                        </f:facet>
+                        <p:column headerText="Apellidos" filterBy="#{persona.prsApellidos}" filterMatchMode="contains" >
+                            <p:outputLabel value="#{persona.prsApellidos}"/>
+                        </p:column>
+                        <p:column headerText="Nombres" filterBy="#{persona.prsNombres}" filterMatchMode="contains" >
+                            <p:outputLabel value="#{persona.prsNombres}"/>
+                        </p:column>
+                        <p:column headerText="Privilegio" filterBy="#{persona.privilegio.prvNombre}" filterMatchMode="contains">
+                            <p:outputLabel value="#{persona.privilegio.prvNombre}"/>
+                        </p:column>
+                        <p:column headerText="Seleccionar">
+                            <center>
+                                <p:commandButton id="btnSeleccionar" action="#{registroPublicadorBean.seleccionarPersona(persona)}" icon="ui-icon-search"
+                                                 oncomplete="PF('wdgPersona').hide()" immediate="true" update=":form"/>
+                            </center>
+                        </p:column>
+                    </p:dataTable>
+                </h:form>
+            </p:dialog>
+        </ui:define>
+    </ui:composition>
+</h:body>
+</html>

@@ -238,4 +238,28 @@ public class horasServicio implements Serializable{
     public void setAchUsrModifica(String achUsrModifica) {
         this.achUsrModifica = achUsrModifica;
     }
+
+    @Override
+    public String toString() {
+        return "horasServicio{" +
+                "achNumRegistro=" + achNumRegistro +
+                ", achAnio=" + achAnio +
+                ", achAnioServ=" + achAnioServ +
+                ", achMes=" + achMes +
+                ", cngCodigo='" + cngCodigo + '\'' +
+                ", achNumPublicaciones=" + achNumPublicaciones +
+                ", achNumVideos=" + achNumVideos +
+                ", achHrsMinisterio=" + achHrsMinisterio +
+                ", achNumRevistas=" + achNumRevistas +
+                ", achHrsEstudio=" + achHrsEstudio +
+                ", achObservaciones='" + achObservaciones + '\'' +
+                ", achPrsNombres='" + achPrsNombres + '\'' +
+                ", achFecRegistro=" + achFecRegistro +
+                ", achUsrRegistro='" + achUsrRegistro + '\'' +
+                ", achFecModifica=" + achFecModifica +
+                ", achUsrModifica='" + achUsrModifica + '\'' +
+                ", congregacion=" + congregacion +
+                ", persona=" + persona +
+                '}';
+    }
 }

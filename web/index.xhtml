@@ -10,19 +10,30 @@
     <title>Sistema Congregación</title>
 </h:head>
 <h:body>
-    <h:form>
-        <p:growl id="growl" sticky="true" showDetail="true" life="3000" />
-        <h:panelGrid columns="2" cellpadding="5">
-            <h:outputLabel for="username" value="Username:" />
-            <p:inputText id="username" value="#{loginBean.username}" required="true" label="username" />
+    <div style="background-color: cadetblue; height: 50px">
+        <div style="padding-left: 10px">
+            <strong>
+                <h:outputLabel style="text-align: center; font-family: 'Courier New'; font-size: x-large; color: white; line-height: 50px" value="Sistema Congregación 1.0"/>
+            </strong>
+        </div>
+    </div>
+    <div>
+        <h:form>
+            <p:growl id="growl" sticky="true" showDetail="true" life="3000" />
+            <h:panelGrid columns="2" cellpadding="5">
+                <h:outputLabel for="username" value="Usuario:" />
+                <p:inputText id="username" value="#{usuarioBean.usuario.id}" required="true" label="username" />
 
-            <h:outputLabel for="password" value="Password:" />
-            <p:password id="password" value="#{loginBean.password}" required="true" label="password" />
+                <h:outputLabel for="password" value="Clave:" />
+                <p:password id="password" value="#{usuarioBean.usuario.clave}" required="true" label="password" />
 
-            <f:facet name="footer">
-                <p:commandButton value="Login" action="home?faces-redirect=true"/>
-            </f:facet>
-        </h:panelGrid>
-    </h:form>
+                <f:facet name="footer">
+                    <div style="text-align: center">
+                        <p:commandButton value="Iniciar" action="#{usuarioBean.login}"/>
+                    </div>
+                </f:facet>
+            </h:panelGrid>
+        </h:form>
+    </div>
 </h:body>
 </html>

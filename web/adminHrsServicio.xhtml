@@ -68,6 +68,7 @@
                     <f:facet name="footer">
                         <p:commandButton value="Ingresar" id="ingresar" actionListener="#{hrsServicioBean.setBtnAccion('Ingresar')}" icon="ui-icon-disk" oncomplete="PF('wdghrsServicio').show();" update=":dlghrsServicio"/>
                         <p:commandButton value="Modificar" id="modificar" actionListener="#{hrsServicioBean.setBtnAccion('Actualizar')}" icon="ui-icon-disk" oncomplete="PF('wdghrsServicio').show();" update=":dlghrsServicio" />
+                        <p:commandButton value="Imp. Registro " id="impRegistro" actionListener="#{hrsServicioBean.imprimirRegistroHrs()}" icon="ui-icon-disk"/>
                     </f:facet>
                 </p:dataTable>
             </h:form>

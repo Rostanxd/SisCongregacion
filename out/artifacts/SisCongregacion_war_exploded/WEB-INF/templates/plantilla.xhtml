@@ -10,27 +10,39 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 </h:head>
 <h:body>
+    <div style="background-color: cadetblue; height: 50px">
+        <div style="padding-left: 10px">
+            <strong>
+                <h:outputLabel style="text-align: center; font-family: 'Courier New'; font-size: x-large; color: white; line-height: 50px" value="Sistema Congregación 1.0"/>
+            </strong>
+        </div>
+    </div>
     <table>
         <tr style="vertical-align: top">
             <td >
                 <ui:insert name="top">
                     <h:form name = "menu">
-                        <!--<img src="resources/images/dcarol_logo.jpg" alt="" width="220px" height="180px"/>-->
                         <p:menu >
-                            <p:submenu label="Maestros" style=" border-color: transparent; background-image: url(resources/images/fondo.jpg);color:white;font-size:10pt; text-align:center;">
+                            <p:submenu label="Maestros" style=" border-color: transparent; background-color: cadetblue;color:white;font-size:10pt; text-align:center;">
                                 <p:menuitem value="Congregaciones" style="font-size: smaller" url="adminCongregaciones.xhtml?faces-redirect=true" />
                                 <p:menuitem value="Grupos" style="font-size: smaller" url="adminGrupos.xhtml?faces-redirect=true" />
                                 <p:menuitem value="Privilegios" style="font-size: smaller" url="adminPrivilegios.xhtml?faces-redirect=true" />
                                 <p:menuitem value="Reuniones" style="font-size: smaller" url="adminReuniones.xhtml?faces-redirect=true" />
                                 <p:menuitem value="Personas" style="font-size: smaller" url="adminPersonas.xhtml?faces-redirect=true" />
                             </p:submenu>
-                            <p:submenu label="Transacciones" style=" border-color: transparent; background-image: url(resources/images/fondo.jpg);color:white;font-size:10pt; text-align:center;">
+                            <p:submenu label="Transacciones" style=" border-color: transparent; background-color: cadetblue;color:white;font-size:10pt; text-align:center;">
                                 <p:menuitem value="Asistencias a Reuniones" style="font-size: smaller" url="adminAsistencias.xhtml?faces-redirect=true" />
                                 <p:menuitem value="Horas de Servicio" style="font-size: smaller" url="adminHrsServicio.xhtml?faces-redirect=true" />
                             </p:submenu>
-                            <p:submenu label="Procesos" style=" border-color: transparent; background-image: url(resources/images/fondo.jpg);color:white;font-size:10pt; text-align:center;">
+                            <p:submenu label="Reportes" style=" border-color: transparent; background-color: cadetblue;color:white;font-size:10pt; text-align:center;">
+                                <p:menuitem value="Registro del publicador" style="font-size: smaller" url="registroPublicador.xhtml?faces-redirect=true" />
+                            </p:submenu>
+                            <p:submenu label="Procesos" style=" border-color: transparent; background-color: cadetblue;color:white;font-size:10pt; text-align:center;">
                                 <p:menuitem value="Cargar Excel - Asistencias" style="font-size: smaller" url="adminCargaExcelAsistencia.xhtml?faces-redirect=true" />
                                 <p:menuitem value="Cargar Excel - Horas de Servicio" style="font-size: smaller" url="adminCargaExcelHrsServicio.xhtml?faces-redirect=true" />
+                            </p:submenu>
+                            <p:submenu label="Sistema" style=" border-color: transparent; background-color: cadetblue;color:white;font-size:10pt; text-align:center;">
+                                <p:menuitem value="Salir" style="font-size: smaller" action="#{usuarioBean.logout}"/>
                             </p:submenu>
                         </p:menu>
                     </h:form>

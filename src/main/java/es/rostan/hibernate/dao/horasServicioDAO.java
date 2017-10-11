@@ -42,11 +42,17 @@ public class horasServicioDAO implements Serializable {
         hs.setAchFecModifica(date);
         hs.setAchUsrModifica("ADMIN");
 
-        EntityManager em = emf.createEntityManager();
-        em.getTransaction().begin();
-        em.persist(hs);
-        em.getTransaction().commit();
-        em.close();
+//        System.out.println(hs.toString());
+
+        try{
+            EntityManager em = emf.createEntityManager();
+            em.getTransaction().begin();
+            em.persist(hs);
+            em.getTransaction().commit();
+            em.close();
+        }catch (Exception ex){
+            System.out.println(ex.toString());
+        }
     }
 
     public void actualizarHrsServicio(horasServicio hsUpd) throws Exception{
