@@ -22,7 +22,7 @@ public class personaDAO {
     private EntityManagerFactory emf = Persistence.createEntityManagerFactory("Persistencia");
 
     public List<persona> listarPersonas(){
-        List<persona> lstPersona = new ArrayList<>();
+        List<persona> lstPersona;
 
         EntityManager em = emf.createEntityManager();
         Query qry = em.createQuery("SELECT p FROM persona as p");
@@ -65,19 +65,18 @@ public class personaDAO {
         }
     }
 
-    public persona buscaPrsCodigo(String prsApellidos){
-        persona p = new persona();
+    public persona buscarPersona(String prsCodigo){
+        persona p;
         EntityManager em = emf.createEntityManager();
-        Query qry = em.createQuery("SELECT p FROM persona AS p WHERE p.prsApellidos LIKE '%:prsApellidos%'");
-        qry.setParameter(prsApellidos, "prsApellidos");
-        qry.setMaxResults(1);
-        em.getTransaction().begin();
+        Query qry = em.createQuery("SELECT p FROM persona AS p " +
+                "WHERE p.prsCodigo =:prsCodigo");
+        qry.setParameter("prsCodigo", prsCodigo);
         p = (persona) qry.getSingleResult();
         return p;
     }
 
     public List<Integer> aniosServicioPersona(persona persona){
-        List<Integer> anios = new ArrayList<>();
+        List<Integer> anios;
         EntityManager em = emf.createEntityManager();
         Query qry = em.createQuery("SELECT distinct h.achAnioServ " +
                 "FROM horasServicio as h " +

@@ -15,6 +15,14 @@ public class grupoDAO {
 
     private EntityManagerFactory emf = Persistence.createEntityManagerFactory("Persistencia");
 
+    public grupo buscaGrupo(String grpCodigo){
+        EntityManager em = emf.createEntityManager();
+        Query qry = em.createQuery("SELECT g FROM grupo AS g " +
+                "WHERE g.grpCodigo =:gruCodigo");
+        qry.setParameter("gruCodigo", grpCodigo);
+        return (grupo)qry.getSingleResult();
+    }
+
     public List<grupo> listarGrupos(){
         EntityManager em = emf.createEntityManager();
         Query qry = em.createQuery("SELECT g FROM grupo g");

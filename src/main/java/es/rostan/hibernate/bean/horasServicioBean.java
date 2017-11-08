@@ -2,6 +2,7 @@ package es.rostan.hibernate.bean;
 
 import es.rostan.hibernate.dao.horasServicioDAO;
 import es.rostan.hibernate.entidades.horasServicio;
+import es.rostan.servicio.Utils;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.PDPage;
 import org.apache.pdfbox.pdmodel.PDPageContentStream;
@@ -60,7 +61,7 @@ public class horasServicioBean implements Serializable{
         lstMeses.put(9, "Septiembre");
         lstMeses.put(10, "Octubre");
         lstMeses.put(11, "Noviembre");
-        lstMeses.put(12, "Dciembre");
+        lstMeses.put(12, "Diciembre");
     }
 
     public horasServicio getHrsServicio() {
@@ -115,6 +116,7 @@ public class horasServicioBean implements Serializable{
                 break;
             case "Actualizar":
                 this.hrsServicioSelected = this.hrsServicio;
+                this.mesSelected = Utils.setMesNombreInt(this.hrsServicio.getAchMes());
                 break;
         }
     }
@@ -125,14 +127,14 @@ public class horasServicioBean implements Serializable{
         this.lstHrsServicio = hrd.lstHrsServicios();
     }
 
-    public void ingresarHrsServicio() {
+    private void ingresarHrsServicio() {
         System.out.println("Congregacion seleccionada..." + this.hrsServicioSelected.getCongregacion().getCngNombre());
         this.hrsServicioSelected.setAchMes(this.buscaMesId(this.mesSelected));
         horasServicioDAO hrd = new horasServicioDAO();
         hrd.ingresarHrsServicio(this.hrsServicioSelected);
     }
 
-    public void actualizarHrsServicio(){
+    private void actualizarHrsServicio(){
         horasServicioDAO hrd = new horasServicioDAO();
         try{
             hrd.actualizarHrsServicio(this.hrsServicioSelected);
@@ -154,9 +156,11 @@ public class horasServicioBean implements Serializable{
         }
     }
 
-    public void limpiar(){
+    private void limpiar(){
         Calendar now = Calendar.getInstance();
         int year = now.get(Calendar.YEAR);
+
+        this.mesSelected = "";
         this.hrsServicioSelected.setAchAnio(year);
         this.hrsServicioSelected.setAchAnioServ(year);
         this.hrsServicioSelected.setCongregacion(null);
@@ -170,7 +174,7 @@ public class horasServicioBean implements Serializable{
         this.hrsServicioSelected.setAchObservaciones("");
     }
 
-    public Integer buscaMesId(String mes){
+    private Integer buscaMesId(String mes){
         Integer key = 0;
         for (Map.Entry<Integer, String> e : this.lstMeses.entrySet()){
             if (e.getValue().equals(mes)){

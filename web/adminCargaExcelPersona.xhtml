@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+<f:view>
+    <h:outputLabel value="Hello, world"/>
+</f:view>
+<h:head>
+</h:head>
+<h:body>
+    <ui:composition template="./WEB-INF/templates/plantilla.xhtml">
+        <ui:define name="content">
+            <h:form id="form">
+                <p:panel id="pnlPersona" header="Carga de Personas desde Excel" style="margin-bottom:10px">
+                    <h:panelGrid columns="1" cellpadding="10">
+                        <h4>Para poder realizar la carga del excel de persona, por favor tomar en cuenta lo siguiente:</h4>
+                        <ul>
+                            <li>Las columnas que contengan números (celular, teléfono, etc.) deben contener el caracter comilla simple (') al comienzo.</li>
+                            <li>Las columnas de Congregación, Grupo y Privilegio, deben tener el id del mismo, mas no el nombre.</li>
+                            <li>Para identificar el sexo de la persona utilizar "M" para Masculino y "F" para Femenino.</li>
+                            <li>Para identificar el estado de la persona utilizar "A" para Activo e "I" para Inactivo.</li>
+                        </ul>
+                    </h:panelGrid>
+                </p:panel>
+                <p:panelGrid columns="2" style="margin-bottom:10px">
+                    <h:commandLink action="#{cargaExcelPersonas.descargarPlantilla()}">
+                        <p:graphicImage url="resources/images/excel.png" width="24"/>
+                    </h:commandLink>
+                    <p:outputLabel>Descargar ejemplo</p:outputLabel>
+                </p:panelGrid>
+                <p:fileUpload fileUploadListener="#{cargaExcelPersonas.handleFileUpload}" mode="advanced" dragDropSupport="false"
+                              update="messages" sizeLimit="1000000" fileLimit="1" allowTypes="/(\.|\/)(xlsx)$/" />
+                <p:growl id="messages" showDetail="true" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+</h:body>
+</html>

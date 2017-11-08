@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html"
+<html xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:p="http://primefaces.org/ui">
@@ -47,7 +46,7 @@
                     <p:column headerText="Año Teocrático" filterBy="#{hrsServicio.achAnioServ}" filterMatchMode="contains" style="width: 100px">
                         <p:outputLabel value="#{hrsServicio.achAnioServ}"/>
                     </p:column>
-                    <p:column headerText="Mes" style="width: 100px">
+                    <p:column headerText="Mes" filterBy="#{hrsServicioBean.buscaMesNombre(hrsServicio.achMes)}" filterMatchMode="contains" style="width: 100px">
                         <p:outputLabel value="#{hrsServicioBean.buscaMesNombre(hrsServicio.achMes)}"/>
                     </p:column>
                     <p:column headerText="Congregación" filterBy="#{hrsServicio.congregacion.cngNombre}" filterMatchMode="contains" style="width: 150px">
@@ -96,9 +95,14 @@
                                 <p:outputLabel value="Mes" style="font-weight: bold; color: darkred"/>
                             </p:column>
                             <p:column>
-                                <p:selectOneMenu value="#{hrsServicioBean.mesSelected}" converter="omnifaces.SelectItemsConverter" style="width: 150px" disabled="#{hrsServicioBean.btnAccion eq 'Actualizar'}">
-                                    <f:selectItem noSelectionOption="true" itemLabel="Seleccione..." itemValue="#{null}"/>
-                                    <f:selectItems value="#{hrsServicioBean.lstMeses}" var="mes" itemLabel="#{mes}"/>
+                                <p:selectOneMenu value="#{hrsServicioBean.mesSelected}"
+                                                 converter="omnifaces.SelectItemsConverter"
+                                                 style="width: 150px"
+                                                 disabled="#{hrsServicioBean.btnAccion eq 'Actualizar'}">
+                                    <f:selectItem noSelectionOption="true"
+                                                  itemLabel="Seleccione..." itemValue="#{null}"/>
+                                    <f:selectItems value="#{hrsServicioBean.lstMeses}"
+                                                   var="mes" itemLabel="#{mes}"/>
                                 </p:selectOneMenu>
                             </p:column>
                             <p:column>

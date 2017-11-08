@@ -2,6 +2,7 @@ package es.rostan.hibernate.bean;
 
 import es.rostan.hibernate.dao.asistenciaReunionesDAO;
 import es.rostan.hibernate.entidades.asistenciaReuniones;
+import es.rostan.servicio.Utils;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
@@ -98,6 +99,7 @@ public class asistenciaReunionesBean implements Serializable{
                 break;
             case "Actualizar":
                 this.asistenciaSelected = this.asistencia;
+                this.mesSelected = Utils.setMesNombreInt(this.asistencia.getAsrMes());
                 break;
         }
     }
@@ -132,13 +134,13 @@ public class asistenciaReunionesBean implements Serializable{
         this.lstAsistencias = ad.lstAsistencias();
     }
 
-    public void ingrearAsistencias(){
+    private void ingrearAsistencias(){
         this.asistenciaSelected.setAsrMes(this.buscaMesId(this.mesSelected));
         asistenciaReunionesDAO ad = new asistenciaReunionesDAO();
         ad.ingresarAsistencia(this.asistenciaSelected);
     }
 
-    public void actualizarAsistencia(){
+    private void actualizarAsistencia(){
         asistenciaReunionesDAO ad = new asistenciaReunionesDAO();
         try{
             ad.actualizarAsistencia(this.asistenciaSelected);
@@ -160,10 +162,11 @@ public class asistenciaReunionesBean implements Serializable{
         }
     }
 
-    public void limpiar(){
+    private void limpiar(){
         Calendar now = Calendar.getInstance();
         int year = now.get(Calendar.YEAR);
 
+        this.setMesSelected("");
         this.asistenciaSelected.setAsrAnio(year);
         this.asistenciaSelected.setAsrAnioTeo(year);
         this.asistenciaSelected.setCongregacion(null);
@@ -174,7 +177,7 @@ public class asistenciaReunionesBean implements Serializable{
         this.asistenciaSelected.setAsrAsistencias(0);
     }
 
-    public Integer buscaMesId(String mes){
+    private Integer buscaMesId(String mes){
         Integer key = 0;
         for (Map.Entry<Integer, String> e : this.lstMeses.entrySet()){
             if (e.getValue().equals(mes)){

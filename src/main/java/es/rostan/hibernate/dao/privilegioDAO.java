@@ -16,6 +16,14 @@ public class privilegioDAO {
 
     private EntityManagerFactory emf = Persistence.createEntityManagerFactory("Persistencia");
 
+    public privilegio buscaPrivilegio(String prvCodigo){
+        EntityManager em = emf.createEntityManager();
+        Query qry = em.createQuery("SELECT p FROM privilegio AS p " +
+                "WHERE p.prvCodigo =:prvCodigo");
+        qry.setParameter("prvCodigo", prvCodigo);
+        return (privilegio) qry.getSingleResult();
+    }
+
     public List<privilegio> listarPrivilegios(){
         EntityManager em = emf.createEntityManager();
         Query qry = em.createQuery("SELECT p FROM privilegio p");
